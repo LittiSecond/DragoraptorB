@@ -1,0 +1,29 @@
+.statistic-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("project://database/Assets/Textures/Ui/Paste64.png?fileID=2800000&guid=c09fe1bb060544141b4832e7f5156520&type=3#Paste64");
+    background-color: rgba(255, 255, 255, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.menu-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url("project://database/Assets/Textures/Ui/cogweel.png?fileID=21300000&guid=3c504d48b936d1a4085b96a81f93d7f5&type=3#cogweel");
+}
+
+.hunt-button {
+    top: 256px;
+    left: 25%;
+    right: 25%;
+}
