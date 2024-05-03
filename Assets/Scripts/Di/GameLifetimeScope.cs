@@ -1,6 +1,7 @@
 ﻿using VContainer;
 using VContainer.Unity;
 using Dragoraptor.Core;
+using Dragoraptor.Interfaces;
 using Dragoraptor.Services;
 using Dragoraptor.Ui;
 using TimersService;
@@ -33,7 +34,9 @@ namespace Dragoraptor.Di
             builder.Register<MainScreenWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntScreenWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntMenuWidget>(Lifetime.Singleton).AsSelf();
-            
+
+            builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
+
 
 
         }

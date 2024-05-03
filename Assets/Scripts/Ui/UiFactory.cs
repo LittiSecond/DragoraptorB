@@ -8,7 +8,7 @@ namespace Dragoraptor.Ui
     {
         private const string MAIN_SCREEN_PATH = "MainScreen"; 
         private const string HUNT_SCREEN_PATH = "HuntScreen"; 
-        private const string HUNT_MENU_PATH = "HuntScreen"; 
+        private const string HUNT_MENU_PATH = "HuntMenu"; 
 
         private UIDocument _uiDocument;
 

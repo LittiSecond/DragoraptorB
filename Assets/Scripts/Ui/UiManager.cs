@@ -7,9 +7,9 @@ namespace Dragoraptor.Ui
     public class UiManager
     {
 
-        private IScreenBehaviour _mainScreen;
-        private IScreenBehaviour _huntScreen;
-        private IScreenBehaviour _currentScreen;
+        private IScreenWidget _mainScreen;
+        private IScreenWidget _huntScreen;
+        private IScreenWidget _currentScreen;
         
 
         public UiManager(MainScreenWidget mainScreen, HuntScreenWidget huntScreen)

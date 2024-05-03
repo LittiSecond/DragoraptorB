@@ -1,17 +1,19 @@
 ﻿using System;
 using Dragoraptor.Enums;
+using Dragoraptor.Interfaces;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 
 namespace Dragoraptor.Ui
 {
-    public class HuntMenuWidget : ScreenBehaviourBase
+    public class HuntMenuWidget : ScreenWidgetBase
     {
 
         private const string CONTINUE_BUTTON_NAME = "continue-button";
         private const string DEFEAT_BUTTON_NAME = "break-defeat-button";
         private const string VICTORY_BUTTON_NAME = "break-victory-button";
+        private const string ROOT_STYLE_NAME = "menu-root";
 
         public event Action OnContinueButtonClick;
         public event Action OnBreakButtonClick;
@@ -20,19 +22,20 @@ namespace Dragoraptor.Ui
         private Button _defeatButton;
         private Button _victoryButton;
 
-        private HuntMenuState _menuState;
+        private IVictoryPossibilityHolder _victoryInfoSource;
 
-        private bool _isEnabled;
         
-        
-        public HuntMenuWidget(UiFactory uiFactory) : base(uiFactory)
+        public HuntMenuWidget(UiFactory uiFactory, IVictoryPossibilityHolder victoryPossibilityHolder) 
+            : base(uiFactory)
         {
-            
+            _victoryInfoSource = victoryPossibilityHolder;
         }
 
         protected override void Initialise()
         {
             _root = _factory.GetHuntMenu();
+            
+            _root.AddToClassList(ROOT_STYLE_NAME);
 
             _continueButton = _root.Q<Button>(CONTINUE_BUTTON_NAME);
             _continueButton.RegisterCallback<ClickEvent>(evt => OnContinueButtonClick?.Invoke());
@@ -43,45 +46,30 @@ namespace Dragoraptor.Ui
             _victoryButton = _root.Q<Button>(VICTORY_BUTTON_NAME);
             _victoryButton.RegisterCallback<ClickEvent>(evt => OnBreakButtonClick?.Invoke());
         }
+
         
-        #region IScreenBehaviour
+        #region IScreenWidget
 
         public override void Show()
         {
             base.Show();
-            _isEnabled = true;
             UpdateState();
         }
 
-        public override void Hide()
-        {
-            base.Hide();
-            _isEnabled = false;
-        }
-
         #endregion
-
-        public void SetState(HuntMenuState state)
-        {
-            _menuState = state;
-
-            if (_isEnabled)
-            {
-                UpdateState();
-            }
-        }
+        
 
         private void UpdateState()
         {
-            if (_menuState == HuntMenuState.Defeat)
-            {
-                _victoryButton.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
-                _defeatButton.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-            }
-            else
+            if (_victoryInfoSource.IsVictory)
             {
                 _victoryButton.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
                 _defeatButton.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+            }
+            else
+            {
+                _victoryButton.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+                _defeatButton.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
             }
         }
         

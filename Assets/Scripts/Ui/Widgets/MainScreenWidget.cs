@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 
-using Dragoraptor.Interfaces.Ui;
 using EventBus;
-using EventBus.Signals;
 
 
 namespace Dragoraptor.Ui
 {
-    public class MainScreenWidget : ScreenBehaviourBase
+    public class MainScreenWidget : ScreenWidgetBase
     {
         private const string STATISIC_BUTTON_NAME = "statistic-button"; 
         private const string MENU_BUTTON_NAME = "menu-button"; 

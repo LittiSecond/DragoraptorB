@@ -6,7 +6,7 @@ using Dragoraptor.Interfaces.Ui;
 
 namespace Dragoraptor.Ui
 {
-    public abstract class ScreenBehaviourBase : IScreenBehaviour
+    public abstract class ScreenWidgetBase : IScreenWidget
     {
         
         protected UiFactory _factory;
@@ -15,13 +15,13 @@ namespace Dragoraptor.Ui
         private bool _isInitialised;
 
         
-        public ScreenBehaviourBase(UiFactory uiFactory)
+        public ScreenWidgetBase(UiFactory uiFactory)
         {
             _factory = uiFactory;
         }
 
 
-        #region IScreenBehaviour
+        #region IScreenWidget
 
         public virtual void Show()
         {

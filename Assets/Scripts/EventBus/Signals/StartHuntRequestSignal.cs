@@ -1,4 +1,4 @@
-﻿namespace EventBus.Signals
+﻿namespace EventBus
 {
     public class StartHuntRequestSignal
     {

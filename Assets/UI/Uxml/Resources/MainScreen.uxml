@@ -3,5 +3,5 @@
     <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
     <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="statistic-button" enable-rich-text="false" class="statistic-button icon-button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
     <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu-button" enable-rich-text="false" class="menu-button icon-button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-    <ui:Button text="охота" parse-escape-sequences="true" display-tooltip-when-elided="true" name="hunt-button" class="hunt-button normal-button" style="height: 300px; width: 900px;" />
+    <ui:Button text="охота" parse-escape-sequences="true" display-tooltip-when-elided="true" name="hunt-button" class="hunt-button normal-button" />
 </ui:UXML>

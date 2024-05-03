@@ -2,7 +2,7 @@
 using Dragoraptor.Enums;
 using Dragoraptor.Ui;
 using EventBus;
-using EventBus.Signals;
+
 
 
 namespace Dragoraptor.Core
@@ -31,6 +31,7 @@ namespace Dragoraptor.Core
                 _uiManager.SwitchToMainScreen();
                 _gameState = GameState.MainScreen;
                 _eventBus.Subscribe<StartHuntRequestSignal>(SwitchToHunt);
+                _eventBus.Subscribe<StopHuntRequestSignal>(SwitchToMainScreen);
             }
         }
 
@@ -42,6 +43,16 @@ namespace Dragoraptor.Core
             {
                 _uiManager.SwitchToHunt();
                 _gameState = GameState.Game;
+            }
+        }
+
+        private void SwitchToMainScreen(StopHuntRequestSignal signal)
+        {
+            Debug.Log("GameStateManager->SwitchToMainScreen:");
+            if (_gameState == GameState.Game)
+            {
+                _uiManager.SwitchToMainScreen();
+                _gameState = GameState.MainScreen;
             }
         }
         

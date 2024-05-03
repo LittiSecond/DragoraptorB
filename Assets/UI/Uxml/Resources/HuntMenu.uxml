@@ -2,8 +2,8 @@
     <Style src="project://database/Assets/UI/Uss/HuntMenu.uss?fileID=7433441132597879392&amp;guid=02c58817d7aa9474a9d2b6be3225447b&amp;type=3#HuntMenu" />
     <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
     <ui:VisualElement name="buttons-container" class="buttons-container-panel" style="flex-grow: 1;">
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="continue-button" class="normal-button menu-buttons" />
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="break-defeat-button" class="normal-button menu-buttons" />
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="break-victory-button" class="normal-button menu-buttons" />
+        <ui:Button text="Продолжить" parse-escape-sequences="true" display-tooltip-when-elided="true" name="continue-button" class="normal-button menu-buttons" />
+        <ui:Button text="Прервать охоту&#10;(поражение)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="break-defeat-button" class="normal-button menu-buttons" />
+        <ui:Button text="Прервать охоту&#10;(победа)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="break-victory-button" class="normal-button menu-buttons" />
     </ui:VisualElement>
 </ui:UXML>

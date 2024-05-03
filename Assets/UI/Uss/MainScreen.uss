@@ -26,4 +26,6 @@
     top: 256px;
     left: 25%;
     right: 25%;
+    height: 300px;
+    width: 50%;
 }

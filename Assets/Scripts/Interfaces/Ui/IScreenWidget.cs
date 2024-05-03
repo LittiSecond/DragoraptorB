@@ -1,6 +1,6 @@
 ﻿namespace Dragoraptor.Interfaces.Ui
 {
-    public interface IScreenBehaviour
+    public interface IScreenWidget
     {
         void Show();
         void Hide();
