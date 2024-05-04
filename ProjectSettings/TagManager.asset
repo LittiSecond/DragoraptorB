@@ -11,16 +11,16 @@ TagManager:
   - 
   - Water
   - UI
+  - BackGround
+  - Ground
+  - Borders
+  - Player
+  - Npc
+  - BulletPhisic
+  - BulletTrigger
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FallToGround
+  - Items
   - 
   - 
   - 
@@ -38,6 +38,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 3278192749
+    locked: 0
+  - name: Ground
+    uniqueID: 1843784099
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2822823871
+    locked: 0
+  - name: NPC
+    uniqueID: 3732579713
+    locked: 0
+  - name: Items
+    uniqueID: 2756603363
+    locked: 0
+  - name: Ui
+    uniqueID: 2040105279
     locked: 0

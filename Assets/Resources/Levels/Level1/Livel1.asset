@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87063a7ed4346cab164843d3587beb8, type: 3}
+  m_Name: Livel1
+  m_EditorClassIdentifier: 
+  LevelId: 0
+  GroundPrefab: {fileID: 317694793326652323, guid: 9b15de2722b8abd4180f27864879c480, type: 3}
+  BackgroundPrefab: {fileID: 7493370335623808135, guid: 06f2f53eac035e444a67a2507f5feb86, type: 3}
+  SatietyToSucces: 0.75
+  LevelDuration: 180
