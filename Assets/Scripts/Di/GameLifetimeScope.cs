@@ -35,9 +35,12 @@ namespace Dragoraptor.Di
             builder.Register<HuntScreenWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntMenuWidget>(Lifetime.Singleton).AsSelf();
 
+
+            builder.Register<SceneController>(Lifetime.Singleton).AsImplementedInterfaces();
+            
+
             builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
-
-
+            builder.Register<LevelLoaderStump>(Lifetime.Singleton).As<ICurrentLevelDescriptorHolder>();
 
         }
     }

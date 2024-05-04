@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Dragoraptor.Enums;
+using Dragoraptor.Interfaces;
 using Dragoraptor.Ui;
 using EventBus;
 
@@ -13,14 +14,16 @@ namespace Dragoraptor.Core
 
         private UiManager _uiManager;
         private IEventBus _eventBus;
+        private ISceneController _sceneController;
         
         private GameState _gameState;
 
         
-        public GameStateManager(UiManager uiManager, IEventBus eventBus)
+        public GameStateManager(UiManager uiManager, IEventBus eventBus, ISceneController sceneController)
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
+            _sceneController = sceneController;
         }
         
         public void StartProgram()
@@ -43,6 +46,7 @@ namespace Dragoraptor.Core
             {
                 _uiManager.SwitchToHunt();
                 _gameState = GameState.Game;
+                _sceneController.BuildLevel();
             }
         }
 
@@ -53,6 +57,7 @@ namespace Dragoraptor.Core
             {
                 _uiManager.SwitchToMainScreen();
                 _gameState = GameState.MainScreen;
+                _sceneController.SetMainScreenScene();
             }
         }
         

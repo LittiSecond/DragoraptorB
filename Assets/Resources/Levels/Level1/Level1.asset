@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f87063a7ed4346cab164843d3587beb8, type: 3}
-  m_Name: Livel1
+  m_Name: Level1
   m_EditorClassIdentifier: 
   LevelId: 0
   GroundPrefab: {fileID: 317694793326652323, guid: 9b15de2722b8abd4180f27864879c480, type: 3}
