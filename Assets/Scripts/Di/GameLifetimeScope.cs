@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using Dragoraptor.Character;
+using VContainer;
 using VContainer.Unity;
 using Dragoraptor.Core;
 using Dragoraptor.Interfaces;
@@ -41,6 +42,14 @@ namespace Dragoraptor.Di
 
             builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
             builder.Register<LevelLoaderStump>(Lifetime.Singleton).As<ICurrentLevelDescriptorHolder>();
+
+            //  -----  Character system  -----
+            builder.Register<CharacterManager>(Lifetime.Singleton).AsImplementedInterfaces();
+            
+            
+            // -------------------------
+
+            builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();
 
         }
     }
