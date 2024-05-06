@@ -2,7 +2,7 @@
 using System; 
 
 
-namespace Dragoraptor.Models
+namespace Dragoraptor.MonoBehs
 {
     public sealed class PlayerBody : MonoBehaviour, ITakeDamage
     {

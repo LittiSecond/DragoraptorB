@@ -1,14 +1,19 @@
-﻿using Dragoraptor.Character;
+﻿using UnityEngine;
+using UnityEngine.UIElements;
+
 using VContainer;
 using VContainer.Unity;
-using Dragoraptor.Core;
-using Dragoraptor.Interfaces;
-using Dragoraptor.Services;
-using Dragoraptor.Ui;
+
 using TimersService;
 using EventBus;
-using UnityEngine;
-using UnityEngine.UIElements;
+
+using Dragoraptor.Character;
+using Dragoraptor.Core;
+using Dragoraptor.Interfaces;
+using Dragoraptor.MonoBehs;
+using Dragoraptor.Services;
+using Dragoraptor.Ui;
+using Interfaces;
 
 
 namespace Dragoraptor.Di
@@ -17,7 +22,7 @@ namespace Dragoraptor.Di
     {
 
         [SerializeField] private SceneObjectsContainer _sceneObjectsContainer;
-        
+        [SerializeField] private DataContainerBehaviour _dataContainer;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -50,6 +55,7 @@ namespace Dragoraptor.Di
             // -------------------------
 
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.RegisterInstance(_dataContainer).As<IDataHolder>();
 
         }
     }

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
 using Dragoraptor.Interfaces;
-using Dragoraptor.Models;
+using Dragoraptor.MonoBehs;
+using Dragoraptor.ScriptableObjects;
+using Interfaces;
 
 
 namespace Dragoraptor.Character
@@ -15,13 +17,16 @@ namespace Dragoraptor.Character
         private PlayerBody _playerBody;
         private readonly IPrefabLoader _prefabLoader;
         
-        
+        private Vector2 _spawnPosition;
         private bool _haveCharacterBody;
 
 
-        public CharacterManager(IPrefabLoader prefabLoader)
+        public CharacterManager(IPrefabLoader prefabLoader, 
+            IDataHolder dataHolder
+            )
         {
             _prefabLoader = prefabLoader;
+            _spawnPosition = dataHolder.GetGamePlaySettings().CharacterSpawnPosition;
         }
         
 
@@ -36,7 +41,7 @@ namespace Dragoraptor.Character
                 _haveCharacterBody = true;
             }
 
-            //_playerGO.transform.position = _spawnPosition;
+            _playerGO.transform.position = _spawnPosition;
             _playerGO.SetActive(true);
         }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Dragoraptor
+namespace Dragoraptor.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "NewLevel", menuName = "Resources/LevelDescriptor")]
     public sealed class LevelDescriptor : ScriptableObject

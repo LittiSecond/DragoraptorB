@@ -1,4 +1,7 @@
-﻿namespace Dragoraptor.Interfaces
+﻿using Dragoraptor.ScriptableObjects;
+
+
+namespace Dragoraptor.Interfaces
 {
     public interface ICurrentLevelDescriptorHolder
     {

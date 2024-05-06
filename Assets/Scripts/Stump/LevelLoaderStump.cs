@@ -1,5 +1,7 @@
-﻿using Dragoraptor.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
+using Dragoraptor.Interfaces;
+using Dragoraptor.ScriptableObjects;
+
 
 namespace Dragoraptor
 {
