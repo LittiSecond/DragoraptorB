@@ -1,5 +1,5 @@
 ﻿using Dragoraptor.ScriptableObjects;
-using Interfaces;
+using Dragoraptor.Interfaces;
 using UnityEngine;
 
 

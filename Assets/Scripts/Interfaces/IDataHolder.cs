@@ -1,6 +1,7 @@
 ﻿using Dragoraptor.ScriptableObjects;
 
-namespace Interfaces
+
+namespace Dragoraptor.Interfaces
 {
     public interface IDataHolder
     {

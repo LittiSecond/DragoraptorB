@@ -13,7 +13,6 @@ using Dragoraptor.Interfaces;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.Services;
 using Dragoraptor.Ui;
-using Interfaces;
 
 
 namespace Dragoraptor.Di
@@ -51,7 +50,13 @@ namespace Dragoraptor.Di
             //  -----  Character system  -----
             builder.Register<CharacterManager>(Lifetime.Singleton).AsImplementedInterfaces();
             
-            
+                // ----- ----- IBodyUser -----
+            builder.Register<WalkController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<JumpController>(Lifetime.Singleton).AsImplementedInterfaces();
+                // ----- -----
+
+
+            builder.Register<CharStateHolder>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             // -------------------------
 
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();

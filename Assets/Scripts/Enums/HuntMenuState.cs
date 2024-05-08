@@ -1,4 +1,4 @@
-﻿namespace Dragoraptor.Enums
+﻿namespace Dragoraptor
 {
     public enum HuntMenuState
     {

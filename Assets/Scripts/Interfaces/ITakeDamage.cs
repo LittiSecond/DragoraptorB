@@ -1,4 +1,4 @@
-﻿namespace Dragoraptor
+﻿namespace Dragoraptor.Interfaces
 {
     public interface ITakeDamage
     {
