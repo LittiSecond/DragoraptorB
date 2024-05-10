@@ -1,7 +1,7 @@
 ﻿using Dragoraptor.MonoBehs;
 
 
-namespace Dragoraptor.Interfaces
+namespace Dragoraptor.Interfaces.Character
 {
     public interface IBodyUser
     {

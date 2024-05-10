@@ -1,48 +1,59 @@
 ﻿using UnityEngine;
-using Dragoraptor.Interfaces;
-using Dragoraptor.MonoBehs;
-using VContainer;
+
 using VContainer.Unity;
+
+using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
+using Dragoraptor.MonoBehs;
 
 
 namespace Dragoraptor.Character
 {
-    public class WalkController : ITickable, IBodyUser, ICharStateListener
+    public class WalkController : ITickable, IBodyUser, ICharStateListener, IWalkLogic
     {
-
-
         private ICharStateHolder _stateHolder;
-        
-        
-        private float _delay = 2.0f;
-        private float _timeCounter;
+        private PlayerBody _playerBody;
+        private Transform _transform;
+        private Rigidbody2D _rigidbody;
+        private Vector2 _velocity;
+        private float _speed;
+        private float _xDestination;
+        private CharacterState _state;
         
         private bool _isEnabled;
+        private bool _shouldMove;
+        private bool _isDirectionRight;
+        
 
-
-        public WalkController()
+        public WalkController(ICharStateHolder stateHolder, IDataHolder dataHolder)
         {
             Debug.Log("WalkController->ctor:");
+            _stateHolder = stateHolder;
+            _speed = dataHolder.GetGamePlaySettings().WalkSpeed;
         }
-        
-        // [Inject]
-        // public void Construct(ICharStateHolder stateHolder)
-        // {
-        //     _stateHolder = stateHolder;
-        // }
-        
+
         
         #region IBodyUser
         
         public void SetBody(PlayerBody body)
         {
             Debug.Log("WalkController->SetBody:");
+            _playerBody = body;
+            _transform = _playerBody.transform;
+            _rigidbody = _playerBody.GetRigidbody();
             _isEnabled = true;
         }
 
         public void ClearBody()
         {
             Debug.Log("WalkController->ClearBody:");
+            if (_isEnabled)
+            {
+                StopMovement();
+            }
+            _playerBody = null;
+            _transform = null;
+            _rigidbody = null;
             _isEnabled = false;
         }
         
@@ -53,14 +64,19 @@ namespace Dragoraptor.Character
 
         public void Tick()
         {
-            if (!_isEnabled) return;
-            
-            _timeCounter += Time.deltaTime;
-            if (_timeCounter >= _delay)
+            if (_isEnabled && _shouldMove)
             {
-                Debug.Log("WalkController->Tick:");
-                _stateHolder?.SetState(CharacterState.Walk);
-                _timeCounter = 0.0f;
+                float x = _transform.position.x;
+                if (_isDirectionRight && (x >= _xDestination))
+                {
+                    StopMovement();
+                    _stateHolder.SetState(CharacterState.Idle);
+                }
+                else if ( !_isDirectionRight && (x <= _xDestination))
+                {
+                    StopMovement();
+                    _stateHolder.SetState(CharacterState.Idle);
+                }
             }
         }
 
@@ -71,11 +87,59 @@ namespace Dragoraptor.Character
 
         public void StateChanged(CharacterState newState)
         {
-            Debug.Log("WalkController->StateChanged: newState = " + newState.ToString());
+            if (newState != _state)
+            {
+                if (_state == CharacterState.Walk)
+                {
+                    StopMovement();
+                }
+
+                _state = newState;
+            }
+        }
+        
+        #endregion
+
+
+        #region IWalkLogic
+
+        public void SetDestination(float x)
+        {
+            if (_isEnabled && (_state == CharacterState.Idle || _state == CharacterState.Walk))
+            {
+                _xDestination = x;
+                StartMovement();
+                if (_state == CharacterState.Idle)
+                {
+                    _stateHolder.SetState(CharacterState.Walk);
+                }
+            }
         }
         
         #endregion
         
+        
+        private void StopMovement()
+        {
+            if (_isEnabled && _state == CharacterState.Walk)
+            {
+                _velocity = Vector2.zero;
+                _rigidbody.velocity = Vector2.zero;
+                _shouldMove = false;
+            }
+        }
+
+        private void StartMovement()
+        {
+            float x = _transform.position.x;
+            _isDirectionRight = _xDestination > x;
+
+            float direction = _isDirectionRight ? 1.0f : -1.0f;
+            _velocity = new Vector2(_speed * direction, 0);
+            _rigidbody.velocity = _velocity;
+
+            _shouldMove = true;
+        }
         
     }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
 using Dragoraptor.MonoBehs;
 
 

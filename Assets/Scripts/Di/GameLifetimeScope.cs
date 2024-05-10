@@ -9,9 +9,9 @@ using EventBus;
 
 using Dragoraptor.Character;
 using Dragoraptor.Core;
+using Dragoraptor.Input;
 using Dragoraptor.Interfaces;
 using Dragoraptor.MonoBehs;
-using Dragoraptor.Services;
 using Dragoraptor.Ui;
 
 
@@ -42,7 +42,8 @@ namespace Dragoraptor.Di
 
 
             builder.Register<SceneController>(Lifetime.Singleton).AsImplementedInterfaces();
-            
+            builder.Register<SceneGeometry>(Lifetime.Singleton).AsSelf().As<ISceneGeometry>();
+            builder.Register<AreaChecker>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
             builder.Register<LevelLoaderStump>(Lifetime.Singleton).As<ICurrentLevelDescriptorHolder>();
@@ -61,6 +62,9 @@ namespace Dragoraptor.Di
 
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.RegisterInstance(_dataContainer).As<IDataHolder>();
+
+            builder.Register<TouchInput>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<TouchHandler>(Lifetime.Singleton).AsImplementedInterfaces();
 
         }
     }

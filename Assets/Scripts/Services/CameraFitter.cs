@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Dragoraptor.Services
+namespace Dragoraptor
 {
     public class CameraFitter
     {

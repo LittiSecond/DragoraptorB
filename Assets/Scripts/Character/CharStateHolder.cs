@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
 using VContainer;
 
 
@@ -12,43 +12,32 @@ namespace Dragoraptor.Character
 
         private IReadOnlyList<ICharStateListener> _listeners;
 
+        private CharacterState _state;
 
         public CharStateHolder()
         {
-            //_listeners = list;
             Debug.Log("CharStateHolder->ctor:");
         }
-        
-        // public CharStateHolder(IReadOnlyList<ICharStateListener> list)
-        // {
-        //     _listeners = list;
-        //     Debug.Log("CharStateHolder->ctor:");
-        // }
-        
-        [Inject]
-        public void Construct(IReadOnlyList<ICharStateListener> list)
-        {
-            _listeners = list;
-            Debug.Log("CharStateHolder->Construct:");
-        }
-        
-        
+
         public void SetStateListeners(IReadOnlyList<ICharStateListener> list)
         {
             _listeners = list;
         }
         
         #region ICharStateHolder
+
+        public CharacterState State => _state;
         
         public void SetState(CharacterState newState)
         {
-            Debug.Log("CharStateHolder->SetState: newState = " + newState.ToString());
-
+            if (newState == _state) return;
+            _state = newState;
+            
             if (_listeners != null)
             {
-                foreach (var listener in _listeners)
+                for (int i = 0; i < _listeners.Count; i++)
                 {
-                    listener.StateChanged(newState);
+                    _listeners[i].StateChanged(newState);
                 }
             }
 

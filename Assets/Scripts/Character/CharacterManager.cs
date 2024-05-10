@@ -2,6 +2,7 @@
 using UnityEngine;
 
 using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.ScriptableObjects;
 using VContainer;
@@ -19,6 +20,7 @@ namespace Dragoraptor.Character
         private readonly IPrefabLoader _prefabLoader;
         private IReadOnlyList<IBodyUser> _bodyUsers;
         private ICharStateHolder _stateHolder;
+        private IInput _input;
 
         private Vector2 _spawnPosition;
         private bool _haveCharacterBody;
@@ -27,7 +29,8 @@ namespace Dragoraptor.Character
         public CharacterManager(IPrefabLoader prefabLoader, 
             IDataHolder dataHolder,
             ICharStateHolder stateHolder,
-            IReadOnlyList<IBodyUser> bodyUsers
+            IReadOnlyList<IBodyUser> bodyUsers,
+            IInput input
             )
         {
             Debug.Log("CharacterManager->ctor:");
@@ -35,6 +38,7 @@ namespace Dragoraptor.Character
             _spawnPosition = dataHolder.GetGamePlaySettings().CharacterSpawnPosition;
             _bodyUsers = bodyUsers;
             _stateHolder = stateHolder;
+            _input = input;
         }
         
         // [Inject]
@@ -58,11 +62,12 @@ namespace Dragoraptor.Character
             _playerGO.transform.position = _spawnPosition;
             _playerGO.SetActive(true);
             
-            
-            foreach (var user in _bodyUsers)
+            for (int i = 0; i < _bodyUsers.Count; i++)
             {
-                user.SetBody(_playerBody);
+                _bodyUsers[i].SetBody(_playerBody);
             }
+            
+            _stateHolder.SetState(CharacterState.Idle);
         }
 
         public void RemoveCharacter()
@@ -70,9 +75,9 @@ namespace Dragoraptor.Character
             Debug.Log("CharacterManager->RemoveCharacter: ");
             _playerGO.SetActive(false);
             
-            foreach (var user in _bodyUsers)
+            for (int i = 0; i < _bodyUsers.Count; i++)
             {
-                user.ClearBody();
+                _bodyUsers[i].ClearBody();
             }
             
             _stateHolder.SetState(CharacterState.None);
@@ -81,14 +86,15 @@ namespace Dragoraptor.Character
         public void CharacterControlOn()
         {
             Debug.Log("CharacterManager->CharacterControlOn: ");
+            _input.On();
         }
 
         public void CharacterControlOff()
         {
             Debug.Log("CharacterManager->CharacterControlOff: ");
+            _input.Off();
         }
-        
-        
+
         #endregion
         
         

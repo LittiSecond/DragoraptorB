@@ -1,4 +1,4 @@
-﻿namespace Dragoraptor.Interfaces
+﻿namespace Dragoraptor.Interfaces.Character
 {
     public interface ICharStateListener
     {

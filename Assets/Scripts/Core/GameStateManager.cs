@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
 using Dragoraptor.Ui;
 using EventBus;
 
@@ -54,6 +55,7 @@ namespace Dragoraptor.Core
                 _sceneController.BuildLevel();
                 
                 _characterManager.CreateCharacter();
+                _characterManager.CharacterControlOn();
             }
         }
 
@@ -63,6 +65,7 @@ namespace Dragoraptor.Core
             if (_gameState == GameState.Game)
             {
                 _gameState = GameState.MainScreen;
+                _characterManager.CharacterControlOff();
                 _characterManager.RemoveCharacter();
                 _uiManager.SwitchToMainScreen();
                 _sceneController.SetMainScreenScene();
