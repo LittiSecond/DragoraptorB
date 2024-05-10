@@ -135,6 +135,18 @@ namespace Dragoraptor.Character
             _isDirectionRight = _xDestination > x;
 
             float direction = _isDirectionRight ? 1.0f : -1.0f;
+
+            if (_isDirectionRight)
+            {
+                direction = 1.0f;
+                _playerBody.SetDirection(Direction.Rigth);
+            }
+            else
+            {
+                direction = -1.0f;
+                _playerBody.SetDirection(Direction.Left);
+            }
+            
             _velocity = new Vector2(_speed * direction, 0);
             _rigidbody.velocity = _velocity;
 

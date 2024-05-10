@@ -54,6 +54,7 @@ namespace Dragoraptor.Di
                 // ----- ----- IBodyUser -----
             builder.Register<WalkController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<JumpController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<AnimationController>(Lifetime.Singleton).AsImplementedInterfaces();
                 // ----- -----
 
 

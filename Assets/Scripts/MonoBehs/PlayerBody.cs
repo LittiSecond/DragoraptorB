@@ -20,6 +20,9 @@ namespace Dragoraptor.MonoBehs
         private Direction _direction;
         private ITakeDamage _damageReceiver;
 
+        
+        public Direction CurrentDirection => _direction;
+        
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
