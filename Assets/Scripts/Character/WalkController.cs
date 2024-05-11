@@ -131,8 +131,7 @@ namespace Dragoraptor.Character
 
         private void StartMovement()
         {
-            float x = _transform.position.x;
-            _isDirectionRight = _xDestination > x;
+            _isDirectionRight = _xDestination > _transform.position.x;
 
             float direction = _isDirectionRight ? 1.0f : -1.0f;
 

@@ -14,6 +14,7 @@ namespace Dragoraptor.Character
         private IAreaChecker _areaChecker;
         private IJumpController _jumpController;
         private IJumpPainter _jumpPainter;
+        private ICharHorizontalDirection _charDirection;
         private CharacterState _state;
 
 
@@ -21,13 +22,15 @@ namespace Dragoraptor.Character
             ISceneGeometry sceneGeometry, 
             IAreaChecker areaChecker,
             IJumpController jumpController,
-            IJumpPainter jumpPainter)
+            IJumpPainter jumpPainter,
+            ICharHorizontalDirection charDirection)
         {
             _walkLogic = walkLogic;
             _sceneGeometry = sceneGeometry;
             _areaChecker = areaChecker;
             _jumpController = jumpController;
             _jumpPainter = jumpPainter;
+            _charDirection = charDirection;
         }
         
         #region IInputHandler
@@ -69,6 +72,7 @@ namespace Dragoraptor.Character
                 else if (touch.phase == TouchPhase.Moved)
                 {
                     _jumpPainter.SetTouchPosition(position);
+                    _charDirection.TouchPrepareJump(position);
                     //_horizontalDirection.SetTouchPosition(position);
                 }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dragoraptor.Interfaces;
+using UnityEngine;
 using Dragoraptor.Interfaces.Character;
 using Dragoraptor.MonoBehs;
 
@@ -9,17 +10,20 @@ namespace Dragoraptor.Character
     {
         
         private ICharStateHolder _stateHolder;
+        private IJumpCalculator _jumpCalculator;
+        //private readonly IResouceStore _energyStore;
         private Transform _bodyTransform;
         private Rigidbody2D _rigidbody;
-        
+
         private CharacterState _state;
         
         private bool _haveBody;
 
 
-        public JumpController(ICharStateHolder holder)
+        public JumpController(ICharStateHolder holder, IJumpCalculator calculator)
         {
             _stateHolder = holder;
+            _jumpCalculator = calculator;
         }
 
 
@@ -67,9 +71,31 @@ namespace Dragoraptor.Character
         {
             if (_haveBody && _state == CharacterState.PrepareJump)
             {
-                _state = CharacterState.Idle;
-                _stateHolder.SetState(CharacterState.Idle);
+                Vector2 jumpDirection =  (Vector2)_bodyTransform.position - worldPosition;
+
+                Vector2 impulse = _jumpCalculator.CalculateJumpImpulse(jumpDirection);
+
+                if (impulse != Vector2.zero)
+                {
+                    int jumpCost = (int)_jumpCalculator.CalculateJumpCost();
+                    //if (_energyStore.SpendResource(jumpCost))
+                    if (true)
+                    {
+                        _rigidbody.AddForce(impulse, ForceMode2D.Impulse);
+                        _stateHolder.SetState(CharacterState.FliesUp);
+                    }
+                    else
+                    {
+                        _stateHolder.SetState(CharacterState.Idle);
+                    }
+                }
+                else
+                {
+                    _stateHolder.SetState(CharacterState.Idle);
+                }
+
             }
+            
         }
         
         #endregion

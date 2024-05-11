@@ -11,6 +11,7 @@ using Dragoraptor.Character;
 using Dragoraptor.Core;
 using Dragoraptor.Input;
 using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.Ui;
 
@@ -56,6 +57,8 @@ namespace Dragoraptor.Di
             builder.Register<JumpController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<AnimationController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<JumpPainter>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<CharHorizontalDirection>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<FlightController>(Lifetime.Singleton).AsImplementedInterfaces();
                 // ----- -----
 
 
