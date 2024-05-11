@@ -5,31 +5,74 @@ using Dragoraptor.MonoBehs;
 
 namespace Dragoraptor.Character
 {
-    public class JumpController : IBodyUser, ICharStateListener
+    public class JumpController : IJumpController, IBodyUser, ICharStateListener
     {
         
+        private ICharStateHolder _stateHolder;
+        private Transform _bodyTransform;
+        private Rigidbody2D _rigidbody;
         
+        private CharacterState _state;
+        
+        private bool _haveBody;
+
+
+        public JumpController(ICharStateHolder holder)
+        {
+            _stateHolder = holder;
+        }
+
+
         #region IBodyUser
         
         public void SetBody(PlayerBody body)
         {
-            Debug.Log("JumpController->SetBody:");
+            _bodyTransform = body.transform;
+            _rigidbody = body.GetRigidbody();
+            _haveBody = true;
         }
 
         public void ClearBody()
         {
-            Debug.Log("JumpController->ClearBody:");
+            _bodyTransform = null;
+            _rigidbody = null;
+            _haveBody = false;
         }
         
         #endregion
+        
         
         #region ICharStateListener
 
         public void StateChanged(CharacterState newState)
         {
-            Debug.Log("JumpController->StateChanged: newState = " + newState.ToString());
+            _state = newState;
         }
         
         #endregion
+
+
+        #region IJumpController
+        
+        public void TouchBegin()
+        {
+            if (_haveBody && (_state == CharacterState.Idle || _state == CharacterState.Walk ))
+            {
+                _state = CharacterState.PrepareJump;
+                _stateHolder.SetState(CharacterState.PrepareJump);
+            }
+        }
+
+        public void TouchEnd(Vector2 worldPosition)
+        {
+            if (_haveBody && _state == CharacterState.PrepareJump)
+            {
+                _state = CharacterState.Idle;
+                _stateHolder.SetState(CharacterState.Idle);
+            }
+        }
+        
+        #endregion
+        
     }
 }

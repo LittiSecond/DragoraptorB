@@ -30,6 +30,7 @@ namespace Dragoraptor.Character
         
         public void SetState(CharacterState newState)
         {
+            Debug.Log("CharStateHolder->SetState: newState = " + newState.ToString());
             if (newState == _state) return;
             _state = newState;
             

@@ -55,10 +55,12 @@ namespace Dragoraptor.Di
             builder.Register<WalkController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<JumpController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<AnimationController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<JumpPainter>(Lifetime.Singleton).AsImplementedInterfaces();
                 // ----- -----
 
 
             builder.Register<CharStateHolder>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
+            builder.Register<JumpCalculator>(Lifetime.Singleton).As<IJumpCalculator>();
             // -------------------------
 
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();
