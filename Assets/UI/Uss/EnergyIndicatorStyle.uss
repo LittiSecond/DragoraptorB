@@ -1,0 +1,30 @@
+.unity-progress-bar__progress {
+    background-color: rgb(73, 112, 188);
+}
+
+.unity-progress-bar__background {
+    background-color: rgb(190, 190, 190);
+}
+
+.unity-progress-bar__container {
+    flex-grow: 1;
+    max-height: 100%;
+}
+
+.energy-bar {
+    flex-grow: 1;
+    height: 40%;
+}
+
+.energy-icon {
+    background-image: url("project://database/Assets/Textures/Ui/energyIcon.png?fileID=21300000&guid=b0c86814e3fc9a043bed00989907582d&type=3#energyIcon");
+    -unity-background-scale-mode: scale-to-fit;
+    width: 150px;
+    height: 100%;
+}
+
+.energy-root-panel {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+}

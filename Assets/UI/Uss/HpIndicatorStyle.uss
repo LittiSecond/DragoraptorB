@@ -1,0 +1,30 @@
+.unity-progress-bar__progress {
+    background-color: rgb(188, 73, 73);
+}
+
+.unity-progress-bar__background {
+    background-color: rgb(190, 190, 190);
+}
+
+.unity-progress-bar__container {
+    flex-grow: 1;
+    max-height: 100%;
+}
+
+.hp-bar {
+    flex-grow: 1;
+    height: 40%;
+}
+
+.hp-icon {
+    background-image: url("project://database/Assets/Textures/Ui/icons3.png?fileID=-1682167504&guid=16b49f1e60c79624db4691248c4e3c1c&type=3#icons3_0");
+    -unity-background-scale-mode: scale-to-fit;
+    width: 150px;
+    height: 100%;
+}
+
+.hp-root-panel {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+}

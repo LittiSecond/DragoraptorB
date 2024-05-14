@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
+    <Style src="project://database/Assets/UI/Uss/EnergyIndicatorStyle.uss?fileID=7433441132597879392&amp;guid=0e21b225506b6cf49b4fbed194218da2&amp;type=3#EnergyIndicatorStyle" />
+    <ui:VisualElement name="energy-root" class="energy-root-panel">
+        <ui:VisualElement name="icon" class="energy-icon" />
+        <ui:ProgressBar value="22" name="energy-bar" class="energy-bar" />
+    </ui:VisualElement>
+</ui:UXML>

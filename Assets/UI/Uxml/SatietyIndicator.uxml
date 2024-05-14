@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/SatietyIndicatorStyle.uss?fileID=7433441132597879392&amp;guid=f75cc22b0f025fa4588301c65f62b245&amp;type=3#SatietyIndicatorStyle" />
+    <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
+    <ui:VisualElement name="satiety-root" class="satiety-root-panel">
+        <ui:VisualElement name="icon" class="satiety-icon" />
+        <ui:ProgressBar value="22" name="satiety-bar" class="satiety-bar">
+            <ui:VisualElement name="satiety-marker" class="satiety-marker" style="left: 75%;" />
+        </ui:ProgressBar>
+    </ui:VisualElement>
+</ui:UXML>

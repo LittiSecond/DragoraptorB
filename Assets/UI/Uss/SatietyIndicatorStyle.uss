@@ -1,0 +1,41 @@
+.unity-progress-bar__progress {
+    background-color: rgb(202, 165, 71);
+}
+
+.unity-progress-bar__background {
+    background-color: rgb(190, 190, 190);
+}
+
+.unity-progress-bar__container {
+    flex-grow: 1;
+    max-height: 100%;
+}
+
+.satiety-bar {
+    flex-grow: 1;
+    height: 30%;
+}
+
+.satiety-marker {
+    flex-grow: 0;
+    position: absolute;
+    width: 32px;
+    height: 140%;
+    background-color: rgb(113, 113, 113);
+    min-width: 10px;
+    max-width: 5%;
+    top: -20%;
+}
+
+.satiety-icon {
+    background-image: url("project://database/Assets/Textures/Ui/meat.png?fileID=21300000&guid=c30a633c908666d41a8ca4f842527c70&type=3#meat");
+    -unity-background-scale-mode: scale-to-fit;
+    width: 250px;
+    height: 100%;
+}
+
+.satiety-root-panel {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+}

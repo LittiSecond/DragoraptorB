@@ -1,5 +1,20 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="SatietyIndicator" src="project://database/Assets/UI/Uxml/SatietyIndicator.uxml?fileID=9197481963319205126&amp;guid=192ae2fbe007d224282f00abe0510fc7&amp;type=3#SatietyIndicator" />
+    <ui:Template name="HpIndicator" src="project://database/Assets/UI/Uxml/HpIndicator.uxml?fileID=9197481963319205126&amp;guid=9ecc9a81eece88a4597539ab179f54aa&amp;type=3#HpIndicator" />
+    <ui:Template name="EnergyIndicator" src="project://database/Assets/UI/Uxml/EnergyIndicator.uxml?fileID=9197481963319205126&amp;guid=fcb8580072d0b294dae1564d13a5347a&amp;type=3#EnergyIndicator" />
     <Style src="project://database/Assets/UI/Uss/HuntScreen.uss?fileID=7433441132597879392&amp;guid=6ae33ece7c87e534b85ad30d43098871&amp;type=3#HuntScreen" />
     <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
-    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu-button" enable-rich-text="false" class="menu-button icon-button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu-button" enable-rich-text="false" class="menu-button icon-button" />
+    <ui:VisualElement name="timer-bg" class="timer-bg">
+        <ui:Label tabindex="-1" text="99:59" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="timer-value" class="timer-value text-default" />
+    </ui:VisualElement>
+    <ui:VisualElement name="score-bg" class="score-bg">
+        <ui:Label tabindex="-1" text="Счёт:  " parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" class="text-default" />
+        <ui:Label tabindex="-1" text="99999" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" name="score-value" class="text-default" />
+    </ui:VisualElement>
+    <ui:Instance template="SatietyIndicator" name="SatietyIndicator" class="satiety-indicator" />
+    <ui:Instance template="HpIndicator" name="HpIndicator" class="hp-indicator" />
+    <ui:Instance template="EnergyIndicator" name="EnergyIndicator" class="energy-indicator" />
+    <ui:Label tabindex="-1" text="Охоту можно завершить" parse-escape-sequences="true" display-tooltip-when-elided="true" name="end-hunt-message" class="end-hunt-message" />
+    <ui:VisualElement name="no-energy-message" class="no-energy-message" />
 </ui:UXML>

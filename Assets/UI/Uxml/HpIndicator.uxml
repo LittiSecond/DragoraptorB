@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
+    <Style src="project://database/Assets/UI/Uss/HpIndicatorStyle.uss?fileID=7433441132597879392&amp;guid=f2391bd4a9bf2ac4cac14cb37a9d6687&amp;type=3#HpIndicatorStyle" />
+    <ui:VisualElement name="hp-root" class="hp-root-panel">
+        <ui:VisualElement name="icon" class="hp-icon" />
+        <ui:ProgressBar value="72" name="hp-bar" class="hp-bar" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -4,4 +4,77 @@
     right: 0;
     background-color: rgba(255, 255, 255, 0);
     background-image: url("project://database/Assets/Textures/Ui/cogweel.png?fileID=21300000&guid=3c504d48b936d1a4085b96a81f93d7f5&type=3#cogweel");
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.timer-bg {
+    flex-grow: 0;
+    position: absolute;
+    flex-shrink: 0;
+    width: 30%;
+    height: 120px;
+    right: 17%;
+    top: 30px;
+    -unity-text-align: upper-right;
+}
+
+.timer-value {
+    height: 100%;
+}
+
+.score-bg {
+    flex-grow: 1;
+    flex-direction: row;
+    position: absolute;
+    right: 100px;
+    top: 400px;
+}
+
+.satiety-indicator {
+    position: absolute;
+    height: 300px;
+    width: 80%;
+    top: 80px;
+    left: 50px;
+}
+
+.hp-indicator {
+    position: absolute;
+    left: 50px;
+    top: 400px;
+    width: 35%;
+    height: 160px;
+}
+
+.energy-indicator {
+    position: absolute;
+    left: 50px;
+    top: 560px;
+    width: 35%;
+    height: 160px;
+}
+
+.end-hunt-message {
+    position: absolute;
+    -unity-text-align: middle-center;
+    left: 0;
+    top: 800px;
+    color: rgb(255, 255, 255);
+    font-size: 100px;
+    right: 0;
+    -unity-font-style: bold;
+}
+
+.no-energy-message {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 50%;
+    top: 1000px;
+    translate: -150px 0;
+    background-image: url("project://database/Assets/Textures/Ui/noEnergy.png?fileID=21300000&guid=487a326307be8b244ad894dbdc642e58&type=3#noEnergy");
+    -unity-background-image-tint-color: rgb(255, 157, 0);
 }
