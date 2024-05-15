@@ -11,7 +11,7 @@ namespace Dragoraptor.Character
         
         private ICharStateHolder _stateHolder;
         private IJumpCalculator _jumpCalculator;
-        //private readonly IResouceStore _energyStore;
+        private readonly IEnergyStore _energyStore;
         private Transform _bodyTransform;
         private Rigidbody2D _rigidbody;
 
@@ -20,10 +20,11 @@ namespace Dragoraptor.Character
         private bool _haveBody;
 
 
-        public JumpController(ICharStateHolder holder, IJumpCalculator calculator)
+        public JumpController(ICharStateHolder holder, IJumpCalculator calculator, IEnergyStore energyStore)
         {
             _stateHolder = holder;
             _jumpCalculator = calculator;
+            _energyStore = energyStore;
         }
 
 
@@ -78,8 +79,8 @@ namespace Dragoraptor.Character
                 if (impulse != Vector2.zero)
                 {
                     int jumpCost = (int)_jumpCalculator.CalculateJumpCost();
-                    //if (_energyStore.SpendResource(jumpCost))
-                    if (true)
+                    if (_energyStore.Spend(jumpCost))
+                    //if (true)
                     {
                         _rigidbody.AddForce(impulse, ForceMode2D.Impulse);
                         _stateHolder.SetState(CharacterState.FliesUp);

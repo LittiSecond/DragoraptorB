@@ -9,13 +9,13 @@ namespace Dragoraptor.Ui
     public abstract class ScreenWidgetBase : IScreenWidget
     {
         
-        protected UiFactory _factory;
+        protected IUiFactory _factory;
         protected VisualElement _root;
 
         private bool _isInitialised;
 
         
-        public ScreenWidgetBase(UiFactory uiFactory)
+        public ScreenWidgetBase(IUiFactory uiFactory)
         {
             _factory = uiFactory;
         }

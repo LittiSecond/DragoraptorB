@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
+using Dragoraptor.Interfaces.Ui;
 
 
 namespace Dragoraptor.Ui
 {
-    public class UiFactory
+    public class UiFactory : IUiFactory
     {
         private const string MAIN_SCREEN_PATH = "MainScreen"; 
         private const string HUNT_SCREEN_PATH = "HuntScreen"; 

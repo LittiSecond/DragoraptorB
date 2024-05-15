@@ -12,6 +12,7 @@ using Dragoraptor.Core;
 using Dragoraptor.Input;
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
+using Dragoraptor.Interfaces.Ui;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.Ui;
 
@@ -33,14 +34,17 @@ namespace Dragoraptor.Di
 
             builder.Register<GameStateManager>(Lifetime.Singleton).AsSelf();
 
+            // -------  Ui System --------
             builder.Register<UiFactory>(Lifetime.Singleton)
                 .WithParameter<UIDocument>(_sceneObjectsContainer.GetUIDocument)
-                .AsSelf();
+                .As<IUiFactory>();
             builder.Register<UiManager>(Lifetime.Singleton).AsSelf();
             builder.Register<MainScreenWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntScreenWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntMenuWidget>(Lifetime.Singleton).AsSelf();
-
+            builder.Register<NoEnergyMessageView>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<EnergyView>(Lifetime.Singleton).AsSelf();
+            // ---------
 
             builder.Register<SceneController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SceneGeometry>(Lifetime.Singleton).AsSelf().As<ISceneGeometry>();
@@ -64,6 +68,7 @@ namespace Dragoraptor.Di
 
             builder.Register<CharStateHolder>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             builder.Register<JumpCalculator>(Lifetime.Singleton).As<IJumpCalculator>();
+            builder.Register<EnergyController>(Lifetime.Singleton).AsImplementedInterfaces();
             // -------------------------
 
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();

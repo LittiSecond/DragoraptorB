@@ -16,5 +16,5 @@
     <ui:Instance template="HpIndicator" name="HpIndicator" class="hp-indicator" />
     <ui:Instance template="EnergyIndicator" name="EnergyIndicator" class="energy-indicator" />
     <ui:Label tabindex="-1" text="Охоту можно завершить" parse-escape-sequences="true" display-tooltip-when-elided="true" name="end-hunt-message" class="end-hunt-message" />
-    <ui:VisualElement name="no-energy-message" class="no-energy-message" />
+    <ui:VisualElement name="no-energy-message" class="no-energy-message" style="display: none;" />
 </ui:UXML>

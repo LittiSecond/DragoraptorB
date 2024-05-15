@@ -1,7 +1,9 @@
 ﻿using System;
-using Dragoraptor.Interfaces;
 using UnityEngine;
 using UnityEngine.UIElements;
+
+using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Ui;
 
 
 namespace Dragoraptor.Ui
@@ -24,7 +26,7 @@ namespace Dragoraptor.Ui
         private IVictoryPossibilityHolder _victoryInfoSource;
 
         
-        public HuntMenuWidget(UiFactory uiFactory, IVictoryPossibilityHolder victoryPossibilityHolder) 
+        public HuntMenuWidget(IUiFactory uiFactory, IVictoryPossibilityHolder victoryPossibilityHolder) 
             : base(uiFactory)
         {
             _victoryInfoSource = victoryPossibilityHolder;

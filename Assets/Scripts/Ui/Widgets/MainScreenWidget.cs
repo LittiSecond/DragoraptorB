@@ -3,6 +3,8 @@ using UnityEngine.UIElements;
 
 using EventBus;
 
+using Dragoraptor.Interfaces.Ui;
+
 
 namespace Dragoraptor.Ui
 {
@@ -15,7 +17,7 @@ namespace Dragoraptor.Ui
         private IEventBus _eventBus;
         
 
-        public MainScreenWidget(UiFactory uiFactory, IEventBus eventBus) : base(uiFactory)
+        public MainScreenWidget(IUiFactory uiFactory, IEventBus eventBus) : base(uiFactory)
         {
             _eventBus = eventBus;
         }

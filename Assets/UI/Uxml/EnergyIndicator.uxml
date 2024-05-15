@@ -3,6 +3,6 @@
     <Style src="project://database/Assets/UI/Uss/EnergyIndicatorStyle.uss?fileID=7433441132597879392&amp;guid=0e21b225506b6cf49b4fbed194218da2&amp;type=3#EnergyIndicatorStyle" />
     <ui:VisualElement name="energy-root" class="energy-root-panel">
         <ui:VisualElement name="icon" class="energy-icon" />
-        <ui:ProgressBar value="22" name="energy-bar" class="energy-bar" />
+        <ui:ProgressBar value="100" name="energy-bar" high-value="256" class="energy-bar" />
     </ui:VisualElement>
 </ui:UXML>

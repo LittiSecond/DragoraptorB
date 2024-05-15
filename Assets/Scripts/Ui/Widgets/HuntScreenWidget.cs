@@ -1,6 +1,8 @@
-﻿
-using UnityEngine.UIElements;
+﻿using UnityEngine.UIElements;
+
 using EventBus;
+
+using Dragoraptor.Interfaces.Ui;
 
 
 namespace Dragoraptor.Ui
@@ -12,17 +14,22 @@ namespace Dragoraptor.Ui
 
         private Button _menuButton;
         private HuntMenuWidget _menuWidget;
+        private EnergyView _energyView;
         private IEventBus _eventBus;
 
 
         private bool _isMenuOpened;
         
         
-        public HuntScreenWidget(UiFactory uiFactory, HuntMenuWidget menuWidget, IEventBus eventBus) 
+        public HuntScreenWidget(IUiFactory uiFactory, 
+            HuntMenuWidget menuWidget, 
+            IEventBus eventBus,
+            EnergyView energyView) 
             : base(uiFactory)
         {
             _menuWidget = menuWidget;
             _eventBus = eventBus;
+            _energyView = energyView;
         }
         
         protected override void Initialise()
@@ -32,6 +39,7 @@ namespace Dragoraptor.Ui
             _menuButton.RegisterCallback<ClickEvent>(MenuButtonClick);
             _menuWidget.OnContinueButtonClick += ContinueButtonClick;
             _menuWidget.OnBreakButtonClick += BreakButtonClick;
+            _energyView.Initialize();
         }
 
         private void MenuButtonClick(ClickEvent e)

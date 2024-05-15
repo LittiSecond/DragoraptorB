@@ -21,6 +21,7 @@ namespace Dragoraptor.Character
         private IReadOnlyList<IBodyUser> _bodyUsers;
         private ICharStateHolder _stateHolder;
         private IInput _input;
+        private IEnergyLogic _energyController;
 
         private Vector2 _spawnPosition;
         private bool _haveCharacterBody;
@@ -30,7 +31,8 @@ namespace Dragoraptor.Character
             IDataHolder dataHolder,
             ICharStateHolder stateHolder,
             IReadOnlyList<IBodyUser> bodyUsers,
-            IInput input
+            IInput input,
+            IEnergyLogic energyLogic
             )
         {
             Debug.Log("CharacterManager->ctor:");
@@ -39,13 +41,8 @@ namespace Dragoraptor.Character
             _bodyUsers = bodyUsers;
             _stateHolder = stateHolder;
             _input = input;
+            _energyController = energyLogic;
         }
-        
-        // [Inject]
-        // public void Construct(ICharStateHolder stateHolder)
-        // {
-        //     _stateHolder = stateHolder;
-        // }
 
 
         #region ICharacterManager
@@ -68,11 +65,14 @@ namespace Dragoraptor.Character
             }
             
             _stateHolder.SetState(CharacterState.Idle);
+            _energyController.On();
+            _energyController.Reset();
         }
 
         public void RemoveCharacter()
         {
             Debug.Log("CharacterManager->RemoveCharacter: ");
+            _energyController.Off();
             _playerGO.SetActive(false);
             
             for (int i = 0; i < _bodyUsers.Count; i++)
