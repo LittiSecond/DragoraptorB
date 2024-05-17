@@ -1,0 +1,35 @@
+.hunt-result-bg {
+    background-image: url("project://database/Assets/Textures/Ui/GUI_panel_BG1.png?fileID=21300000&guid=1b9fcb6d0a1584a4eb04e1495eedf937&type=3#GUI_panel_BG1");
+}
+
+.end-hunt-buttons {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 400px;
+    width: 40%;
+}
+
+.hunt-result-root {
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 30%;
+}
+
+.buttons-text {
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+.caption {
+    margin-top: 40px;
+    -unity-text-align: middle-center;
+    font-size: 140px;
+}
+
+.buttons-container {
+    flex-direction: row;
+    justify-content: space-around;
+}

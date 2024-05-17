@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/HuntResyltStyle.uss?fileID=7433441132597879392&amp;guid=c743461c8c4196d4888dcbd3cb96ff82&amp;type=3#HuntResyltStyle" />
+    <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
+    <ui:VisualElement name="hunt-result-bg" class="hunt-result-bg">
+        <ui:Label tabindex="-1" text="Охота окончена" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" name="caption" class="caption" />
+        <ui:VisualElement name="hunt-info-container" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        </ui:VisualElement>
+        <ui:VisualElement name="buttons-container" class="buttons-container">
+            <ui:Button text="Вернуться в гнездо" parse-escape-sequences="true" display-tooltip-when-elided="true" name="finish-button" class="normal-button end-hunt-buttons buttons-text" />
+            <ui:Button text="Повторить" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restart-button" class="normal-button end-hunt-buttons buttons-text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

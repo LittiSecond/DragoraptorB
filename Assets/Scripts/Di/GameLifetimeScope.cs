@@ -44,6 +44,8 @@ namespace Dragoraptor.Di
             builder.Register<HuntMenuWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<NoEnergyMessageView>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<EnergyView>(Lifetime.Singleton).AsSelf();
+            builder.Register<LevelTimerView>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<HuntResultWidget>(Lifetime.Singleton).AsSelf();
             // ---------
 
             builder.Register<SceneController>(Lifetime.Singleton).AsImplementedInterfaces();
@@ -76,6 +78,7 @@ namespace Dragoraptor.Di
 
             builder.Register<TouchInput>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<TouchHandler>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<LevelTimerController>(Lifetime.Singleton).AsImplementedInterfaces();
 
         }
     }

@@ -27,7 +27,6 @@ namespace Dragoraptor.Character
 
         public WalkController(ICharStateHolder stateHolder, IDataHolder dataHolder)
         {
-            Debug.Log("WalkController->ctor:");
             _stateHolder = stateHolder;
             _speed = dataHolder.GetGamePlaySettings().WalkSpeed;
         }
@@ -37,7 +36,6 @@ namespace Dragoraptor.Character
         
         public void SetBody(PlayerBody body)
         {
-            Debug.Log("WalkController->SetBody:");
             _playerBody = body;
             _transform = _playerBody.transform;
             _rigidbody = _playerBody.GetRigidbody();
@@ -46,7 +44,6 @@ namespace Dragoraptor.Character
 
         public void ClearBody()
         {
-            Debug.Log("WalkController->ClearBody:");
             if (_isEnabled)
             {
                 StopMovement();

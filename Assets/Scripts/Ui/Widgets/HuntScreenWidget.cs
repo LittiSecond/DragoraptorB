@@ -1,4 +1,6 @@
-﻿using UnityEngine.UIElements;
+﻿using Dragoraptor.Core;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 using EventBus;
 
@@ -14,22 +16,27 @@ namespace Dragoraptor.Ui
 
         private Button _menuButton;
         private HuntMenuWidget _menuWidget;
+        private HuntResultWidget _huntResultWidget;
         private EnergyView _energyView;
         private IEventBus _eventBus;
 
 
         private bool _isMenuOpened;
+        private bool _isEndHuntScreenOpen;
         
         
         public HuntScreenWidget(IUiFactory uiFactory, 
             HuntMenuWidget menuWidget, 
             IEventBus eventBus,
-            EnergyView energyView) 
+            EnergyView energyView,
+            HuntResultWidget resultWidget
+            ) 
             : base(uiFactory)
         {
             _menuWidget = menuWidget;
             _eventBus = eventBus;
             _energyView = energyView;
+            _huntResultWidget = resultWidget;
         }
         
         protected override void Initialise()
@@ -38,8 +45,10 @@ namespace Dragoraptor.Ui
             _menuButton = _root.Q<Button>(MENU_BUTTON_NAME);
             _menuButton.RegisterCallback<ClickEvent>(MenuButtonClick);
             _menuWidget.OnContinueButtonClick += ContinueButtonClick;
-            _menuWidget.OnBreakButtonClick += BreakButtonClick;
+            _menuWidget.OnBreakButtonClick += BreakHuntButtonClick;
             _energyView.Initialize();
+            _huntResultWidget.AddListeners(GetOutOfTheHuntButtonClick, RestartHuntButtonClick);
+            
         }
 
         private void MenuButtonClick(ClickEvent e)
@@ -73,12 +82,55 @@ namespace Dragoraptor.Ui
             CloseMenu();
         }
 
-        private void BreakButtonClick()
+        private void BreakHuntButtonClick()
         {
             CloseMenu();
             _eventBus.Invoke(new StopHuntRequestSignal());
+            
+        }
+
+        public void ShowEndHuntScreen()
+        {
+            _huntResultWidget.Show();
+            _isEndHuntScreenOpen = true;
+        }
+
+        private void HideEndHuntScreen()
+        {
+            _huntResultWidget.Hide();
+            _isEndHuntScreenOpen = false;
+        }
+
+        private void RestartHuntButtonClick()
+        {
+            Debug.Log("HuntScreenWidget->RestartHuntButtonClick:");
+            if (_isEndHuntScreenOpen)
+            {
+                HideEndHuntScreen();
+            }
+
+            if (_isMenuOpened)
+            {
+                CloseMenu();
+            }
+            
+            _eventBus.Invoke(new RestartHuntRequestSignal());
         }
         
+        private void GetOutOfTheHuntButtonClick()
+        {
+            Debug.Log("HuntScreenWidget->GetOutOfTheHuntButtonClick:");
+            if (_isEndHuntScreenOpen)
+            {
+                HideEndHuntScreen();
+            }
+
+            if (_isMenuOpened)
+            {
+                CloseMenu();
+            }
+            _eventBus.Invoke(new CloseHuntRequestSignal());
+        }
 
     }
 }

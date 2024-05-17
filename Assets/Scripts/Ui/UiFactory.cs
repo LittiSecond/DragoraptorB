@@ -10,12 +10,15 @@ namespace Dragoraptor.Ui
         private const string MAIN_SCREEN_PATH = "MainScreen"; 
         private const string HUNT_SCREEN_PATH = "HuntScreen"; 
         private const string HUNT_MENU_PATH = "HuntMenu"; 
+        private const string HUNT_RESULT_WINDOW_PATH = "HuntResultScreen";
+        private const string HUNT_RESULT_STYLE_NAME = "hunt-result-root";
 
         private UIDocument _uiDocument;
 
         private VisualElement _mainScreenRoot;
         private VisualElement _huntScreenRoot;
         private VisualElement _huntMenuRoot;
+        private VisualElement _huntResultWindow;
 
 
         public UiFactory(UIDocument uiDocument)
@@ -58,6 +61,19 @@ namespace Dragoraptor.Ui
             }
 
             return _huntMenuRoot;
+        }
+
+        public VisualElement GetHuntResultWindow()
+        {
+            if (_huntResultWindow == null)
+            {
+                VisualTreeAsset prefab = Resources.Load<VisualTreeAsset>(HUNT_RESULT_WINDOW_PATH);
+                _huntResultWindow = prefab.Instantiate();
+                _huntResultWindow.AddToClassList(HUNT_RESULT_STYLE_NAME);
+                _uiDocument.rootVisualElement.Add(_huntResultWindow);
+            }
+            
+            return _huntResultWindow;
         }
         
     }

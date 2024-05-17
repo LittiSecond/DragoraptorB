@@ -7,6 +7,8 @@ namespace Dragoraptor.Ui
     public class UiManager
     {
 
+        private HuntScreenWidget _huntScreenWidget;
+        
         private IScreenWidget _mainScreen;
         private IScreenWidget _huntScreen;
         private IScreenWidget _currentScreen;
@@ -16,6 +18,7 @@ namespace Dragoraptor.Ui
         {
             _mainScreen = mainScreen;
             _huntScreen = huntScreen;
+            _huntScreenWidget = huntScreen;
         }
 
         public void SwitchToMainScreen()
@@ -35,6 +38,11 @@ namespace Dragoraptor.Ui
             _currentScreen?.Hide();
             _currentScreen = _huntScreen;
             _currentScreen.Show();
+        }
+
+        public void ShowEndHuntWindow()
+        {
+            _huntScreenWidget.ShowEndHuntScreen();
         }
         
     }

@@ -14,10 +14,10 @@ namespace Dragoraptor.Character
 
         private CharacterState _state;
 
-        public CharStateHolder()
-        {
-            Debug.Log("CharStateHolder->ctor:");
-        }
+        // public CharStateHolder()
+        // {
+        //     Debug.Log("CharStateHolder->ctor:");
+        // }
 
         public void SetStateListeners(IReadOnlyList<ICharStateListener> list)
         {
@@ -30,7 +30,7 @@ namespace Dragoraptor.Character
         
         public void SetState(CharacterState newState)
         {
-            Debug.Log("CharStateHolder->SetState: newState = " + newState.ToString());
+            //Debug.Log("CharStateHolder->SetState: newState = " + newState.ToString());
             if (newState == _state) return;
             _state = newState;
             
