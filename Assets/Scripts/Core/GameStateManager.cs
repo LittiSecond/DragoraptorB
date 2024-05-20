@@ -17,6 +17,7 @@ namespace Dragoraptor.Core
         private ISceneController _sceneController;
         private ICharacterManager _characterManager;
         private ILevelTimer _levelTimer;
+        private INpcManager _npcManager;
         
         
         private GameState _gameState;
@@ -26,13 +27,15 @@ namespace Dragoraptor.Core
             IEventBus eventBus, 
             ISceneController sceneController, 
             ICharacterManager characterManager,
-            ILevelTimer timer)
+            ILevelTimer timer,
+            INpcManager npcManager)
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
             _sceneController = sceneController;
             _characterManager = characterManager;
             _levelTimer = timer;
+            _npcManager = npcManager;
         }
         
         public void StartProgram()
@@ -59,6 +62,8 @@ namespace Dragoraptor.Core
                 _gameState = GameState.Game;
                 _uiManager.SwitchToHunt();
                 _sceneController.BuildLevel();
+                _npcManager.PrepareSpawn();
+                _npcManager.RestartSpawn();
                 _levelTimer.StartTimer();
                 
                 _characterManager.CreateCharacter();
@@ -72,6 +77,8 @@ namespace Dragoraptor.Core
             if (_gameState == GameState.Game)
             {
                 _gameState = GameState.MainScreen;
+                _npcManager.StopSpawn();
+                _npcManager.ClearNps();
                 //_characterManager.CharacterControlOff();
                 _characterManager.RemoveCharacter();
                 //_levelTimer.StopTimer();
@@ -88,6 +95,7 @@ namespace Dragoraptor.Core
             {
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
+                _npcManager.StopSpawn();
                 _uiManager.ShowEndHuntWindow();
             }
         }
@@ -99,6 +107,7 @@ namespace Dragoraptor.Core
             {
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
+                _npcManager.StopSpawn();
                 _uiManager.ShowEndHuntWindow();
             }
         }
@@ -116,11 +125,13 @@ namespace Dragoraptor.Core
             {
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
+                _npcManager.StopSpawn();
                 _characterManager.RemoveCharacter();
                 
                 _characterManager.CreateCharacter();
                 _characterManager.CharacterControlOn();
                 _levelTimer.StartTimer();
+                _npcManager.RestartSpawn();
             }
             
             // if (_state == GameState.Hunt)

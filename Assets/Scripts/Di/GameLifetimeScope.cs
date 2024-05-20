@@ -73,6 +73,9 @@ namespace Dragoraptor.Di
             builder.Register<EnergyController>(Lifetime.Singleton).AsImplementedInterfaces();
             // -------------------------
 
+
+            builder.Register<NpcManager>(Lifetime.Singleton).AsImplementedInterfaces();
+
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.RegisterInstance(_dataContainer).As<IDataHolder>();
 
