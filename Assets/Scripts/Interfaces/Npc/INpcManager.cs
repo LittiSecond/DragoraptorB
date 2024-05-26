@@ -1,4 +1,4 @@
-﻿namespace Dragoraptor.Interfaces
+﻿namespace Dragoraptor.Interfaces.Npc
 {
     public interface INpcManager
     {

@@ -13,6 +13,7 @@ using Dragoraptor.Input;
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
 using Dragoraptor.Interfaces.Ui;
+using Dragoraptor.Interfaces.Npc;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.Ui;
 
@@ -74,7 +75,8 @@ namespace Dragoraptor.Di
             // -------------------------
 
 
-            builder.Register<NpcManager>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<NpcManager>(Lifetime.Singleton).As<ITickable, INpcManager>();
+            builder.Register<NpcSpawner>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<PrefabLoader>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.RegisterInstance(_dataContainer).As<IDataHolder>();

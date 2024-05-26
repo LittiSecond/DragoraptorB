@@ -1,15 +1,31 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 using VContainer.Unity;
 
 using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Npc;
+using Dragoraptor.Npc;
 
 
 namespace Dragoraptor.Core
 {
-    public class NpcManager : INpcManager, ITickable
+    public class NpcManager : INpcManager, ITickable, INpcCollector
     {
 
+
+        private List<NpcBaseLogic> _npcOnField;
+        private ICurrentLevelDescriptorHolder _descriptorHolder;
+        private INpcSpawner _spawner;
+
+
+        public NpcManager(ICurrentLevelDescriptorHolder holder, INpcSpawner npcSpawner)
+        {
+            _descriptorHolder = holder;
+            _spawner = npcSpawner;
+            _spawner.SetCollector(this);
+        }
+        
 
         #region INpcManager
         
@@ -44,6 +60,15 @@ namespace Dragoraptor.Core
         }
         
         #endregion
+
         
+        #region INpcCollector
+
+        public void AddNpc(NpcBaseLogic newNpc)
+        {
+            
+        }
+
+        #endregion
     }
 }

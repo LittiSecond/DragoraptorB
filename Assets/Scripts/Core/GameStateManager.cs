@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
-using Dragoraptor.Interfaces;
-using Dragoraptor.Interfaces.Character;
-using Dragoraptor.Ui;
+
 using EventBus;
 
+using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Character;
+using Dragoraptor.Interfaces.Npc;
+using Dragoraptor.Ui;
 
 
 namespace Dragoraptor.Core
