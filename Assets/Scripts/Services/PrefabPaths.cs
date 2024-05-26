@@ -8,8 +8,13 @@ namespace Dragoraptor
         public static readonly Dictionary<string, string> Paths = new Dictionary<string, string>()
         {
             {
+                "Bird1", "Prefabs/Npc/Bird1"
+            },
+            {
                 "PlayerCharacter", "Prefabs/PlayerCharacter"
             },
+
+            
         };
     }
 }

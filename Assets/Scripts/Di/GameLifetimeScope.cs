@@ -85,6 +85,8 @@ namespace Dragoraptor.Di
             builder.Register<TouchHandler>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<LevelTimerController>(Lifetime.Singleton).AsImplementedInterfaces();
 
+            builder.Register<ObjectPoolManager>(Lifetime.Singleton).AsImplementedInterfaces();
+
         }
     }
 }

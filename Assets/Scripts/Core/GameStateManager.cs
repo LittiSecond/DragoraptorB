@@ -20,6 +20,7 @@ namespace Dragoraptor.Core
         private ICharacterManager _characterManager;
         private ILevelTimer _levelTimer;
         private INpcManager _npcManager;
+        private IObjectPoolManager _poolManager;
         
         
         private GameState _gameState;
@@ -30,7 +31,8 @@ namespace Dragoraptor.Core
             ISceneController sceneController, 
             ICharacterManager characterManager,
             ILevelTimer timer,
-            INpcManager npcManager)
+            INpcManager npcManager,
+            IObjectPoolManager poolManager)
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
@@ -38,6 +40,7 @@ namespace Dragoraptor.Core
             _characterManager = characterManager;
             _levelTimer = timer;
             _npcManager = npcManager;
+            _poolManager = poolManager;
         }
         
         public void StartProgram()
@@ -64,6 +67,7 @@ namespace Dragoraptor.Core
                 _gameState = GameState.Game;
                 _uiManager.SwitchToHunt();
                 _sceneController.BuildLevel();
+                _poolManager.PreparePool();
                 _npcManager.PrepareSpawn();
                 _npcManager.RestartSpawn();
                 _levelTimer.StartTimer();
@@ -81,6 +85,8 @@ namespace Dragoraptor.Core
                 _gameState = GameState.MainScreen;
                 _npcManager.StopSpawn();
                 _npcManager.ClearNps();
+                _poolManager.ReturnAllToPool();
+                _poolManager.ClearPool();
                 //_characterManager.CharacterControlOff();
                 _characterManager.RemoveCharacter();
                 //_levelTimer.StopTimer();
@@ -128,6 +134,7 @@ namespace Dragoraptor.Core
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
                 _npcManager.StopSpawn();
+                _poolManager.ReturnAllToPool();
                 _characterManager.RemoveCharacter();
                 
                 _characterManager.CreateCharacter();

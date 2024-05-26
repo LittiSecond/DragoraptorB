@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using Dragoraptor.Interfaces;
+using ObjPool;
 
 
 namespace Dragoraptor 
 { 
-    public class PrefabLoader : IPrefabLoader
+    public class PrefabLoader : IPrefabLoader, IPoolPrefabLoader
     {
         public GameObject GetPrefab(string prefabID)
         {

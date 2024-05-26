@@ -14,9 +14,11 @@ namespace Dragoraptor.Core
     {
 
 
-        private List<NpcBaseLogic> _npcOnField;
-        private ICurrentLevelDescriptorHolder _descriptorHolder;
-        private INpcSpawner _spawner;
+        private readonly List<NpcBaseLogic> _npcOnField = new();
+        private readonly ICurrentLevelDescriptorHolder _descriptorHolder;
+        private readonly INpcSpawner _spawner;
+
+        private bool _isNpcLogicEnabled;
 
 
         public NpcManager(ICurrentLevelDescriptorHolder holder, INpcSpawner npcSpawner)
@@ -24,6 +26,7 @@ namespace Dragoraptor.Core
             _descriptorHolder = holder;
             _spawner = npcSpawner;
             _spawner.SetCollector(this);
+            _isNpcLogicEnabled = true;
         }
         
 
@@ -37,16 +40,24 @@ namespace Dragoraptor.Core
         public void StopSpawn()
         {
             Debug.Log("NpcManager->StopSpawn: ");
+            _spawner.StopSpawn();
         }
 
         public void RestartSpawn()
         {
             Debug.Log("NpcManager->RestartSpawn: ");
+            _spawner.RestartSpawn();
         }
 
         public void ClearNps()
         {
             Debug.Log("NpcManager->ClearNps: ");
+            for (int i = _npcOnField.Count - 1; i >= 0; i--)
+            {
+                _npcOnField[i].OnDestroy -= OnDestroyNpc;
+                _npcOnField[i].DestroyItSelf();
+            }
+            _npcOnField.Clear();
         }
         
         #endregion
@@ -56,7 +67,10 @@ namespace Dragoraptor.Core
 
         public void Tick()
         {
-            
+            if (_isNpcLogicEnabled)
+            {
+                ExecuteNpcLogic();
+            }
         }
         
         #endregion
@@ -66,9 +80,24 @@ namespace Dragoraptor.Core
 
         public void AddNpc(NpcBaseLogic newNpc)
         {
-            
+            _npcOnField.Add(newNpc);
+            newNpc.OnDestroy += OnDestroyNpc;
         }
 
         #endregion
+        
+        private void ExecuteNpcLogic()
+        {
+            for (int i = 0; i < _npcOnField.Count; i++)
+            {
+                _npcOnField[i].Execute();
+            }
+        }
+        
+        private void OnDestroyNpc(NpcBaseLogic npc)
+        {
+            _npcOnField.Remove(npc);
+            npc.OnDestroy -= OnDestroyNpc;
+        }
     }
 }

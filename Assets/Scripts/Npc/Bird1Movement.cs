@@ -100,7 +100,7 @@ namespace Dragoraptor.Npc
                 new Vector2( -2, 1 ),
                 new Vector2( 2, 1)
             };
-
+            _haveWay = true;
         }
 
         private void StopMovement()
