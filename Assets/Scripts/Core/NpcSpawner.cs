@@ -19,6 +19,8 @@ namespace Dragoraptor.Core
         private float _timeCounter;
         private float _delay;
 
+
+
         private bool _isTiming;
 
 
@@ -91,6 +93,9 @@ namespace Dragoraptor.Core
         private void TimerEnd()
         {
             SpawnNpc("Bird1", new Vector2(4.0f, 0.0f));
+            SpawnNpc("Bird2", new Vector2(-4.0f, 0.0f));
+            SpawnNpc("Bird3", new Vector2(4.0f, 3.0f));
+            SpawnNpc("Bird4", new Vector2(-4.0f, 3.0f));
         }
         
     }

@@ -47,7 +47,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c864a50481c936243a6d060c1cf0b8d9, type: 2}
+  m_Motion: {fileID: 7400000, guid: 330511c198b8b9f489877ae812e28b19, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -59,7 +59,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bird1
+  m_Name: Bird4
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: State
@@ -102,7 +102,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3fdf74513afc2bf4e847320f82a0febb, type: 2}
+  m_Motion: {fileID: 7400000, guid: ab5fce27b601e7a4c8f67cb45d266992, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -207,7 +207,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8bfcf79a456a39c44a0f13a4c1d78d3e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 58f41f9e50026de4aa3f7b3ab591b66f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
