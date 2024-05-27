@@ -10,7 +10,7 @@ using Dragoraptor.ScriptableObjects;
 
 namespace Dragoraptor.Character
 {
-    public class PlayerHealth : IPlayerHealth, ITakeDamage, IBodyUser, IObservableResource//, IHealthEndHolder
+    public class PlayerHealth : IPlayerHealth, ITakeDamage, IBodyUser, IHealthObservable//, IHealthEndHolder
     {
 
         private float _maxHealth;

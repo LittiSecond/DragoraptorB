@@ -18,6 +18,7 @@ namespace Dragoraptor.Ui
         private HuntMenuWidget _menuWidget;
         private HuntResultWidget _huntResultWidget;
         private EnergyView _energyView;
+        private HealthView _healthView;
         private IEventBus _eventBus;
 
 
@@ -29,6 +30,7 @@ namespace Dragoraptor.Ui
             HuntMenuWidget menuWidget, 
             IEventBus eventBus,
             EnergyView energyView,
+            HealthView healthView,
             HuntResultWidget resultWidget
             ) 
             : base(uiFactory)
@@ -36,6 +38,7 @@ namespace Dragoraptor.Ui
             _menuWidget = menuWidget;
             _eventBus = eventBus;
             _energyView = energyView;
+            _healthView = healthView;
             _huntResultWidget = resultWidget;
         }
         
@@ -47,6 +50,7 @@ namespace Dragoraptor.Ui
             _menuWidget.OnContinueButtonClick += ContinueButtonClick;
             _menuWidget.OnBreakButtonClick += BreakHuntButtonClick;
             _energyView.Initialize();
+            _healthView.Initialize();
             _huntResultWidget.AddListeners(GetOutOfTheHuntButtonClick, RestartHuntButtonClick);
             
         }
