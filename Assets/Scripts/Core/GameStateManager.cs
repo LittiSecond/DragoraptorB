@@ -38,6 +38,7 @@ namespace Dragoraptor.Core
             _eventBus = eventBus;
             _sceneController = sceneController;
             _characterManager = characterManager;
+            _characterManager.OnCharacterKilled += CharacterKilled;
             _levelTimer = timer;
             _npcManager = npcManager;
             _poolManager = poolManager;
@@ -99,6 +100,11 @@ namespace Dragoraptor.Core
         private void BreakHunt(StopHuntRequestSignal signal)
         {
             Debug.Log("GameStateManager->BreakHunt:");
+            BreakHunt();
+        }
+
+        private void BreakHunt()
+        {
             if (_gameState == GameState.Game)
             {
                 _characterManager.CharacterControlOff();
@@ -106,6 +112,12 @@ namespace Dragoraptor.Core
                 _npcManager.StopSpawn();
                 _uiManager.ShowEndHuntWindow();
             }
+        }
+
+        private void CharacterKilled()
+        {
+            Debug.Log("GameStateManager->CharacterKilled:");
+            BreakHunt();
         }
 
         private void LevelTimeUp(LevelTimeUpSignal signal)

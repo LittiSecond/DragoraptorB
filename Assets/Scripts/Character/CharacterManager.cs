@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.ScriptableObjects;
+using TimersService;
 using VContainer;
 
 
@@ -22,34 +24,46 @@ namespace Dragoraptor.Character
         private ICharStateHolder _stateHolder;
         private IInput _input;
         private IEnergyLogic _energyController;
+        private IPlayerHealth _health;
+        private ITimersService _timersService;
 
         private Vector2 _spawnPosition;
+        private float _charDeathDelay;
+        private int _timerId;
         private bool _haveCharacterBody;
-
+        private bool _isTiming;
 
         public CharacterManager(IPrefabLoader prefabLoader, 
             IDataHolder dataHolder,
             ICharStateHolder stateHolder,
             IReadOnlyList<IBodyUser> bodyUsers,
             IInput input,
-            IEnergyLogic energyLogic
+            IEnergyLogic energyLogic,
+            IPlayerHealth health,
+            ITimersService timersService
             )
         {
-            Debug.Log("CharacterManager->ctor:");
+            //Debug.Log("CharacterManager->ctor:");
             _prefabLoader = prefabLoader;
             _spawnPosition = dataHolder.GetGamePlaySettings().CharacterSpawnPosition;
+            _charDeathDelay = dataHolder.GetGamePlaySettings().CharacterDeathDelay;
             _bodyUsers = bodyUsers;
             _stateHolder = stateHolder;
             _input = input;
             _energyController = energyLogic;
+            _health = health;
+            _health.OnHealthEnd += OnHealthEnd;
+            _timersService = timersService;
         }
 
 
         #region ICharacterManager
 
+        public event Action OnCharacterKilled;
+        
         public void CreateCharacter()
         {
-            Debug.Log("CharacterManager->CreateCharacter:");
+            //Debug.Log("CharacterManager->CreateCharacter:");
             if (!_haveCharacterBody)
             {
                 InstantiateCharacter();
@@ -64,6 +78,7 @@ namespace Dragoraptor.Character
                 _bodyUsers[i].SetBody(_playerBody);
             }
             
+            _health.ResetHealth();
             _stateHolder.SetState(CharacterState.Idle);
             _energyController.On();
             _energyController.Reset();
@@ -71,7 +86,7 @@ namespace Dragoraptor.Character
 
         public void RemoveCharacter()
         {
-            Debug.Log("CharacterManager->RemoveCharacter: ");
+            //Debug.Log("CharacterManager->RemoveCharacter: ");
             _energyController.Off();
             _playerGO.SetActive(false);
             
@@ -85,13 +100,13 @@ namespace Dragoraptor.Character
 
         public void CharacterControlOn()
         {
-            Debug.Log("CharacterManager->CharacterControlOn: ");
+            //Debug.Log("CharacterManager->CharacterControlOn: ");
             _input.On();
         }
 
         public void CharacterControlOff()
         {
-            Debug.Log("CharacterManager->CharacterControlOff: ");
+            //Debug.Log("CharacterManager->CharacterControlOff: ");
             _input.Off();
         }
 
@@ -105,5 +120,22 @@ namespace Dragoraptor.Character
             _playerBody = _playerGO.GetComponent<PlayerBody>();
         }
         
+        private void OnHealthEnd()
+        {
+            CharacterControlOff();
+            _stateHolder.SetState(CharacterState.Death);
+            if (!_isTiming)
+            {
+                _timerId = _timersService.AddTimer(OnDeathTimer, _charDeathDelay);
+                _isTiming = true;
+            }
+            //Services.Instance.CharacterIntermediary.SetPlayerCharacterTransform(null);
+        }
+        
+        private void OnDeathTimer()
+        {
+            _isTiming = false;
+            OnCharacterKilled?.Invoke();
+        }
     }
 }
