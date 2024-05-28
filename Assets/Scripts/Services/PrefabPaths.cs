@@ -20,6 +20,9 @@ namespace Dragoraptor
                 "Bird4", "Prefabs/Npc/Bird4"
             },
             {
+                "ClawScratch", "Prefabs/Effects/ClawScratch"
+            },
+            {
                 "PlayerCharacter", "Prefabs/PlayerCharacter"
             },
 

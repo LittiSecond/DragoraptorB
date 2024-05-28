@@ -68,6 +68,7 @@ namespace Dragoraptor.Di
             builder.Register<CharHorizontalDirection>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<FlightController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<PlayerHealth>(Lifetime.Singleton).As<IPlayerHealth, IBodyUser, IHealthObservable>();
+            builder.Register<AttackController>(Lifetime.Singleton).AsImplementedInterfaces();
                 // ----- -----
 
 

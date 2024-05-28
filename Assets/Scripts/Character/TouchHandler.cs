@@ -9,12 +9,13 @@ namespace Dragoraptor.Character
     public class TouchHandler : IInputHandler, ICharStateListener
     {
 
-        private IWalkLogic _walkLogic;
-        private ISceneGeometry _sceneGeometry;
-        private IAreaChecker _areaChecker;
-        private IJumpController _jumpController;
-        private IJumpPainter _jumpPainter;
-        private ICharHorizontalDirection _charDirection;
+        private readonly IWalkLogic _walkLogic;
+        private readonly ISceneGeometry _sceneGeometry;
+        private readonly IAreaChecker _areaChecker;
+        private readonly IJumpController _jumpController;
+        private readonly IJumpPainter _jumpPainter;
+        private readonly ICharHorizontalDirection _charDirection;
+        private readonly IAttackController _attackController;
         private CharacterState _state;
 
 
@@ -23,7 +24,8 @@ namespace Dragoraptor.Character
             IAreaChecker areaChecker,
             IJumpController jumpController,
             IJumpPainter jumpPainter,
-            ICharHorizontalDirection charDirection)
+            ICharHorizontalDirection charDirection, 
+            IAttackController attackController)
         {
             _walkLogic = walkLogic;
             _sceneGeometry = sceneGeometry;
@@ -31,6 +33,7 @@ namespace Dragoraptor.Character
             _jumpController = jumpController;
             _jumpPainter = jumpPainter;
             _charDirection = charDirection;
+            _attackController = attackController;
         }
         
         #region IInputHandler
@@ -55,7 +58,7 @@ namespace Dragoraptor.Character
                     }
                     else
                     {
-                        //     _attackController.TouchBegin();
+                        _attackController.TouchBegin();
                     }
 
                 }
@@ -76,6 +79,13 @@ namespace Dragoraptor.Character
                     //_horizontalDirection.SetTouchPosition(position);
                 }
 
+            }
+            else if (_state == CharacterState.FliesUp || _state == CharacterState.FliesDown)
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    _attackController.TouchBegin();
+                }
             }
         }
         
