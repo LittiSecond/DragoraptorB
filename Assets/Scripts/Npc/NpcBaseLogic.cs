@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Score;
 using UnityEngine;
 
 using ObjPool;
+using VContainer;
 using VContainer.Unity;
 
 
@@ -34,6 +36,8 @@ namespace Dragoraptor.Npc
         private readonly List<IActivatable> _activateList = new List<IActivatable>();
         private readonly List<ICleanable> _clearList = new List<ICleanable>();
 
+        private IScoreCollector _scoreCollector;
+        
         private float _destroyTimeCounter;
 
         protected bool _isEnabled;
@@ -57,6 +61,13 @@ namespace Dragoraptor.Npc
             // }
         }
 
+        
+        [Inject]
+        private void Construct(IScoreCollector collector)
+        {
+            _scoreCollector = collector;
+        }
+        
         
         public virtual void DestroyItSelf()
         {
@@ -102,6 +113,7 @@ namespace Dragoraptor.Npc
         protected void SendScoreReward()
         {
             Debug.Log("NpcBaseLogic->SendScoreReward: " + gameObject.name);
+            _scoreCollector.AddScore(_scoreCost);
         }
 
         #region IExecutable

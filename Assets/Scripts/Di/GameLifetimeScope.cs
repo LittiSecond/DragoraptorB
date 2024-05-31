@@ -48,6 +48,7 @@ namespace Dragoraptor.Di
             builder.Register<EnergyView>(Lifetime.Singleton).AsSelf();
             builder.Register<HealthView>(Lifetime.Singleton).AsSelf();
             builder.Register<LevelTimerView>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<ScoreView>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntResultWidget>(Lifetime.Singleton).AsSelf();
             // ---------
 
@@ -77,6 +78,7 @@ namespace Dragoraptor.Di
             builder.Register<JumpCalculator>(Lifetime.Singleton).As<IJumpCalculator>();
             builder.Register<EnergyController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<CharacterMediator>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<ScoreController>(Lifetime.Singleton).AsImplementedInterfaces();
             // -------------------------
 
 

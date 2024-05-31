@@ -18,7 +18,7 @@ namespace Dragoraptor.MonoBehs
 
         
         [Inject]
-        public void Construct(ITimersService timersService, IPlayerPosition playerPosition)
+        private void Construct(ITimersService timersService, IPlayerPosition playerPosition)
         {
             _timersService = timersService;
             _playerPosition = playerPosition;

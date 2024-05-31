@@ -5,6 +5,7 @@ using EventBus;
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
 using Dragoraptor.Interfaces.Npc;
+using Dragoraptor.Interfaces.Score;
 using Dragoraptor.Ui;
 
 
@@ -21,6 +22,7 @@ namespace Dragoraptor.Core
         private ILevelTimer _levelTimer;
         private INpcManager _npcManager;
         private IObjectPoolManager _poolManager;
+        private IScoreManager _score;
         
         
         private GameState _gameState;
@@ -32,7 +34,8 @@ namespace Dragoraptor.Core
             ICharacterManager characterManager,
             ILevelTimer timer,
             INpcManager npcManager,
-            IObjectPoolManager poolManager)
+            IObjectPoolManager poolManager,
+            IScoreManager score)
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
@@ -42,6 +45,7 @@ namespace Dragoraptor.Core
             _levelTimer = timer;
             _npcManager = npcManager;
             _poolManager = poolManager;
+            _score = score;
         }
         
         public void StartProgram()
@@ -71,6 +75,7 @@ namespace Dragoraptor.Core
                 _poolManager.PreparePool();
                 _npcManager.PrepareSpawn();
                 _npcManager.RestartSpawn();
+                _score.ClearScore();
                 _levelTimer.StartTimer();
                 
                 _characterManager.CreateCharacter();
@@ -151,6 +156,7 @@ namespace Dragoraptor.Core
                 
                 _characterManager.CreateCharacter();
                 _characterManager.CharacterControlOn();
+                _score.ClearScore();
                 _levelTimer.StartTimer();
                 _npcManager.RestartSpawn();
             }
