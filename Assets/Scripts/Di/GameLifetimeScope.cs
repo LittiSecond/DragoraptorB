@@ -16,6 +16,7 @@ using Dragoraptor.Interfaces.Ui;
 using Dragoraptor.Interfaces.Npc;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.Ui;
+using ObjPool;
 
 
 namespace Dragoraptor.Di
@@ -75,6 +76,7 @@ namespace Dragoraptor.Di
             builder.Register<CharStateHolder>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             builder.Register<JumpCalculator>(Lifetime.Singleton).As<IJumpCalculator>();
             builder.Register<EnergyController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<CharacterMediator>(Lifetime.Singleton).AsImplementedInterfaces();
             // -------------------------
 
 
@@ -88,6 +90,7 @@ namespace Dragoraptor.Di
             builder.Register<TouchHandler>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<LevelTimerController>(Lifetime.Singleton).AsImplementedInterfaces();
 
+            builder.Register<PoolFactory>(Lifetime.Singleton).As<IPoolFactory>();
             builder.Register<ObjectPoolManager>(Lifetime.Singleton).AsImplementedInterfaces();
 
         }

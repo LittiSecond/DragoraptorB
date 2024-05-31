@@ -24,10 +24,13 @@ namespace ObjPool
         
         private readonly List<ObjGroup> _objectsGroupsList;
 
+        private IPoolFactory _factory;
 
-        public ObjectPool()
+
+        public ObjectPool(IPoolFactory factory)
         {
             _objectsGroupsList = new List<ObjGroup>();
+            _factory = factory;
         }
 
 
@@ -174,7 +177,8 @@ namespace ObjPool
         {
             PooledObject prefab = group._prefab;
 
-            PooledObject newObject = GameObject.Instantiate<PooledObject>(prefab);
+            //PooledObject newObject = GameObject.Instantiate<PooledObject>(prefab);
+            PooledObject newObject = _factory.CreateObject(group._type);
             if (newObject)
             {
                 group.ObjectsList.Add(newObject);

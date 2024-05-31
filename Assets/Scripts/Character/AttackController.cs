@@ -217,18 +217,9 @@ namespace Dragoraptor.Character
             PooledObject effect = _objectPool.GetObjectOfType(prefabID);
             if (effect)
             {
-                // TODO: remove ClawScratch from here and refactoring
-                ClawScratch scratch = effect as ClawScratch;
-                if (scratch)
-                {
-                    Direction dir = _haveBody? _body.CurrentDirection : Direction.Rigth;
-                    scratch.Activate(dir, _timersService);
-                }
-
                 effect.transform.position = (Vector3)area.center;
                 IActivatable initializable = effect as IActivatable;
                 initializable?.Activate();
-                
             }
         }
 

@@ -9,14 +9,17 @@ namespace Dragoraptor.Core
     {
 
         private IPoolPrefabLoader _loaderForPool;
+        private IPoolFactory _factory;
         private ObjectPool2 _pool;
 
 
 
-        public ObjectPoolManager(IPoolPrefabLoader poolPrefabLoader)
+        public ObjectPoolManager(IPoolPrefabLoader poolPrefabLoader, IPoolFactory factory)
         {
             _loaderForPool = poolPrefabLoader;
-            _pool = new ObjectPool2();
+            _factory = factory;
+            //TODO: refactoring object pool
+            _pool = new ObjectPool2(factory);
             _pool.SetPrefabLoader(_loaderForPool);
         }
         

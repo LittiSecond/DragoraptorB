@@ -95,7 +95,7 @@ namespace Dragoraptor.Npc
         protected virtual void OnHealthEnded()
         {
             SendScoreReward();
-            //DropItem();
+            DropItem();
             DestroyItSelf();
         }
         
@@ -160,6 +160,10 @@ namespace Dragoraptor.Npc
         
         #endregion
 
+        protected virtual void DropItem()
+        {
+            
+        }
         
     }
 }

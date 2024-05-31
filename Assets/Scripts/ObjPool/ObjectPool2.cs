@@ -9,6 +9,11 @@ namespace ObjPool
         private IPoolPrefabLoader _prefabLoader;
 
 
+        public ObjectPool2(IPoolFactory factory) : base(factory)
+        {
+        }
+        
+        
         public void SetPrefabLoader(IPoolPrefabLoader loader)
         {
             _prefabLoader = loader;
@@ -51,5 +56,6 @@ namespace ObjPool
             }
         }
 
+        
     }
 }

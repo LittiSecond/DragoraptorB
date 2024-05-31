@@ -26,6 +26,7 @@ namespace Dragoraptor.Character
         private IEnergyLogic _energyController;
         private IPlayerHealth _health;
         private ITimersService _timersService;
+        private IPlayerMediator _playerMediator;
 
         private Vector2 _spawnPosition;
         private float _charDeathDelay;
@@ -40,7 +41,8 @@ namespace Dragoraptor.Character
             IInput input,
             IEnergyLogic energyLogic,
             IPlayerHealth health,
-            ITimersService timersService
+            ITimersService timersService,
+            IPlayerMediator mediator
             )
         {
             //Debug.Log("CharacterManager->ctor:");
@@ -54,6 +56,7 @@ namespace Dragoraptor.Character
             _health = health;
             _health.OnHealthEnd += OnHealthEnd;
             _timersService = timersService;
+            _playerMediator = mediator;
         }
 
 
@@ -71,6 +74,7 @@ namespace Dragoraptor.Character
             }
 
             _playerGO.transform.position = _spawnPosition;
+            _playerMediator.SetCharacterTransform(_playerGO.transform);
             _playerGO.SetActive(true);
             
             for (int i = 0; i < _bodyUsers.Count; i++)
@@ -94,7 +98,7 @@ namespace Dragoraptor.Character
             {
                 _bodyUsers[i].ClearBody();
             }
-            
+            _playerMediator.SetCharacterTransform(null);
             _stateHolder.SetState(CharacterState.None);
         }
 
@@ -129,7 +133,7 @@ namespace Dragoraptor.Character
                 _timerId = _timersService.AddTimer(OnDeathTimer, _charDeathDelay);
                 _isTiming = true;
             }
-            //Services.Instance.CharacterIntermediary.SetPlayerCharacterTransform(null);
+            _playerMediator.SetCharacterTransform(null);
         }
         
         private void OnDeathTimer()
