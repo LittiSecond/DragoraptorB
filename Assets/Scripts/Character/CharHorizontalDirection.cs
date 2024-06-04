@@ -15,11 +15,25 @@ namespace Dragoraptor.Character
         
         
         #region ICharHorizontalDirection
+
+        public Direction HorizontalDirection
+        {
+            get => _direction;
+            set
+            {
+                if (value != _direction && value != Direction.None)
+                {
+                    _direction = value;
+                    _playerBody.SetDirection(_direction);
+                }
+            }
+        }
         
         public void TouchPrepareJump(Vector2 worldPosition)
         {
             Direction direction = (_transform.position.x > worldPosition.x) ? Direction.Rigth : Direction.Left;
-            SetBodyDirection(direction);
+            //SetBodyDirection(direction);
+            HorizontalDirection = direction;
         }
         
         #endregion
@@ -42,14 +56,14 @@ namespace Dragoraptor.Character
         #endregion
         
         
-        private void SetBodyDirection(Direction direction)
-        {
-            if (direction != _direction)
-            {
-                _direction = direction;
-                _playerBody.SetDirection(_direction);
-            }
-        }
+        // private void SetBodyDirection(Direction direction)
+        // {
+        //     if (direction != _direction)
+        //     {
+        //         _direction = direction;
+        //         _playerBody.SetDirection(_direction);
+        //     }
+        // }
         
     }
 }

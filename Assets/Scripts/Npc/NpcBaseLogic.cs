@@ -112,7 +112,6 @@ namespace Dragoraptor.Npc
         
         protected void SendScoreReward()
         {
-            Debug.Log("NpcBaseLogic->SendScoreReward: " + gameObject.name);
             _scoreCollector.AddScore(_scoreCost);
         }
 

@@ -21,12 +21,10 @@ namespace Dragoraptor.Character
         private readonly IEnergyStore _energyStore;
         private readonly ITimersService _timersService;
         private readonly IObjectPool _objectPool;
+        private readonly ICharHorizontalDirection _directionController;
         private Transform _bodyTransform;
-        private PlayerBody _body;
-        private AttackAreasPack _attackAreas;
-        //private ITimeRemaining _attackDelayTimer;
+        private readonly AttackAreasPack _attackAreas;
         private CharacterState _state;
-        //private Direction _direction;
 
         private float _energyCost;
         private float _attackInterval;
@@ -36,18 +34,19 @@ namespace Dragoraptor.Character
         private int _timerId;
 
         private bool _haveBody;
-        //private bool _isTiming;
         private bool _shouldAttack;
 
 
         public AttackController(IEnergyStore energyStore, 
             ITimersService timersService, 
             IObjectPool objectPool,
-            IDataHolder dataHolder)
+            IDataHolder dataHolder,
+            ICharHorizontalDirection direction)
         {
             _energyStore = energyStore;
             _timersService = timersService;
             _objectPool = objectPool;
+            _directionController = direction;
             
             var gps = dataHolder.GetGamePlaySettings();
             _attackAreas = gps.AttackAreas;
@@ -85,14 +84,12 @@ namespace Dragoraptor.Character
         
         public void SetBody(PlayerBody body)
         {
-            _body = body;
             _bodyTransform = body.transform;
             _haveBody = true;
         }
 
         public void ClearBody()
         {
-            _body = null;
             _bodyTransform = null;
             _haveBody = false;
             _shouldAttack = false;
@@ -149,7 +146,7 @@ namespace Dragoraptor.Character
         private Rect CalculateDamagedArea()
         {
             Rect rect;
-            Direction dir = _haveBody? _body.CurrentDirection : Direction.Rigth;
+            Direction dir = _directionController.HorizontalDirection;
             if (dir == Direction.Rigth)
             {
                 switch (_state)

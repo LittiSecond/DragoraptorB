@@ -11,7 +11,8 @@ namespace Dragoraptor.Character
 {
     public class WalkController : ITickable, IBodyUser, ICharStateListener, IWalkLogic
     {
-        private ICharStateHolder _stateHolder;
+        private readonly ICharStateHolder _stateHolder;
+        private readonly ICharHorizontalDirection _directionController;
         private PlayerBody _playerBody;
         private Transform _transform;
         private Rigidbody2D _rigidbody;
@@ -25,10 +26,11 @@ namespace Dragoraptor.Character
         private bool _isDirectionRight;
         
 
-        public WalkController(ICharStateHolder stateHolder, IDataHolder dataHolder)
+        public WalkController(ICharStateHolder stateHolder, IDataHolder dataHolder, ICharHorizontalDirection direction)
         {
             _stateHolder = stateHolder;
             _speed = dataHolder.GetGamePlaySettings().WalkSpeed;
+            _directionController = direction;
         }
 
         
@@ -135,12 +137,12 @@ namespace Dragoraptor.Character
             if (_isDirectionRight)
             {
                 direction = 1.0f;
-                _playerBody.SetDirection(Direction.Rigth);
+                _directionController.HorizontalDirection = Direction.Rigth;
             }
             else
             {
                 direction = -1.0f;
-                _playerBody.SetDirection(Direction.Left);
+                _directionController.HorizontalDirection = Direction.Left;
             }
             
             _velocity = new Vector2(_speed * direction, 0);
