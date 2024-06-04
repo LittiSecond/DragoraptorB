@@ -8,14 +8,16 @@ namespace Dragoraptor.Input
     public class TouchInput : IInput, ITickable
     {
 
-        private IInputHandler _handler;
+        private readonly IInputHandler _handler;
+        private readonly IPointerUiChecker _pointerUiChecker;
 
         private bool _isEnabled;
 
 
-        public TouchInput(IInputHandler inputHandler)
+        public TouchInput(IInputHandler inputHandler, IPointerUiChecker pointerUiChecker)
         {
             _handler = inputHandler;
+            _pointerUiChecker = pointerUiChecker;
         }
 
         #region IInput
@@ -45,8 +47,7 @@ namespace Dragoraptor.Input
                     
                     //Debug.Log("TouchInput->Tick: UnityEngine.Input.touchCount > 0");
                     
-                    // TODO: check is pointer under ui element
-                    //if (!UiChecker.CheckIsUiElement(touch.position))
+                    if (!_pointerUiChecker.IsPointerUnderUiElement(touch.position))
                     {
                         _handler.HandleTouch(touch);
                     }
@@ -55,6 +56,6 @@ namespace Dragoraptor.Input
         }
         
         #endregion
-        
+
     }
 }
