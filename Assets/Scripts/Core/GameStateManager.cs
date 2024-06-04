@@ -27,6 +27,8 @@ namespace Dragoraptor.Core
         
         private GameState _gameState;
 
+        private bool _isPause;
+        
         
         public GameStateManager(UiManager uiManager, 
             IEventBus eventBus, 
@@ -59,6 +61,7 @@ namespace Dragoraptor.Core
                 _eventBus.Subscribe<LevelTimeUpSignal>(LevelTimeUp);
                 _eventBus.Subscribe<CloseHuntRequestSignal>(CloseHunt);
                 _eventBus.Subscribe<RestartHuntRequestSignal>(RestartHunt);
+                _eventBus.Subscribe<HuntMenuOnOffSignal>(OnHuntMenuSwitch);
                 _gameState = GameState.MainScreen;
             }
         }
@@ -98,6 +101,7 @@ namespace Dragoraptor.Core
                 //_levelTimer.StopTimer();
                 _uiManager.SwitchToMainScreen();
                 _sceneController.SetMainScreenScene();
+                SwitchPause(false);
             }
         }
 
@@ -116,6 +120,7 @@ namespace Dragoraptor.Core
                 _levelTimer.StopTimer();
                 _npcManager.StopSpawn();
                 _uiManager.ShowEndHuntWindow();
+                SwitchPause(true);
             }
         }
 
@@ -134,6 +139,7 @@ namespace Dragoraptor.Core
                 _levelTimer.StopTimer();
                 _npcManager.StopSpawn();
                 _uiManager.ShowEndHuntWindow();
+                SwitchPause(true);
             }
         }
 
@@ -159,6 +165,7 @@ namespace Dragoraptor.Core
                 _score.ClearScore();
                 _levelTimer.StartTimer();
                 _npcManager.RestartSpawn();
+                SwitchPause(false);
             }
             
             // if (_state == GameState.Hunt)
@@ -183,5 +190,27 @@ namespace Dragoraptor.Core
             // }
         }
         
+        private void SwitchPause(bool isPauseOn)
+        {
+            if (_isPause && !isPauseOn)
+            {
+                _isPause = false;
+                Time.timeScale = 1.0f;
+            }
+            else if ( !_isPause && isPauseOn)
+            {
+                _isPause = true;
+                Time.timeScale = 0.0f;
+            }
+        }
+
+        private void OnHuntMenuSwitch(HuntMenuOnOffSignal signal)
+        {
+            if (_gameState == GameState.Game)
+            {
+                SwitchPause(signal.IsOpened);
+            }
+        }
+
     }
 }
