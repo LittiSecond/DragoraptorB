@@ -170,6 +170,10 @@ MonoBehaviour:
   _maxHealth: 20
   _armor: 0
   _scoreCost: 4
+  _dropItemID: Meat
+  _dropContent:
+    Type: 2
+    Amount: 20
   _animator: {fileID: 7977518886781704881}
   _destroyDelay: 5.1
 --- !u!1 &7977518888036999631

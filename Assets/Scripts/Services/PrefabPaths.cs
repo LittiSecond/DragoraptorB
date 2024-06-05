@@ -20,7 +20,16 @@ namespace Dragoraptor
                 "Bird4", "Prefabs/Npc/Bird4"
             },
             {
+                "BubblesBlue", "Prefabs/Items/BubblesBlue"
+            },
+            {
+                "BubbleYellow", "Prefabs/Items/BubbleYellow"
+            },
+            {
                 "ClawScratch", "Prefabs/Effects/ClawScratch"
+            },
+            {
+                "Meat", "Prefabs/Items/Meat"
             },
             {
                 "PlayerCharacter", "Prefabs/PlayerCharacter"

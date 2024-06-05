@@ -37,10 +37,9 @@ namespace Dragoraptor.Npc
             {
                 _fall.OnGroundContact();
                 _animation.SetGrounded();
-                //DropItem();
+                DropItem();
                 DestroyItselfDelay(_destroyDelay);
                 _collider.enabled = false;
-                //_fading.StartFading();
             }
         }
 

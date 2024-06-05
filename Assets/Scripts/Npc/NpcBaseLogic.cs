@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dragoraptor.Interfaces;
-using Dragoraptor.Interfaces.Score;
 using UnityEngine;
 
-using ObjPool;
 using VContainer;
-using VContainer.Unity;
+
+using ObjPool;
+using Dragoraptor.Interfaces;
+using Dragoraptor.Interfaces.Score;
+using Dragoraptor.Models;
+using Dragoraptor.MonoBehs;
 
 
 namespace Dragoraptor.Npc
@@ -20,7 +22,11 @@ namespace Dragoraptor.Npc
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _armor;
         [SerializeField] private int _scoreCost;
-
+        [SerializeField] private string _dropItemID;
+        [SerializeField] private PickableResource _dropContent;
+        
+        private IObjectPool _pool;
+        
         
         public event Action<NpcBaseLogic> OnDestroy;
         
@@ -63,9 +69,10 @@ namespace Dragoraptor.Npc
 
         
         [Inject]
-        private void Construct(IScoreCollector collector)
+        private void Construct(IScoreCollector collector, IObjectPool pool)
         {
             _scoreCollector = collector;
+            _pool = pool;
         }
         
         
@@ -173,8 +180,37 @@ namespace Dragoraptor.Npc
 
         protected virtual void DropItem()
         {
-            
+            if (CheckShouldDrop())
+            {
+                PooledObject obj = _pool.GetObjectOfType(_dropItemID);
+                if (obj != null)
+                {
+                    PickUpItem item = obj as PickUpItem;
+                    if (item != null)
+                    {
+                        item.transform.position = transform.position;
+                        item.SetContent(_dropContent);
+                        item.Activate();
+                    }
+                }
+            }
         }
+        
+        private bool CheckShouldDrop()
+        {
+            bool shouldDrop = false;
+
+            if (!string.IsNullOrEmpty(_dropItemID))
+            {
+                if (_dropContent.Type != ResourceType.None)
+                {
+                    shouldDrop = true;
+                }
+            }
+
+            return shouldDrop;
+        }
+        
         
     }
 }

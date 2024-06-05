@@ -16,4 +16,4 @@ MonoBehaviour:
   GroundPrefab: {fileID: 317694793326652323, guid: 9b15de2722b8abd4180f27864879c480, type: 3}
   BackgroundPrefab: {fileID: 7493370335623808135, guid: 06f2f53eac035e444a67a2507f5feb86, type: 3}
   SatietyToSucces: 0.75
-  LevelDuration: 30
+  LevelDuration: 300

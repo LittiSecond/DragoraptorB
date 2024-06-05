@@ -223,6 +223,10 @@ MonoBehaviour:
   _maxHealth: 20
   _armor: 0
   _scoreCost: 4
+  _dropItemID: BubblesBlue
+  _dropContent:
+    Type: 3
+    Amount: 25
   _animator: {fileID: 4326442673895919994}
   _destroyDelay: 5.1
 --- !u!1 &8005138981751577292

@@ -81,6 +81,7 @@ namespace Dragoraptor.Di
             builder.Register<EnergyController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<CharacterMediator>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<ScoreController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<PickUpController>(Lifetime.Singleton).AsImplementedInterfaces();
             // -------------------------
 
 
