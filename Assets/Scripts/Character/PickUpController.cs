@@ -10,12 +10,16 @@ namespace Dragoraptor.Character
 
         private IEnergyStore _energyController;
         private IScoreCollector _scoreCollector;
+        private ISatietyCollector _satietyCollector;
 
 
-        public PickUpController(IEnergyStore energyStore, IScoreCollector scoreCollector)
+        public PickUpController(IEnergyStore energyStore, 
+            IScoreCollector scoreCollector, 
+            ISatietyCollector satietyCollector)
         {
             _energyController = energyStore;
             _scoreCollector = scoreCollector;
+            _satietyCollector = satietyCollector;
         }
 
         #region IItemCollector
@@ -32,6 +36,10 @@ namespace Dragoraptor.Character
                     break;
                 case ResourceType.Score:
                     _scoreCollector.AddScore(resource.Amount);
+                    isPicked = true;
+                    break;
+                case ResourceType.Satiety:
+                    _satietyCollector.AddSatiety(resource.Amount);
                     isPicked = true;
                     break;
             }

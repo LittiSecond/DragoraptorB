@@ -225,7 +225,7 @@ MonoBehaviour:
   _scoreCost: 5
   _dropItemID: Meat
   _dropContent:
-    Type: 2
+    Type: 1
     Amount: 11
   _animator: {fileID: 1685298128440692020}
   _destroyDelay: 5.1

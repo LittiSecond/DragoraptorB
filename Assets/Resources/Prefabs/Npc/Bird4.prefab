@@ -223,10 +223,10 @@ MonoBehaviour:
   _maxHealth: 30
   _armor: 0
   _scoreCost: 6
-  _dropItemID: BubbleYellow
+  _dropItemID: Meat
   _dropContent:
-    Type: 3
-    Amount: 50
+    Type: 1
+    Amount: 10
   _animator: {fileID: 1685298128440692020}
   _destroyDelay: 5.1
 --- !u!1 &4935393761419167362
