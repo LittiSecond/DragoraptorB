@@ -25,6 +25,7 @@ namespace Dragoraptor.Character
         private IInput _input;
         private IEnergyLogic _energyController;
         private IPlayerHealth _health;
+        private ISatietyController _satiety;
         private ITimersService _timersService;
         private IPlayerMediator _playerMediator;
 
@@ -41,6 +42,7 @@ namespace Dragoraptor.Character
             IInput input,
             IEnergyLogic energyLogic,
             IPlayerHealth health,
+            ISatietyController satiety,
             ITimersService timersService,
             IPlayerMediator mediator
             )
@@ -55,6 +57,7 @@ namespace Dragoraptor.Character
             _energyController = energyLogic;
             _health = health;
             _health.OnHealthEnd += OnHealthEnd;
+            _satiety = satiety;
             _timersService = timersService;
             _playerMediator = mediator;
         }
@@ -86,6 +89,8 @@ namespace Dragoraptor.Character
             _stateHolder.SetState(CharacterState.Idle);
             _energyController.On();
             _energyController.Reset();
+            _satiety.SetVictorySatiety(0.5f);
+            _satiety.ResetSatiety();
         }
 
         public void RemoveCharacter()
