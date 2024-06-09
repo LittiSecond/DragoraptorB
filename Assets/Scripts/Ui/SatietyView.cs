@@ -43,8 +43,6 @@ namespace Dragoraptor.Ui
             {
                 _victoryMarker.style.left = new StyleLength(Length.Percent(satietyRelativeMax * TO_PERCENT_MULTIPLER));
             }
-            Debug.Log("SatietyView->VictorySatietyChanged: satietyRelativeMax = " 
-                                      + satietyRelativeMax.ToString() );
         }
         
     }

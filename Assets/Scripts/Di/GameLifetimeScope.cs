@@ -100,6 +100,8 @@ namespace Dragoraptor.Di
             builder.Register<PoolFactory>(Lifetime.Singleton).As<IPoolFactory>();
             builder.Register<ObjectPoolManager>(Lifetime.Singleton).AsImplementedInterfaces();
 
+            builder.Register<LevelProgressController>(Lifetime.Singleton).AsImplementedInterfaces();
+
         }
     }
 }

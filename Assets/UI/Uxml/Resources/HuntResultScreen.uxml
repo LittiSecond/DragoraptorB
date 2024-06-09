@@ -1,10 +1,43 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Uss/HuntResyltStyle.uss?fileID=7433441132597879392&amp;guid=c743461c8c4196d4888dcbd3cb96ff82&amp;type=3#HuntResyltStyle" />
     <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
-    <ui:VisualElement name="hunt-result-bg" class="hunt-result-bg">
+    <ui:VisualElement name="hunt-result-bg" class="hunt-result-bg text-size">
         <ui:Label tabindex="-1" text="Охота окончена" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" name="caption" class="caption" />
-        <ui:VisualElement name="hunt-info-container" style="flex-grow: 1;">
-            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        <ui:VisualElement name="hunt-info-container" class="hunt-info-container">
+            <ui:VisualElement class="info-string-container">
+                <ui:Label tabindex="-1" text="Дожил до конца:" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:VisualElement name="survived-marker" class="yes-marker" />
+            </ui:VisualElement>
+            <ui:VisualElement class="info-string-container">
+                <ui:Label tabindex="-1" text="Наелся: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:VisualElement name="fed-marker" class="no-marker" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="победа/поражение" parse-escape-sequences="true" display-tooltip-when-elided="true" name="game-result" class="game-result" />
+            <ui:VisualElement name="score-bg" class="info-string-container">
+                <ui:Label tabindex="-1" text="Очки: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="9999" parse-escape-sequences="true" display-tooltip-when-elided="true" name="score-value" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Сытость: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <ui:VisualElement name="collected-satiety-bg" class="info-string-container add-spase-before-text">
+                <ui:Label tabindex="-1" text="набрано: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="79/105" parse-escape-sequences="true" display-tooltip-when-elided="true" name="collected-satiety-value" />
+            </ui:VisualElement>
+            <ui:VisualElement name="required-satiety-bg" class="info-string-container add-spase-before-text">
+                <ui:Label tabindex="-1" text="требуется: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="85" parse-escape-sequences="true" display-tooltip-when-elided="true" name="required-satiety-value" />
+            </ui:VisualElement>
+            <ui:VisualElement class="info-string-container">
+                <ui:Label tabindex="-1" text="За сытость: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="x0.85" parse-escape-sequences="true" display-tooltip-when-elided="true" name="satiety-multipler-value" />
+            </ui:VisualElement>
+            <ui:VisualElement class="info-string-container">
+                <ui:Label tabindex="-1" text="За победу: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="x1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="victory-multipler" />
+            </ui:VisualElement>
+            <ui:VisualElement name="score-result-bg" class="score-result-bg">
+                <ui:Label tabindex="-1" text="Итог: " parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="199999" parse-escape-sequences="true" display-tooltip-when-elided="true" name="score-result-value" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="buttons-container" class="buttons-container">
             <ui:Button text="Вернуться в гнездо" parse-escape-sequences="true" display-tooltip-when-elided="true" name="finish-button" class="normal-button end-hunt-buttons buttons-text" />

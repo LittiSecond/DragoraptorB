@@ -3,10 +3,6 @@
 }
 
 .end-hunt-buttons {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    margin-right: 20px;
-    margin-left: 20px;
     height: 400px;
     width: 40%;
 }
@@ -24,7 +20,7 @@
 }
 
 .caption {
-    margin-top: 40px;
+    margin-top: 100px;
     -unity-text-align: middle-center;
     font-size: 140px;
 }
@@ -32,4 +28,60 @@
 .buttons-container {
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 0;
+    padding-right: 40px;
+    padding-bottom: 120px;
+    padding-left: 40px;
+}
+
+.text-size {
+    font-size: 100px;
+}
+
+.hunt-info-container {
+    flex-grow: 1;
+    padding-right: 10%;
+    padding-left: 10%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.info-string-container {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.yes-marker {
+    background-image: url("project://database/Assets/Textures/Ui/markersVandX.png?fileID=474355028&guid=4d5e739de3da1544f954038524c437b2&type=3#markersVandX_0");
+    width: 150px;
+    height: 150px;
+    -unity-background-image-tint-color: rgb(107, 183, 94);
+}
+
+.no-marker {
+    background-image: url("project://database/Assets/Textures/Ui/markersVandX.png?fileID=610169886&guid=4d5e739de3da1544f954038524c437b2&type=3#markersVandX_1");
+    width: 150px;
+    height: 150px;
+    -unity-background-image-tint-color: rgb(195, 97, 97);
+}
+
+.game-result {
+    font-size: 130px;
+    -unity-text-align: upper-center;
+    color: rgb(156, 27, 27);
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.score-result-bg {
+    flex-grow: 1;
+    flex-direction: row;
+    font-size: 140px;
+    margin-top: 50px;
+    justify-content: space-between;
+}
+
+.add-spase-before-text {
+    padding-left: 8%;
 }

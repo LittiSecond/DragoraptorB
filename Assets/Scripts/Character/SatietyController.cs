@@ -23,10 +23,6 @@ namespace Dragoraptor.Character
         
         
         #region ISatietyController
-
-        public event Action OnVictorySatietyReached;
-        
-        public event Action OnMaxSatietyReached;
         
         public void ResetSatiety()
         {
@@ -53,14 +49,8 @@ namespace Dragoraptor.Character
                 if (_satiety >= _maxSatiety)
                 {
                     _satiety = _maxSatiety;
-                    OnMaxSatietyReached?.Invoke();
                 }
                 OnValueChanged?.Invoke(_satiety);
-
-                if (_satiety >= _victorySatiety * _maxSatiety)
-                {
-                    OnVictorySatietyReached?.Invoke();
-                }
             }
         }
 

@@ -23,6 +23,7 @@ namespace Dragoraptor.Core
         private INpcManager _npcManager;
         private IObjectPoolManager _poolManager;
         private IScoreManager _score;
+        private ILevelProgress _levelProgress;
         
         
         private GameState _gameState;
@@ -37,7 +38,8 @@ namespace Dragoraptor.Core
             ILevelTimer timer,
             INpcManager npcManager,
             IObjectPoolManager poolManager,
-            IScoreManager score)
+            IScoreManager score,
+            ILevelProgress levelProgress)
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
@@ -48,6 +50,7 @@ namespace Dragoraptor.Core
             _npcManager = npcManager;
             _poolManager = poolManager;
             _score = score;
+            _levelProgress = levelProgress;
         }
         
         public void StartProgram()
@@ -83,6 +86,7 @@ namespace Dragoraptor.Core
                 
                 _characterManager.CreateCharacter();
                 _characterManager.CharacterControlOn();
+                _levelProgress.LevelStart();
             }
         }
 
@@ -98,7 +102,9 @@ namespace Dragoraptor.Core
                 _poolManager.ClearPool();
                 //_characterManager.CharacterControlOff();
                 _characterManager.RemoveCharacter();
-                //_levelTimer.StopTimer();
+                _levelTimer.StopTimer();
+                _levelProgress.LevelEnd();
+                Debug.LogError("GameStateManager->SwitchToMainScreen: _levelProgress.LevelEnd() not ready");
                 _uiManager.SwitchToMainScreen();
                 _sceneController.SetMainScreenScene();
                 SwitchPause(false);

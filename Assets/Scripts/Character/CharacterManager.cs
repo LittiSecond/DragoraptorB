@@ -28,6 +28,7 @@ namespace Dragoraptor.Character
         private ISatietyController _satiety;
         private ITimersService _timersService;
         private IPlayerMediator _playerMediator;
+        private ICurrentLevelDescriptorHolder _levelDescriptorHolder;
 
         private Vector2 _spawnPosition;
         private float _charDeathDelay;
@@ -44,7 +45,8 @@ namespace Dragoraptor.Character
             IPlayerHealth health,
             ISatietyController satiety,
             ITimersService timersService,
-            IPlayerMediator mediator
+            IPlayerMediator mediator,
+            ICurrentLevelDescriptorHolder currentLevelDescriptorHolder
             )
         {
             //Debug.Log("CharacterManager->ctor:");
@@ -60,6 +62,7 @@ namespace Dragoraptor.Character
             _satiety = satiety;
             _timersService = timersService;
             _playerMediator = mediator;
+            _levelDescriptorHolder = currentLevelDescriptorHolder;
         }
 
 
@@ -89,7 +92,7 @@ namespace Dragoraptor.Character
             _stateHolder.SetState(CharacterState.Idle);
             _energyController.On();
             _energyController.Reset();
-            _satiety.SetVictorySatiety(0.5f);
+            _satiety.SetVictorySatiety(_levelDescriptorHolder.GetCurrentLevel().SatietyToSucces);
             _satiety.ResetSatiety();
         }
 
