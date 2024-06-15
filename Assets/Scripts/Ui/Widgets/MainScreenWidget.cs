@@ -15,11 +15,15 @@ namespace Dragoraptor.Ui
         private const string HUNT_BUTTON_NAME = "hunt-button";
 
         private IEventBus _eventBus;
-        
+        private LevelsMapWidget _levelsMapWidget; 
 
-        public MainScreenWidget(IUiFactory uiFactory, IEventBus eventBus) : base(uiFactory)
+        public MainScreenWidget(IUiFactory uiFactory, 
+            IEventBus eventBus, 
+            LevelsMapWidget levelsMapWidget
+            ) : base(uiFactory)
         {
             _eventBus = eventBus;
+            _levelsMapWidget = levelsMapWidget;
         }
 
         protected override void Initialise()
@@ -33,14 +37,17 @@ namespace Dragoraptor.Ui
 
             Button statButton = _root.Q<Button>(STATISIC_BUTTON_NAME);
             statButton.RegisterCallback<ClickEvent>(StatisticButtonClick);
+
+            _levelsMapWidget.OnCloseButtonClick += CloseLevelMap;
         }
 
 
 
         private void HuntButtonClick(ClickEvent e)
         {
-            Debug.Log("MainScreenWidget->HuntButtonClick: ");
-            _eventBus.Invoke(new StartHuntRequestSignal());
+            //Debug.Log("MainScreenWidget->HuntButtonClick: ");
+            //_eventBus.Invoke(new StartHuntRequestSignal());
+            _levelsMapWidget.Show();
         }
         
         private void MenuButtonClick(ClickEvent e)
@@ -51,6 +58,11 @@ namespace Dragoraptor.Ui
         private void StatisticButtonClick(ClickEvent e)
         {
             Debug.Log("MainScreenWidget->StatisticButtonClick: ");
+        }
+
+        private void CloseLevelMap()
+        {
+            _levelsMapWidget.Hide();
         }
 
     }

@@ -11,7 +11,10 @@ namespace Dragoraptor.Ui
         private const string HUNT_SCREEN_PATH = "HuntScreen"; 
         private const string HUNT_MENU_PATH = "HuntMenu"; 
         private const string HUNT_RESULT_WINDOW_PATH = "HuntResultScreen";
+        private const string LEVELS_MAP_WINDOW_PATH = "LevelsMap";
+        
         private const string HUNT_RESULT_STYLE_NAME = "hunt-result-root";
+        private const string LEVELS_MAP_STYLE_NAME = "levels-map-root";
 
         private UIDocument _uiDocument;
 
@@ -19,6 +22,7 @@ namespace Dragoraptor.Ui
         private VisualElement _huntScreenRoot;
         private VisualElement _huntMenuRoot;
         private VisualElement _huntResultWindow;
+        private VisualElement _levelsMap;
 
 
         public UiFactory(UIDocument uiDocument)
@@ -74,6 +78,20 @@ namespace Dragoraptor.Ui
             }
             
             return _huntResultWindow;
+        }
+
+        public VisualElement GetLevelsMapWindow()
+        {
+            if (_levelsMap == null)
+            {
+                VisualTreeAsset prefab = Resources.Load<VisualTreeAsset>(LEVELS_MAP_WINDOW_PATH);
+                _levelsMap = prefab.Instantiate();
+                _levelsMap.AddToClassList(LEVELS_MAP_STYLE_NAME);
+                _uiDocument.rootVisualElement.Add(_levelsMap);
+                //_mainScreenRoot.Add(_levelsMap);
+            }
+
+            return _levelsMap;
         }
         
     }

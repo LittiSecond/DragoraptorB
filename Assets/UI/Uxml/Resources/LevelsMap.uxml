@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/LevelsMap.uss?fileID=7433441132597879392&amp;guid=bf837715426a2ee4cbf73d7d992daf62&amp;type=3#LevelsMap" />
+    <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
+    <ui:VisualElement name="map-root" style="flex-grow: 1;">
+        <ui:VisualElement name="map-image" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/Ui/Map1.png?fileID=1369735498&amp;guid=70e556f872ce1224fb053356b821fed6&amp;type=3#Map1_2&quot;); margin-top: 15%; margin-bottom: 22%; margin-right: 8%; margin-left: 8%;" />
+        <ui:VisualElement name="map-frame" style="flex-grow: 1; position: absolute; background-image: url(&quot;project://database/Assets/Textures/Ui/square_rounded_frame6.png?fileID=21300000&amp;guid=3fc689b9a1ca12e4cbca5a48eabef85e&amp;type=3#square_rounded_frame6&quot;); width: 100%; height: 100%; -unity-slice-scale: 3.5px; -unity-background-image-tint-color: rgb(178, 121, 55); flex-direction: column-reverse; align-items: center;">
+            <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="close-button" class="round-close-button" style="position: absolute; top: 60px; right: 60px;" />
+            <ui:Button text="Начать охоту" parse-escape-sequences="true" display-tooltip-when-elided="true" name="start-hunt-button" class="normal-button" style="margin-bottom: 5%; height: 9%; width: 54%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

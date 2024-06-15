@@ -104,7 +104,6 @@ namespace Dragoraptor.Core
                 _characterManager.RemoveCharacter();
                 _levelTimer.StopTimer();
                 _levelProgress.LevelEnd();
-                Debug.LogError("GameStateManager->SwitchToMainScreen: _levelProgress.LevelEnd() not ready");
                 _uiManager.SwitchToMainScreen();
                 _sceneController.SetMainScreenScene();
                 SwitchPause(false);

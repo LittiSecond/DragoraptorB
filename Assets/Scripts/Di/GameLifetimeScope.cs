@@ -51,6 +51,7 @@ namespace Dragoraptor.Di
             builder.Register<LevelTimerView>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<ScoreView>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntResultWidget>(Lifetime.Singleton).AsSelf();
+            builder.Register<LevelsMapWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<PointerUiChecker>(Lifetime.Singleton).As<IPointerUiChecker>()
                 .WithParameter<UIDocument>(_sceneObjectsContainer.GetUIDocument);
             // ---------

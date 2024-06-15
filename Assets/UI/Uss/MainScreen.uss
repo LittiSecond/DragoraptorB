@@ -29,3 +29,8 @@
     height: 300px;
     width: 50%;
 }
+
+.main-screen-root {
+    width: 100%;
+    height: 100%;
+}
