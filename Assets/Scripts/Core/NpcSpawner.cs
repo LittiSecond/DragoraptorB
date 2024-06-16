@@ -47,6 +47,7 @@ namespace Dragoraptor.Core
         public void StopSpawn()
         {
             Debug.Log("NpcSpawner->StopSpawn:");
+            _isTiming = false;
         }
 
         public void SetCollector(INpcCollector collector)

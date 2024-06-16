@@ -10,17 +10,20 @@ namespace Dragoraptor.Ui
 {
     public class MainScreenWidget : ScreenWidgetBase
     {
-        private const string STATISIC_BUTTON_NAME = "statistic-button"; 
-        private const string MENU_BUTTON_NAME = "menu-button"; 
+        private const string STATISIC_BUTTON_NAME = "statistic-button";
+        private const string MENU_BUTTON_NAME = "menu-button";
         private const string HUNT_BUTTON_NAME = "hunt-button";
 
         private IEventBus _eventBus;
-        private LevelsMapWidget _levelsMapWidget; 
+        private LevelsMapWidget _levelsMapWidget;
 
-        public MainScreenWidget(IUiFactory uiFactory, 
-            IEventBus eventBus, 
+        private IScreenWidget _currentPanel;
+        
+
+        public MainScreenWidget(IUiFactory uiFactory,
+            IEventBus eventBus,
             LevelsMapWidget levelsMapWidget
-            ) : base(uiFactory)
+        ) : base(uiFactory)
         {
             _eventBus = eventBus;
             _levelsMapWidget = levelsMapWidget;
@@ -38,7 +41,7 @@ namespace Dragoraptor.Ui
             Button statButton = _root.Q<Button>(STATISIC_BUTTON_NAME);
             statButton.RegisterCallback<ClickEvent>(StatisticButtonClick);
 
-            _levelsMapWidget.OnCloseButtonClick += CloseLevelMap;
+            _levelsMapWidget.OnCloseButtonClick += CloseCurrentPanel;
         }
 
 
@@ -47,23 +50,41 @@ namespace Dragoraptor.Ui
         {
             //Debug.Log("MainScreenWidget->HuntButtonClick: ");
             //_eventBus.Invoke(new StartHuntRequestSignal());
-            _levelsMapWidget.Show();
+
+            if (_currentPanel != _levelsMapWidget as IScreenWidget)
+            {
+                _currentPanel?.Hide();
+                _levelsMapWidget.Show();
+                _currentPanel = _levelsMapWidget;
+            }
         }
-        
+
         private void MenuButtonClick(ClickEvent e)
         {
             Debug.Log("MainScreenWidget->MenuButtonClick: ");
         }
-        
+
         private void StatisticButtonClick(ClickEvent e)
         {
             Debug.Log("MainScreenWidget->StatisticButtonClick: ");
         }
 
-        private void CloseLevelMap()
+        private void CloseCurrentPanel()
         {
-            _levelsMapWidget.Hide();
+            _currentPanel?.Hide();
+            _currentPanel = null;
         }
 
+        public override void Show()
+        {
+            base.Show();
+            _currentPanel?.Show();
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            _currentPanel?.Hide();
+        }
     }
 }
