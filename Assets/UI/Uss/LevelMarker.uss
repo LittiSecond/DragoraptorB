@@ -1,0 +1,24 @@
+.marker-position {
+}
+
+.marker-bg {
+    background-image: url("project://database/Assets/Textures/Ui/Circles64.png?fileID=-1304964636&guid=3ebe5d5893118e34db8efbe06e0d49e4&type=3#Circles64_filled_b8");
+    width: 150px;
+    height: 150px;
+    translate: -50% -50%;
+    align-items: center;
+}
+
+.select-indicator {
+    background-image: url("project://database/Assets/Textures/Ui/circles.png?fileID=1251245101&guid=dc4396b969e3df341b954a9a2dcc708b&type=3#circles_3");
+    -unity-background-image-tint-color: rgb(47, 37, 255);
+    width: 180px;
+    height: 180px;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.marker-root {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

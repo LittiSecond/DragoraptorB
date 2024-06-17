@@ -4,6 +4,7 @@ using VContainer.Unity;
 
 using Dragoraptor.Character;
 using Dragoraptor.Core;
+using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
 
 
@@ -16,17 +17,20 @@ namespace Dragoraptor
         private CharStateHolder _stateHolder;
         private IReadOnlyList<ICharStateListener> _listeners;
         private SceneGeometry _sceneGeometry;
+        private IGameProgressStart _gameProgressStart;
 
         public GameStarter(GameStateManager gsm, 
             IReadOnlyList<ICharStateListener> list,
             CharStateHolder csh,
-            SceneGeometry sg
+            SceneGeometry sg, 
+            IGameProgressStart igps
             )
         {
             _gameStateManager = gsm;
             _stateHolder = csh;
             _listeners = list;
             _sceneGeometry = sg;
+            _gameProgressStart = igps;
         }
          
          
@@ -37,6 +41,7 @@ namespace Dragoraptor
             _sceneGeometry.Initialize();
             _stateHolder.SetStateListeners(_listeners);
             _gameStateManager.StartProgram();
+            _gameProgressStart.InitializeGameProgress();
         }
          
      }

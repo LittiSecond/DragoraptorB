@@ -35,6 +35,7 @@ namespace Dragoraptor.Di
             builder.Register<EventBusBehaviour>(Lifetime.Singleton).As<IEventBus>();
 
             builder.Register<GameStateManager>(Lifetime.Singleton).AsSelf();
+            builder.Register<GameProgress>(Lifetime.Singleton).AsImplementedInterfaces();
 
             // -------  Ui System --------
             builder.Register<UiFactory>(Lifetime.Singleton)
@@ -52,6 +53,7 @@ namespace Dragoraptor.Di
             builder.Register<ScoreView>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntResultWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<LevelsMapWidget>(Lifetime.Singleton).AsSelf();
+            builder.Register<UiLevelsMapController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<PointerUiChecker>(Lifetime.Singleton).As<IPointerUiChecker>()
                 .WithParameter<UIDocument>(_sceneObjectsContainer.GetUIDocument);
             // ---------
