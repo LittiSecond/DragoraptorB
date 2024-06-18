@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 
+using EventBus;
+
+using Dragoraptor.Interfaces.Ui;
+
 
 namespace Dragoraptor.Ui
 {
@@ -9,7 +13,6 @@ namespace Dragoraptor.Ui
         
         private const string SELECT_MARKER_NAME = "select-indicator";
         private const string BACKGROUND_NAME = "marker-bg";
-        private const string ROOT_STYLE_NAME = "marker-root";
         
         private const float TO_PERCENT_MULTIPLER = 100.0f;
 
@@ -17,6 +20,9 @@ namespace Dragoraptor.Ui
         private readonly Color _notAvialableColor = Color.grey;
         private readonly Color _avialableColor = Color.yellow;
         private readonly Color _finishedColor = Color.green;
+
+        private IUiFactory _uiFactory;
+        private IEventBus _eventBus;
         
         private VisualElement _root;
         private VisualElement _backGround;
@@ -62,14 +68,18 @@ namespace Dragoraptor.Ui
         }
 
 
-        public UiMissionIndicator(int number, Vector2 position, LevelStatus status)
+        public UiMissionIndicator(IUiFactory factory, IEventBus eventBus, 
+            int number, Vector2 position, LevelStatus status)
         {
+            _uiFactory = factory; 
+            _eventBus = eventBus;
             LevelNumber = number;
             Position = position;
             Status = status;
             _isSelected = false;
             _haveVisual = false;
         }
+
 
         public void SetParent(VisualElement parent)
         {
@@ -86,13 +96,11 @@ namespace Dragoraptor.Ui
 
         private VisualElement CreateVisual()
         {
-            //TODO: remove to the factory
-            VisualTreeAsset prefab = Resources.Load<VisualTreeAsset>("LevelMarker");
-            VisualElement root = prefab.Instantiate();
-            root.AddToClassList(ROOT_STYLE_NAME);
+            VisualElement root = _uiFactory.GetNewMissionIndicator();
             _parent.Add(root);
             _selectMarker = root.Q<VisualElement>(SELECT_MARKER_NAME);
             _backGround = root.Q<VisualElement>(BACKGROUND_NAME);
+            _backGround.RegisterCallback<ClickEvent>(OnClick);
 
             return root;
         }
@@ -157,6 +165,12 @@ namespace Dragoraptor.Ui
                     _selectMarker.style.visibility = new StyleEnum<Visibility>(Visibility.Hidden);
                 }
             }
+        }
+
+        private void OnClick(ClickEvent evt)
+        {
+            //Debug.Log("UiMissionIndicator->OnClick: LevelNumber = " + LevelNumber.ToString());
+            _eventBus.Invoke(new LevelClickedSignal(LevelNumber));
         }
         
         

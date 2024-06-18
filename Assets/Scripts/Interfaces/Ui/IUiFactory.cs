@@ -10,5 +10,6 @@ namespace Dragoraptor.Interfaces.Ui
         VisualElement GetHuntMenu();
         VisualElement GetHuntResultWindow();
         VisualElement GetLevelsMapWindow();
+        VisualElement GetNewMissionIndicator();
     }
 }

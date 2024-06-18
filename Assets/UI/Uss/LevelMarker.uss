@@ -2,19 +2,23 @@
 }
 
 .marker-bg {
-    background-image: url("project://database/Assets/Textures/Ui/Circles64.png?fileID=-1304964636&guid=3ebe5d5893118e34db8efbe06e0d49e4&type=3#Circles64_filled_b8");
-    width: 150px;
-    height: 150px;
+    background-image: url("project://database/Assets/Textures/Ui/levelMarkerV1.png?fileID=-1127009879&guid=e748855eed55d1e4cb8c90e7e5e24f13&type=3#levelMarkerV1_0");
+    width: 200px;
+    height: 200px;
     translate: -50% -50%;
     align-items: center;
 }
 
 .select-indicator {
-    background-image: url("project://database/Assets/Textures/Ui/circles.png?fileID=1251245101&guid=dc4396b969e3df341b954a9a2dcc708b&type=3#circles_3");
+    background-image: url("project://database/Assets/Textures/Ui/levelMarkerV1.png?fileID=1862582436&guid=e748855eed55d1e4cb8c90e7e5e24f13&type=3#levelMarkerV1_1");
     -unity-background-image-tint-color: rgb(47, 37, 255);
-    width: 180px;
-    height: 180px;
+    width: 196px;
+    height: 196px;
     -unity-background-scale-mode: scale-and-crop;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
 }
 
 .marker-root {

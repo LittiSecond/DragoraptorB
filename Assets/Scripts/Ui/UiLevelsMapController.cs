@@ -2,7 +2,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+using EventBus;
+
 using Dragoraptor.Interfaces.MissionMap;
+using Dragoraptor.Interfaces.Ui;
 
 
 namespace Dragoraptor.Ui
@@ -12,6 +15,8 @@ namespace Dragoraptor.Ui
 
         private Dictionary<int, UiMissionIndicator> _missionsTable = new();
 
+        private IUiFactory _factory;
+        private IEventBus _eventBus;
         private VisualElement _mapRoot;
         private UiMissionIndicator _selectedMission;
 
@@ -19,7 +24,11 @@ namespace Dragoraptor.Ui
         private bool _isVisualEnabled;
 
 
-        
+        public UiLevelsMapController(IUiFactory factory, IEventBus eventBus)
+        {
+            _factory = factory;
+            _eventBus = eventBus;
+        }
         
         
         #region ILevelsMapController
@@ -44,7 +53,8 @@ namespace Dragoraptor.Ui
         {
             if (!_missionsTable.ContainsKey(levelNumber))
             {
-                UiMissionIndicator newIndicator = new UiMissionIndicator(levelNumber, position, startStatus);
+                UiMissionIndicator newIndicator = new UiMissionIndicator(_factory, _eventBus,
+                    levelNumber, position, startStatus);
                 _missionsTable.Add(levelNumber, newIndicator);
                 if (_isVisualEnabled)
                 {
@@ -76,6 +86,7 @@ namespace Dragoraptor.Ui
             if (_selectedMission != null)
             {
                 _selectedMission.IsSelected = false;
+                _selectedMission = null;
             }
         }
         

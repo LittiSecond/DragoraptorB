@@ -12,9 +12,11 @@ namespace Dragoraptor.Ui
         private const string HUNT_MENU_PATH = "HuntMenu"; 
         private const string HUNT_RESULT_WINDOW_PATH = "HuntResultScreen";
         private const string LEVELS_MAP_WINDOW_PATH = "LevelsMap";
-        
+        private const string MISSION_INDICATOR_PATH = "LevelMarker";
+
         private const string HUNT_RESULT_STYLE_NAME = "hunt-result-root";
         private const string LEVELS_MAP_STYLE_NAME = "levels-map-root";
+        private const string MISSION_INDICATOR_STYLE_NAME = "marker-root";
 
         private UIDocument _uiDocument;
 
@@ -23,6 +25,8 @@ namespace Dragoraptor.Ui
         private VisualElement _huntMenuRoot;
         private VisualElement _huntResultWindow;
         private VisualElement _levelsMap;
+
+        private VisualTreeAsset _missionIndicatorPrefab;
 
 
         public UiFactory(UIDocument uiDocument)
@@ -93,6 +97,17 @@ namespace Dragoraptor.Ui
 
             return _levelsMap;
         }
-        
+
+        public VisualElement GetNewMissionIndicator()
+        {
+            if (_missionIndicatorPrefab == null)
+            {
+                _missionIndicatorPrefab = Resources.Load<VisualTreeAsset>(MISSION_INDICATOR_PATH);
+            }
+
+            VisualElement root = _missionIndicatorPrefab.Instantiate();
+            root.AddToClassList(MISSION_INDICATOR_STYLE_NAME);
+            return root;
+        }
     }
 }
