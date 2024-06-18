@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 048f256fcc865eb40bdc12242c112b43
+guid: 03e39cb5407fa584598aba2486f10569
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: dryTrees_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 119
+        height: 263
+      alignment: 9
+      pivot: {x: 0.5641191, y: 0.06689139}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa8ee604fd6f864c97d779505279e48
+      internalID: -602289059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dryTrees_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 112
+        height: 303
+      alignment: 9
+      pivot: {x: 0.6167883, y: 0.04312512}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d437d68634476d4a83049378953acdf
+      internalID: 1758517588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dryTrees_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 117
+        height: 257
+      alignment: 9
+      pivot: {x: 0.5, y: 0.056780048}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 022037afbe007aa469e9eac0933a2fa6
+      internalID: 787098300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dryTrees_3
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 0
+        width: 67
+        height: 280
+      alignment: 9
+      pivot: {x: 0.4918655, y: 0.036739625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b017a903f3ac5c940ba96a5306351c8f
+      internalID: -2037682528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dryTrees_4
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 0
+        width: 187
+        height: 320
+      alignment: 9
+      pivot: {x: 0.5233161, y: 0.053771336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe12f33508277e643ab4ee597dcdfd73
+      internalID: -1000924861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dryTrees_5
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 8
+        width: 53
+        height: 70
+      alignment: 9
+      pivot: {x: 0.4691519, y: 0.1885645}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9eb144313f8d94abe8219ef86e2d79
+      internalID: 169477957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +258,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dryTrees_0: -602289059
+      dryTrees_1: 1758517588
+      dryTrees_2: 787098300
+      dryTrees_3: -2037682528
+      dryTrees_4: -1000924861
+      dryTrees_5: 169477957
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

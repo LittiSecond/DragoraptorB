@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c36c4a174144a9b04fb4c2275c23a4, type: 3}
-  m_Name: DefaultCampaign
+  m_Script: {fileID: 11500000, guid: f87063a7ed4346cab164843d3587beb8, type: 3}
+  m_Name: Level5
   m_EditorClassIdentifier: 
-  LevelPaths:
-  - Levels/Level1/Level1
-  - Levels/Level2/Level2
-  - Levels/Level3/Level3
-  - Levels/Level4/Level4
-  - Levels/Level5/Level5
+  LevelId: 0
+  GroundPrefab: {fileID: 0}
+  BackgroundPrefab: {fileID: 0}
+  SatietyToSucces: 0.75
+  LevelDuration: 180
