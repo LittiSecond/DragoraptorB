@@ -6,6 +6,7 @@ using VContainer.Unity;
 
 using TimersService;
 using EventBus;
+using ObjPool;
 
 using Dragoraptor.Character;
 using Dragoraptor.Core;
@@ -16,7 +17,6 @@ using Dragoraptor.Interfaces.Ui;
 using Dragoraptor.Interfaces.Npc;
 using Dragoraptor.MonoBehs;
 using Dragoraptor.Ui;
-using ObjPool;
 
 
 namespace Dragoraptor.Di
@@ -63,7 +63,7 @@ namespace Dragoraptor.Di
             builder.Register<AreaChecker>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
-            builder.Register<LevelLoaderStump>(Lifetime.Singleton).As<ICurrentLevelDescriptorHolder>();
+            //builder.Register<LevelLoaderStump>(Lifetime.Singleton).As<ICurrentLevelDescriptorHolder>();
 
             //  -----  Character system  -----
             builder.Register<CharacterManager>(Lifetime.Singleton).AsImplementedInterfaces();

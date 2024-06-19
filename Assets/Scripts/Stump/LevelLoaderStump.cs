@@ -19,5 +19,10 @@ namespace Dragoraptor
 
             return _levelDescriptor;
         }
+        
+        public bool IsLevelReady()
+        {
+            return true;
+        }
     }
 }

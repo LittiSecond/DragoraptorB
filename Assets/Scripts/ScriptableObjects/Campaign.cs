@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dragoraptor.Models;
+using UnityEngine;
 
 
 namespace Dragoraptor.ScriptableObjects
@@ -6,8 +7,6 @@ namespace Dragoraptor.ScriptableObjects
     [CreateAssetMenu(fileName = "NewCampaign", menuName = "Resources/Campaign")]
     public sealed class Campaign : ScriptableObject
     {
-
-        public string[] LevelPaths;
-
+        public CampaignLevelData[] CampaignLevelDatas;
     }
 }

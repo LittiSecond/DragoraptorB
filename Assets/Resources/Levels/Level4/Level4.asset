@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87063a7ed4346cab164843d3587beb8, type: 3}
   m_Name: Level4
   m_EditorClassIdentifier: 
-  LevelId: 0
-  GroundPrefab: {fileID: 0}
-  BackgroundPrefab: {fileID: 0}
+  LevelId: 4
+  GroundPrefab: {fileID: 317694793326652323, guid: b2a60c9ea0e4c564abb94d7fef686f9d, type: 3}
+  BackgroundPrefab: {fileID: 7493370335623808135, guid: b68c610f2e18b5443b0a47a6c87d1920, type: 3}
   SatietyToSucces: 0.75
   LevelDuration: 180

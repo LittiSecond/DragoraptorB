@@ -24,6 +24,7 @@ namespace Dragoraptor.Core
         private IObjectPoolManager _poolManager;
         private IScoreManager _score;
         private ILevelProgress _levelProgress;
+        private ICurrentLevelDescriptorHolder _levelDescriptorHolder; 
         
         
         private GameState _gameState;
@@ -39,7 +40,8 @@ namespace Dragoraptor.Core
             INpcManager npcManager,
             IObjectPoolManager poolManager,
             IScoreManager score,
-            ILevelProgress levelProgress)
+            ILevelProgress levelProgress, 
+            ICurrentLevelDescriptorHolder levelDescriptorHolder)
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
@@ -51,6 +53,7 @@ namespace Dragoraptor.Core
             _poolManager = poolManager;
             _score = score;
             _levelProgress = levelProgress;
+            _levelDescriptorHolder = levelDescriptorHolder;
         }
         
         public void StartProgram()
@@ -73,7 +76,7 @@ namespace Dragoraptor.Core
         private void SwitchToHunt(StartHuntRequestSignal signal)
         {
             Debug.Log("GameStateManager->SwitchToHunt:");
-            if (_gameState == GameState.MainScreen)
+            if (_gameState == GameState.MainScreen && _levelDescriptorHolder.IsLevelReady())
             {
                 _gameState = GameState.Game;
                 _uiManager.SwitchToHunt();
