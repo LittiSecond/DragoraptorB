@@ -14,18 +14,15 @@ namespace Dragoraptor.Core
     public class GameProgress : IGameProgressStart, ICurrentLevelDescriptorHolder
     {
 
-
-        private ILevelMapView _levelsMapView;
-        private IEventBus _eventBus;
-        private ILevelLoader _levelLoader;
+        private readonly ILevelMapView _levelsMapView;
+        private readonly IEventBus _eventBus;
+        private readonly ILevelLoader _levelLoader;
             
         private Campaign _campaign;
         private ProgressData _progressData;
         private LevelDescriptor _loadedLevel;
 
-
         private int _loadedLevelNumber;
-        private int _selectedLevelNumber;
         
 
         public GameProgress(ILevelMapView levelMapView, IEventBus eventBus, IDataHolder dataHolder)
@@ -44,7 +41,7 @@ namespace Dragoraptor.Core
             _levelLoader.SetCampaign(_campaign);
             PrepareProgressData();
             CreateLevelsOnMap();
-            _selectedLevelNumber = 0;
+            SelectLastAvailableLevel();
             _eventBus.Subscribe<LevelClickedSignal>(SelectLevel);
         }
         
@@ -55,10 +52,11 @@ namespace Dragoraptor.Core
         
         public LevelDescriptor GetCurrentLevel()
         {
-            if (_selectedLevelNumber != _loadedLevelNumber && _selectedLevelNumber > 0)
+            int selectedLevelNumber = _progressData.CurrentLevelNumber;
+            if (selectedLevelNumber != _loadedLevelNumber && selectedLevelNumber > 0)
             {
-                _loadedLevel = _levelLoader.GetLevelDescriptor(_selectedLevelNumber);
-                _loadedLevelNumber = _selectedLevelNumber;
+                _loadedLevel = _levelLoader.GetLevelDescriptor(selectedLevelNumber);
+                _loadedLevelNumber = selectedLevelNumber;
             }
             
             return _loadedLevel;
@@ -66,7 +64,7 @@ namespace Dragoraptor.Core
 
         public bool IsLevelReady()
         {
-            return _selectedLevelNumber > 0;
+            return _progressData.CurrentLevelNumber > 0;
         }
         
         #endregion
@@ -74,16 +72,20 @@ namespace Dragoraptor.Core
         
         private void SelectLevel(LevelClickedSignal signal)
         {
-            if (signal.LevelNumber == _selectedLevelNumber)
+            if (signal.LevelNumber == _progressData.CurrentLevelNumber)
             {
-                _levelsMapView.ClearLevelSelection();
-                _selectedLevelNumber = 0;
+                //_levelsMapView.ClearLevelSelection();
+                //_selectedLevelNumber = 0;
             }
             else
             {
-                _levelsMapView.ClearLevelSelection();
-                _levelsMapView.SetLevelSelected(signal.LevelNumber);
-                _selectedLevelNumber = signal.LevelNumber;
+                LevelStatus status = _progressData.Levels[signal.LevelNumber - 1].Status;
+                if (status == LevelStatus.Available || status == LevelStatus.Finished)
+                {
+                    _levelsMapView.ClearLevelSelection();
+                    _levelsMapView.SetLevelSelected(signal.LevelNumber);
+                    _progressData.CurrentLevelNumber = signal.LevelNumber;
+                }
             }
             
         }
@@ -95,7 +97,8 @@ namespace Dragoraptor.Core
             {
                 CampaignLevelData levelData = _campaign.CampaignLevelDatas[i];
                 LevelProgressInfo levelProgressInfo = new LevelProgressInfo(i + 1);
-                levelProgressInfo.Status = levelData.StartStatus;
+                LevelStatus status = levelData.StartStatus;
+                levelProgressInfo.Status = status;
                 _progressData.Levels.Add(levelProgressInfo);
             }
         }
@@ -119,8 +122,21 @@ namespace Dragoraptor.Core
                 _levelsMapView.CreateLevel(i + 1, levelData.PositionOnMap, levelData.StartStatus);
             }
         }
-        
-        
+
+        private void SelectLastAvailableLevel()
+        {
+            for (int i = _progressData.Levels.Count - 1; i >= 0; i--)
+            {
+                LevelStatus status = _progressData.Levels[i].Status;
+                if (status == LevelStatus.Available || status == LevelStatus.Finished)
+                {
+                    _progressData.CurrentLevelNumber = i + 1;
+                    _levelsMapView.ClearLevelSelection();
+                    _levelsMapView.SetLevelSelected(_progressData.CurrentLevelNumber);
+                    break;
+                }
+            }
+        }
         
     }
 }
