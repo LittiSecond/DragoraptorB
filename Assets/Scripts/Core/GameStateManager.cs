@@ -127,6 +127,7 @@ namespace Dragoraptor.Core
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
                 _npcManager.StopSpawn();
+                //_levelProgress.LevelEnd();
                 _uiManager.ShowEndHuntWindow();
                 SwitchPause(true);
             }
@@ -162,6 +163,7 @@ namespace Dragoraptor.Core
             Debug.Log("GameStateManager->RestartHunt:");
             if (_gameState == GameState.Game)
             {
+                _levelProgress.LevelEnd();
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
                 _npcManager.StopSpawn();
@@ -173,6 +175,7 @@ namespace Dragoraptor.Core
                 _score.ClearScore();
                 _levelTimer.StartTimer();
                 _npcManager.RestartSpawn();
+                _levelProgress.LevelStart();
                 SwitchPause(false);
             }
             

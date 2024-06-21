@@ -11,7 +11,7 @@ using Dragoraptor.ScriptableObjects;
 
 namespace Dragoraptor.Core
 {
-    public class GameProgress : IGameProgressStart, ICurrentLevelDescriptorHolder
+    public class GameProgress : IGameProgressStart, ICurrentLevelDescriptorHolder, IGameProgressCollector
     {
 
         private readonly ILevelMapView _levelsMapView;
@@ -137,6 +137,45 @@ namespace Dragoraptor.Core
                 }
             }
         }
+
+        
+        #region IGameProgressCollector
+        
+        public void RegistrateHuntResults(IHuntResults results)
+        {
+            _progressData.HuntsTotal++;
+            _progressData.TotalScore += results.TotalScore;
+            _progressData.LastScore = results.TotalScore;
+
+            LevelProgressInfo currentLevel = _progressData.Levels[_progressData.CurrentLevelNumber - 1];
+            if (currentLevel.BestScore < results.TotalScore)
+            {
+                currentLevel.BestScore = results.TotalScore;
+            }
+
+            if (results.IsSucces)
+            {
+                if (_progressData.CurrentLevelNumber < _progressData.Levels.Count)
+                {
+                    int nextLevelNumber = _progressData.CurrentLevelNumber + 1;
+                    LevelProgressInfo nextLevel = _progressData.Levels[nextLevelNumber - 1];
+                    if (nextLevel.Status == LevelStatus.Hidden || nextLevel.Status == LevelStatus.NotAvailable)
+                    {
+                        nextLevel.Status = LevelStatus.Available;
+                        _levelsMapView.SetLevelStatus(nextLevelNumber, LevelStatus.Available);
+                    }
+                }
+
+                if (currentLevel.Status == LevelStatus.Available)
+                {
+                    currentLevel.Status = LevelStatus.Finished;
+                    _levelsMapView.SetLevelStatus(_progressData.CurrentLevelNumber, LevelStatus.Finished);
+                    _progressData.CompletedLevels++;
+                }
+            }
+        }
+        
+        #endregion
         
     }
 }

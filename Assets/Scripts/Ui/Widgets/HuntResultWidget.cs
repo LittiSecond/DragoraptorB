@@ -96,8 +96,8 @@ namespace Dragoraptor.Ui
             _collectedSatietyValue.text =
                 huntResults.CollectedSatiety.ToString() + "/" + huntResults.MaxSatiety.ToString();
             _requiredSatietyValue.text = huntResults.SatietyCondition.ToString();
-            _satietyScoreMultipler.text = huntResults.SatietyScoreMultipler.ToString(STRING_FORMAT);
-            _victoryScoreMultipler.text = huntResults.VictoryScoreMultipler.ToString();
+            _satietyScoreMultipler.text = "x" + huntResults.SatietyScoreMultipler.ToString(STRING_FORMAT);
+            _victoryScoreMultipler.text = "x" + huntResults.VictoryScoreMultipler.ToString();
             _fullResultScore.text = huntResults.TotalScore.ToString();
         }
 
