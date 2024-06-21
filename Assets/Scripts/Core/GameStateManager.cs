@@ -65,7 +65,7 @@ namespace Dragoraptor.Core
                 _eventBus.Subscribe<StartHuntRequestSignal>(SwitchToHunt);
                 _eventBus.Subscribe<StopHuntRequestSignal>(BreakHunt);
                 _eventBus.Subscribe<LevelTimeUpSignal>(LevelTimeUp);
-                _eventBus.Subscribe<CloseHuntRequestSignal>(CloseHunt);
+                _eventBus.Subscribe<ExitFromHuntRequestSignal>(CloseHunt);
                 _eventBus.Subscribe<RestartHuntRequestSignal>(RestartHunt);
                 _eventBus.Subscribe<HuntMenuOnOffSignal>(OnHuntMenuSwitch);
                 _gameState = GameState.MainScreen;
@@ -142,17 +142,19 @@ namespace Dragoraptor.Core
         private void LevelTimeUp(LevelTimeUpSignal signal)
         {
             Debug.Log("GameStateManager->LevelTimeUp:");
-            if (_gameState == GameState.Game)
-            {
-                _characterManager.CharacterControlOff();
-                _levelTimer.StopTimer();
-                _npcManager.StopSpawn();
-                _uiManager.ShowEndHuntWindow();
-                SwitchPause(true);
-            }
+            BreakHunt();
+            //if (_gameState == GameState.Game)
+            // {
+            //     _characterManager.CharacterControlOff();
+            //     _levelTimer.StopTimer();
+            //     _npcManager.StopSpawn();
+            //     _uiManager.ShowEndHuntWindow();
+            //     SwitchPause(true);
+            // }
+            
         }
 
-        private void CloseHunt(CloseHuntRequestSignal signal)
+        private void CloseHunt(ExitFromHuntRequestSignal signal)
         {
             Debug.Log("GameStateManager->CloseHunt:");
             SwitchToMainScreen();

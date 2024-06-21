@@ -1,6 +1,6 @@
 ﻿namespace EventBus
 {
-    public class CloseHuntRequestSignal
+    public class ExitFromHuntRequestSignal
     {
         
     }

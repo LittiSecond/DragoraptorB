@@ -33,7 +33,6 @@ namespace Dragoraptor.Core
         private bool _isSatietyConditionMet;
         private bool _isSatietyFull;
         private bool _isTimeUp;
-        private bool _isHuntResultsCompleted;
         
 
         public LevelProgressController(IDataHolder dataHolder,
@@ -91,7 +90,16 @@ namespace Dragoraptor.Core
         
         public IHuntResults GetHuntResults()
         {
-            Debug.Log("LevelProgressController->GetHuntResults: ");
+            GenerateHuntResults();
+            return _lastHuntResults;
+        }
+        
+        #endregion
+
+
+        private void GenerateHuntResults()
+        {
+            Debug.Log("LevelProgressController->GenerateHuntResults: ");
             _lastHuntResults ??= new HuntResults();
             _lastHuntResults.IsAlive = _isCharacterAlive;
             _lastHuntResults.IsSatietyCompleted = _isSatietyConditionMet;
@@ -104,16 +112,12 @@ namespace Dragoraptor.Core
             _lastHuntResults.SatietyScoreMultipler = CalculateSatietyScoreMultipler();
             _lastHuntResults.TotalScore = CalculateTotalScore(isVictory);
             _lastHuntResults.VictoryScoreMultipler = isVictory ? _victoryScoreMultipler : _defeatScoreMultipler;
-            //RegistrateHuntResults();
-
-            return _lastHuntResults;
         }
         
-        #endregion
-
 
         private void OnLevelTimeUp(LevelTimeUpSignal signal)
         {
+            Debug.Log("LevelProgressController->OnLevelTimeUp: ");
             _isTimeUp = true;
         }
 
@@ -133,7 +137,8 @@ namespace Dragoraptor.Core
         
         private void RegistrateHuntResults()
         {
-            Debug.Log("LevelProgressController->RegistrateHuntResults: ");
+            //Debug.Log("LevelProgressController->RegistrateHuntResults: ");
+            GenerateHuntResults();
             _gameProgressCollector.RegistrateHuntResults(_lastHuntResults);
         }
         

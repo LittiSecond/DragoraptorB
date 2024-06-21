@@ -1,4 +1,5 @@
-﻿using Dragoraptor.Core;
+﻿using System.Threading.Tasks;
+using Dragoraptor.Core;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -102,6 +103,12 @@ namespace Dragoraptor.Ui
 
         public void ShowEndHuntScreen()
         {
+            ShowEndHuntScreenDelay();
+        }
+
+        private async void ShowEndHuntScreenDelay()
+        {
+            await Task.Delay(100);
             _huntResultWidget.Show();
             _isEndHuntScreenOpen = true;
         }
@@ -140,7 +147,7 @@ namespace Dragoraptor.Ui
             {
                 CloseMenu();
             }
-            _eventBus.Invoke(new CloseHuntRequestSignal());
+            _eventBus.Invoke(new ExitFromHuntRequestSignal());
         }
 
     }
