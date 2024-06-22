@@ -46,12 +46,13 @@ namespace Dragoraptor.Di
             builder.Register<HuntScreenWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<HuntMenuWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<NoEnergyMessageView>(Lifetime.Singleton).AsImplementedInterfaces();
-            builder.Register<EnergyView>(Lifetime.Singleton).AsSelf();
-            builder.Register<HealthView>(Lifetime.Singleton).AsSelf();
-            builder.Register<SatietyView>(Lifetime.Singleton).AsSelf();
+            builder.Register<EnergyView>(Lifetime.Singleton).As<IHuntUiInitializable>();
+            builder.Register<HealthView>(Lifetime.Singleton).As<IHuntUiInitializable>();
+            builder.Register<SatietyView>(Lifetime.Singleton).As<IHuntUiInitializable>();
             builder.Register<LevelTimerView>(Lifetime.Singleton).AsImplementedInterfaces();
-            builder.Register<ScoreView>(Lifetime.Singleton).AsSelf();
+            builder.Register<ScoreView>(Lifetime.Singleton).As<IHuntUiInitializable>();
             builder.Register<HuntResultWidget>(Lifetime.Singleton).AsSelf();
+            builder.Register<EndHuntMessageView>(Lifetime.Singleton).As<IHuntUiInitializable>();
             builder.Register<LevelsMapWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<UiLevelsMapController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<PointerUiChecker>(Lifetime.Singleton).As<IPointerUiChecker>()
@@ -62,7 +63,7 @@ namespace Dragoraptor.Di
             builder.Register<SceneGeometry>(Lifetime.Singleton).AsSelf().As<ISceneGeometry>();
             builder.Register<AreaChecker>(Lifetime.Singleton).AsImplementedInterfaces();
 
-            builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
+            //builder.Register<VictoryPossibilityStump>(Lifetime.Singleton).As<IVictoryPossibilityHolder>();
             //builder.Register<LevelLoaderStump>(Lifetime.Singleton).As<ICurrentLevelDescriptorHolder>();
 
             //  -----  Character system  -----

@@ -6,7 +6,7 @@ using Dragoraptor.Interfaces.Ui;
 
 namespace Dragoraptor.Ui
 {
-    public class EnergyView : ResourceView
+    public class EnergyView : ResourceView, IHuntUiInitializable
     {
 
         private const string ENERGY_VIEW_ROOT_NAME = "energy-root";
@@ -21,13 +21,17 @@ namespace Dragoraptor.Ui
         }
 
 
-        public void Initialize()
+        #region IHuntUiInitializable
+        
+        public void InitializeUi()
         {
             VisualElement root = _factory.GetHuntScreen();
             VisualElement energyRoot = root.Q<VisualElement>(ENERGY_VIEW_ROOT_NAME);
             ProgressBar bar = energyRoot.Q<ProgressBar>(PROGRESS_BAR_NAME);
             base.Initialize(bar);
         }
+        
+        #endregion
 
     }
 }

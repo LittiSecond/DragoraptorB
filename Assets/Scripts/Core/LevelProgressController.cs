@@ -10,7 +10,7 @@ using Dragoraptor.Models;
 
 namespace Dragoraptor.Core
 {
-    public class LevelProgressController : ILevelProgress, IHuntResultsSource
+    public class LevelProgressController : ILevelProgress, IHuntResultsSource, IVictoryPossibilityHolder
     {
 
         private readonly ISatietyObservable _playerSatiety;
@@ -33,8 +33,21 @@ namespace Dragoraptor.Core
         private bool _isSatietyConditionMet;
         private bool _isSatietyFull;
         private bool _isTimeUp;
-        
 
+
+        #region IVictoryPossibilityHolder
+
+        public bool IsVictory
+        {
+            get
+            {
+                return IsVictoryCheck();
+            }
+        }
+
+        #endregion
+        
+        
         public LevelProgressController(IDataHolder dataHolder,
             ISatietyObservable satietyObservable,
             IScoreSource scoreSource, 
@@ -95,8 +108,7 @@ namespace Dragoraptor.Core
         }
         
         #endregion
-
-
+        
         private void GenerateHuntResults()
         {
             Debug.Log("LevelProgressController->GenerateHuntResults: ");

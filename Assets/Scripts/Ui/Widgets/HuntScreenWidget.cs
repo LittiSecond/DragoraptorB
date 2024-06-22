@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Dragoraptor.Core;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,11 +19,8 @@ namespace Dragoraptor.Ui
         private Button _menuButton;
         private HuntMenuWidget _menuWidget;
         private HuntResultWidget _huntResultWidget;
-        private EnergyView _energyView;
-        private HealthView _healthView;
-        private SatietyView _satietyView;
-        private ScoreView _scoreView;
         private IEventBus _eventBus;
+        private IReadOnlyList<IHuntUiInitializable> _toInitializeObjects;
 
 
         private bool _isMenuOpened;
@@ -32,21 +30,14 @@ namespace Dragoraptor.Ui
         public HuntScreenWidget(IUiFactory uiFactory, 
             HuntMenuWidget menuWidget, 
             IEventBus eventBus,
-            EnergyView energyView,
-            HealthView healthView,
             HuntResultWidget resultWidget,
-            ScoreView scoreView,
-            SatietyView satietyView
-            ) 
+            IReadOnlyList<IHuntUiInitializable> initializables) 
             : base(uiFactory)
         {
             _menuWidget = menuWidget;
             _eventBus = eventBus;
-            _energyView = energyView;
-            _healthView = healthView;
             _huntResultWidget = resultWidget;
-            _scoreView = scoreView;
-            _satietyView = satietyView;
+            _toInitializeObjects = initializables;
         }
         
         protected override void Initialise()
@@ -56,10 +47,12 @@ namespace Dragoraptor.Ui
             _menuButton.RegisterCallback<ClickEvent>(MenuButtonClick);
             _menuWidget.OnContinueButtonClick += ContinueButtonClick;
             _menuWidget.OnBreakButtonClick += BreakHuntButtonClick;
-            _energyView.Initialize();
-            _healthView.Initialize();
-            _satietyView.Initialize();
-            _scoreView.Initialize();
+
+            for (int i = 0; i < _toInitializeObjects.Count; i++)
+            {
+                _toInitializeObjects[i].InitializeUi();
+            }
+            
             _huntResultWidget.AddListeners(GetOutOfTheHuntButtonClick, RestartHuntButtonClick);
         }
 

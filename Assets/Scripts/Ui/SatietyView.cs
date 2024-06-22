@@ -7,7 +7,7 @@ using Dragoraptor.Interfaces.Ui;
 
 namespace Dragoraptor.Ui
 {
-    public class SatietyView : ResourceView
+    public class SatietyView : ResourceView, IHuntUiInitializable
     {
 
         private const float TO_PERCENT_MULTIPLER = 100.0f;
@@ -26,8 +26,10 @@ namespace Dragoraptor.Ui
             _factory = factory;
             _satietySource = resource;
         }
+
+        #region IHuntUiInitializable
         
-        public void Initialize()
+        public void InitializeUi()
         {
             VisualElement root = _factory.GetHuntScreen();
             VisualElement satietyRoot = root.Q<VisualElement>(SATIETY_VIEW_ROOT_NAME);
@@ -36,6 +38,8 @@ namespace Dragoraptor.Ui
             _satietySource.OnVictorySatietyChanged += VictorySatietyChanged;
             base.Initialize(bar);
         }
+        
+        #endregion
 
         private void VictorySatietyChanged(float satietyRelativeMax)
         {

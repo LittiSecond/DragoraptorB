@@ -6,7 +6,7 @@ using Dragoraptor.Interfaces.Ui;
 
 namespace Dragoraptor.Ui
 {
-    public class ScoreView
+    public class ScoreView : IHuntUiInitializable
     {
 
         private string SCORE_TEXT_NAME = "score-value";
@@ -21,14 +21,18 @@ namespace Dragoraptor.Ui
             _scoreSource = scoreSource;
             _factory = factory;
         }
+
+        #region IHuntUiInitializable
         
-        public void Initialize()
+        public void InitializeUi()
         {
             VisualElement root = _factory.GetHuntScreen();
             _scoreText = root.Q<Label>(SCORE_TEXT_NAME);
 
             _scoreSource.OnScoreChanged += newValue => _scoreText.text = newValue.ToString();
         }
+        
+        #endregion
 
     }
 }
