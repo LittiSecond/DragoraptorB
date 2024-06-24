@@ -55,6 +55,8 @@ namespace Dragoraptor.Di
             builder.Register<EndHuntMessageView>(Lifetime.Singleton).As<IHuntUiInitializable>();
             builder.Register<LevelsMapWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<UiLevelsMapController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<SettingsPanelWidget>(Lifetime.Singleton).AsSelf();
+            builder.Register<StatisticPanelWidget>(Lifetime.Singleton).AsSelf();
             builder.Register<PointerUiChecker>(Lifetime.Singleton).As<IPointerUiChecker>()
                 .WithParameter<UIDocument>(_sceneObjectsContainer.GetUIDocument);
             // ---------

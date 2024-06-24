@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/SettingsPanelStyle.uss?fileID=7433441132597879392&amp;guid=a17dd333940801c40b4532562087c346&amp;type=3#SettingsPanelStyle" />
+    <Style src="project://database/Assets/UI/Uss/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=acc2f705eb2358149af42b9eebc67a66&amp;type=3#DefaultStyle" />
+    <Style src="project://database/Assets/UI/Uss/SecondaryPanel.uss?fileID=7433441132597879392&amp;guid=5ddd44e079bba4c4494bb675f4a7b9f3&amp;type=3#SecondaryPanel" />
+    <ui:VisualElement class="panel-bg">
+        <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="close-button" enable-rich-text="false" class="round-close-button close-button-position" />
+        <ui:Label tabindex="-1" text="Настройки" parse-escape-sequences="true" display-tooltip-when-elided="true" class="caption" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -16,17 +16,23 @@ namespace Dragoraptor.Ui
 
         private IEventBus _eventBus;
         private LevelsMapWidget _levelsMapWidget;
+        private SettingsPanelWidget _settingsPanel;
+        private StatisticPanelWidget _statisticPanel;
 
         private IScreenWidget _currentPanel;
         
 
         public MainScreenWidget(IUiFactory uiFactory,
             IEventBus eventBus,
-            LevelsMapWidget levelsMapWidget
+            LevelsMapWidget levelsMapWidget, 
+            SettingsPanelWidget settingsPanel,
+            StatisticPanelWidget statisticPanel
         ) : base(uiFactory)
         {
             _eventBus = eventBus;
             _levelsMapWidget = levelsMapWidget;
+            _settingsPanel = settingsPanel;
+            _statisticPanel = statisticPanel;
         }
 
         protected override void Initialise()
@@ -42,6 +48,8 @@ namespace Dragoraptor.Ui
             statButton.RegisterCallback<ClickEvent>(StatisticButtonClick);
 
             _levelsMapWidget.OnCloseButtonClick += CloseCurrentPanel;
+            _statisticPanel.OnCloseButtonClick += CloseCurrentPanel;
+            _settingsPanel.OnCloseButtonClick += CloseCurrentPanel;
         }
 
 
@@ -61,12 +69,24 @@ namespace Dragoraptor.Ui
 
         private void MenuButtonClick(ClickEvent e)
         {
-            Debug.Log("MainScreenWidget->MenuButtonClick: ");
+            //Debug.Log("MainScreenWidget->MenuButtonClick: ");
+            if (_currentPanel != _settingsPanel as IScreenWidget)
+            {
+                _currentPanel?.Hide();
+                _settingsPanel.Show();
+                _currentPanel = _settingsPanel;
+            }
         }
 
         private void StatisticButtonClick(ClickEvent e)
         {
-            Debug.Log("MainScreenWidget->StatisticButtonClick: ");
+            //Debug.Log("MainScreenWidget->StatisticButtonClick: ");
+            if (_currentPanel != _statisticPanel as IScreenWidget)
+            {
+                _currentPanel?.Hide();
+                _statisticPanel.Show();
+                _currentPanel = _statisticPanel;
+            }
         }
 
         private void CloseCurrentPanel()

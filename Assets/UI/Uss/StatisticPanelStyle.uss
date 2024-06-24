@@ -1,0 +1,14 @@
+.statistic-root {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 400px;
+}
+
+.panel-bg {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Textures/Ui/rectangle_buttons2.png?fileID=-1805597451&guid=e471b5885b9931f47a7fa2fc27f03fb8&type=3#rectangle_buttons2_1");
+    align-items: center;
+    -unity-slice-scale: 2px;
+}

@@ -13,10 +13,16 @@ namespace Dragoraptor.Ui
         private const string HUNT_RESULT_WINDOW_PATH = "HuntResultScreen";
         private const string LEVELS_MAP_WINDOW_PATH = "LevelsMap";
         private const string MISSION_INDICATOR_PATH = "LevelMarker";
+        private const string STATISTIC_PANEL_PATH = "StatisticPanel";
+        private const string SETTINGS_PANEL_PATH = "SettingsPanel";
+        
 
         private const string HUNT_RESULT_STYLE_NAME = "hunt-result-root";
         private const string LEVELS_MAP_STYLE_NAME = "levels-map-root";
         private const string MISSION_INDICATOR_STYLE_NAME = "marker-root";
+        private const string STATISTIC_PANEL_STYLE_NAME = "statistic-root";
+        private const string SETTINGS_PANEL_STYLE_NAME = "settings-root";
+        
 
         private UIDocument _uiDocument;
 
@@ -25,6 +31,8 @@ namespace Dragoraptor.Ui
         private VisualElement _huntMenuRoot;
         private VisualElement _huntResultWindow;
         private VisualElement _levelsMap;
+        private VisualElement _settingsPanel;
+        private VisualElement _statisticPanel;
 
         private VisualTreeAsset _missionIndicatorPrefab;
 
@@ -109,5 +117,32 @@ namespace Dragoraptor.Ui
             root.AddToClassList(MISSION_INDICATOR_STYLE_NAME);
             return root;
         }
+
+        public VisualElement GetStatisticPanel()
+        {
+            if (_statisticPanel == null)
+            {
+                VisualTreeAsset prefab = Resources.Load<VisualTreeAsset>(STATISTIC_PANEL_PATH);
+                _statisticPanel = prefab.Instantiate();
+                _statisticPanel.AddToClassList(STATISTIC_PANEL_STYLE_NAME);
+                _uiDocument.rootVisualElement.Add(_statisticPanel);
+            }
+
+            return _statisticPanel;
+        }
+        
+        public VisualElement GetSettingsPanel()
+        {
+            if (_settingsPanel == null)
+            {
+                VisualTreeAsset prefab = Resources.Load<VisualTreeAsset>(SETTINGS_PANEL_PATH);
+                _settingsPanel = prefab.Instantiate();
+                _settingsPanel.AddToClassList(SETTINGS_PANEL_STYLE_NAME);
+                _uiDocument.rootVisualElement.Add(_settingsPanel);
+            }
+
+            return _settingsPanel;
+        }
+        
     }
 }
