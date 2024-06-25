@@ -5,5 +5,28 @@
     <ui:VisualElement class="panel-bg">
         <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="close-button" enable-rich-text="false" class="round-close-button close-button-position" />
         <ui:Label tabindex="-1" text="Статистика" parse-escape-sequences="true" display-tooltip-when-elided="true" class="caption" />
+        <ui:VisualElement class="label-info-container">
+            <ui:Label tabindex="-1" text="Уровней пройдено:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" class="info-caption" />
+            <ui:Label tabindex="-1" text="9999" parse-escape-sequences="true" display-tooltip-when-elided="true" name="levels-complited-value" class="text-default info-value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="label-info-container">
+            <ui:Label tabindex="-1" text="Счёт:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" class="info-caption" />
+            <ui:Label tabindex="-1" text="999998" parse-escape-sequences="true" display-tooltip-when-elided="true" name="score-value" class="text-default info-value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="label-info-container">
+            <ui:Label tabindex="-1" text="Совершено выходов на охоту:" parse-escape-sequences="true" display-tooltip-when-elided="true" class="info-caption" />
+            <ui:Label tabindex="-1" text="998" parse-escape-sequences="true" display-tooltip-when-elided="true" name="hunts-count-value" class="text-default info-value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="label-info-container">
+            <ui:Label tabindex="-1" text="Очков за последнюю охоту:" parse-escape-sequences="true" display-tooltip-when-elided="true" class="info-caption" />
+            <ui:Label tabindex="-1" text="988" parse-escape-sequences="true" display-tooltip-when-elided="true" name="last-hunt-score-value" class="text-default info-value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="label-info-container">
+            <ui:DropdownField label="Уровень:    " name="select-level-dropdown" class="level-dropdown" />
+        </ui:VisualElement>
+        <ui:VisualElement class="label-info-container">
+            <ui:Label tabindex="-1" text="Лучший счёт за уровень:" parse-escape-sequences="true" display-tooltip-when-elided="true" class="info-caption" />
+            <ui:Label tabindex="-1" text="987" parse-escape-sequences="true" display-tooltip-when-elided="true" name="best-score-value" class="text-default info-value" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

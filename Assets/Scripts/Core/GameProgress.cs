@@ -11,7 +11,7 @@ using Dragoraptor.ScriptableObjects;
 
 namespace Dragoraptor.Core
 {
-    public class GameProgress : IGameProgressStart, ICurrentLevelDescriptorHolder, IGameProgressCollector
+    public class GameProgress : IGameProgressStart, ICurrentLevelDescriptorHolder, IGameProgressCollector, IProgressDataHolder
     {
 
         private readonly ILevelMapView _levelsMapView;
@@ -175,6 +175,16 @@ namespace Dragoraptor.Core
             }
         }
         
+        #endregion
+
+
+        #region IProgressDataHolder
+
+        public ProgressData GetProgressData()
+        {
+            return _progressData;
+        }
+
         #endregion
         
     }
