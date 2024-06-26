@@ -93,10 +93,10 @@ namespace Dragoraptor.Core
 
         private void TimerEnd()
         {
-            SpawnNpc("Bird1", new Vector2(4.0f, 0.0f));
-            SpawnNpc("Bird2", new Vector2(-4.0f, 0.0f));
-            SpawnNpc("Bird3", new Vector2(4.0f, 3.0f));
-            SpawnNpc("Bird4", new Vector2(-4.0f, 3.0f));
+            SpawnNpc("Bird1spikes", new Vector2(4.0f, 0.0f));
+            SpawnNpc("Bird2spikes", new Vector2(-4.0f, 0.0f));
+            SpawnNpc("Bird3spikes", new Vector2(4.0f, 3.0f));
+            SpawnNpc("Bird4spikes", new Vector2(-4.0f, 3.0f));
         }
         
     }

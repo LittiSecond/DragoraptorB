@@ -1,6 +1,4 @@
-﻿using VContainer.Unity;
-
-namespace Dragoraptor.Interfaces
+﻿namespace Dragoraptor.Interfaces
 {
     public interface ILiveCycleHolder
     {
