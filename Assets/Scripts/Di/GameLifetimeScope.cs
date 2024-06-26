@@ -33,6 +33,7 @@ namespace Dragoraptor.Di
             
             builder.Register<TimersServiceBehaviour>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<EventBusBehaviour>(Lifetime.Singleton).As<IEventBus>();
+            builder.Register<UpdateService>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<GameStateManager>(Lifetime.Singleton).AsSelf();
             builder.Register<GameProgress>(Lifetime.Singleton).AsImplementedInterfaces();
