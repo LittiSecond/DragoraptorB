@@ -41,6 +41,9 @@ namespace Dragoraptor
                 "ClawScratch", "Prefabs/Effects/ClawScratch"
             },
             {
+                "EffectBoom", "Prefabs/Effects/EffectBoom"
+            },
+            {
                 "Meat", "Prefabs/Items/Meat"
             },
             {

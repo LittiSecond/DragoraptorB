@@ -19,7 +19,7 @@ MonoBehaviour:
   WalkSpeed: 1.75
   CharacterSpawnPosition: {x: -1, y: -3}
   MaxHealth: 100
-  Armor: 5
+  Armor: 4
   AttackPower: 100
   AttackAreas:
     LeftIdle:

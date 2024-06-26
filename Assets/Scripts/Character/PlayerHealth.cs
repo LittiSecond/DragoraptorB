@@ -10,7 +10,7 @@ using Dragoraptor.ScriptableObjects;
 
 namespace Dragoraptor.Character
 {
-    public class PlayerHealth : IPlayerHealth, ITakeDamage, IBodyUser, IHealthObservable//, IHealthEndHolder
+    public class PlayerHealth : IPlayerHealth, ITakeDamage, IBodyUser, IHealthObservable
     {
 
         private float _maxHealth;
@@ -61,7 +61,6 @@ namespace Dragoraptor.Character
 
         public void TakeDamage(float amount)
         {
-            //Debug.Log("PlayerHealth-TakeDamage: damage = " + amount.ToString());
             amount -= _armor;
             if (amount > 0)
             {
@@ -71,7 +70,6 @@ namespace Dragoraptor.Character
                     _health = 0;
                 }
                 OnValueChanged?.Invoke(_health);
-                //OnDamaged?.Invoke();
 
                 if (_health == 0)
                 {

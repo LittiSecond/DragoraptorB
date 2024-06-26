@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using VContainer;
 using Dragoraptor.Interfaces;
+using ObjPool;
 
 
 namespace Dragoraptor.MonoBehs
@@ -15,6 +17,7 @@ namespace Dragoraptor.MonoBehs
 
         private ILiveCycleHolder _liveCycleHolder;
         private IHealthEndHolder _healthEndHolder;
+        private IObjectPool _pool;
 
         private bool _isEnabled;
         
@@ -28,6 +31,12 @@ namespace Dragoraptor.MonoBehs
             _healthEndHolder.OnHealthEnd += Deactivate;
         }
 
+        [Inject]
+        private void Construct(IObjectPool objectPool)
+        {
+            _pool = objectPool;
+        }
+        
 
         #region IActivatable
 
@@ -61,16 +70,15 @@ namespace Dragoraptor.MonoBehs
 
         private void CreateVisualHitEffect()
         {
-            Debug.Log("DamageAura->CreateVisualHitEffect: ");
-            // PooledObject effect = Services.Instance.ObjectPool.GetObjectOfType(HIT_VISUAL_EFFECT);
-            // if (effect)
-            // {
-            //     Vector3 position = transform.position;
-            //     //position.y += _verticalOffsetVisualEffect;
-            //     effect.transform.position = position;
-            //     IInitializable initializable = effect as IInitializable;
-            //     initializable?.Initialize();
-            // }
+            //Debug.Log("DamageAura->CreateVisualHitEffect: ");
+            PooledObject effect = _pool.GetObjectOfType(HIT_VISUAL_EFFECT);
+            if (effect)
+            {
+                Vector3 position = transform.position;
+                effect.transform.position = position;
+                IActivatable initializable = effect as IActivatable;
+                initializable?.Activate();
+            }
         }
 
         private void Deactivate()
