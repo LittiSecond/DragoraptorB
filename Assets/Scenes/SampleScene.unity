@@ -368,6 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gamePlaySettings: {fileID: 11400000, guid: e091982f0fff0974fb95b587f6bbe892, type: 2}
   _mainCampaign: {fileID: 11400000, guid: 5b14ba877c00cb645b00f1b005f3314a, type: 2}
+  _charDamagedVisualEffectSettings: {fileID: 11400000, guid: 89459bea392ad7d478b4cd35d5fac458, type: 2}
 --- !u!4 &988632069
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ namespace Dragoraptor.MonoBehs
     {
         [SerializeField] private GamePlaySettings _gamePlaySettings;
         [SerializeField] private Campaign _mainCampaign;
+        [SerializeField] private CharDamagedVisualEffectSettings _charDamagedVisualEffectSettings;
 
 
         #region IDataHolder
@@ -21,6 +22,11 @@ namespace Dragoraptor.MonoBehs
         public Campaign GetCampaign()
         {
             return _mainCampaign;
+        }
+
+        public CharDamagedVisualEffectSettings GetCharDmgVisualSettings()
+        {
+            return _charDamagedVisualEffectSettings;
         }
         
         #endregion

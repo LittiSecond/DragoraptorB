@@ -7,5 +7,6 @@ namespace Dragoraptor.Interfaces
     {
         GamePlaySettings GetGamePlaySettings();
         Campaign GetCampaign();
+        CharDamagedVisualEffectSettings GetCharDmgVisualSettings();
     }
 }

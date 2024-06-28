@@ -1,25 +1,22 @@
-﻿using Dragoraptor.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer.Unity;
+
+using Dragoraptor.Interfaces;
+using Dragoraptor.ScriptableObjects;
 
 
 namespace Dragoraptor.Character
 {
     public class PlayerDamageVisualizer : ITickable
     {
-        private const string PREFAB_ID = "ToDarkVisualEffect";
-
-        private IPlayerDamaged _playerDamaged;
-        private IPrefabLoader _prefabLoader;
-        private ISceneGeometry _sceneGeometry;
+        private readonly IPlayerDamaged _playerDamaged;
+        private readonly IPrefabLoader _prefabLoader;
+        private readonly ISceneGeometry _sceneGeometry;
         
         private enum FadeState { None, Up, Down};
         
         private SpriteRenderer _fadedImage;
-        private float _max = 0.9f;
-        private float _min = 0.4f;
-        private float _upTime = 0.2f;
-        private float _downTime = 0.5f;
+        private CharDamagedVisualEffectSettings _visualSettings;
         
         private FadeState _state;
         private Color _currentColor;
@@ -31,12 +28,16 @@ namespace Dragoraptor.Character
         private bool _isInitialized;
 
 
-        public PlayerDamageVisualizer(IPlayerDamaged playerDamaged, IPrefabLoader prefabLoader, ISceneGeometry sceneGeometry)
+        public PlayerDamageVisualizer(IPlayerDamaged playerDamaged, 
+            IPrefabLoader prefabLoader, 
+            ISceneGeometry sceneGeometry, 
+            IDataHolder dataHolder)
         {
             _playerDamaged = playerDamaged;
             _playerDamaged.OnDamaged += Damaged;
             _prefabLoader = prefabLoader;
             _sceneGeometry = sceneGeometry;
+            _visualSettings = dataHolder.GetCharDmgVisualSettings();
         }
 
 
@@ -53,7 +54,7 @@ namespace Dragoraptor.Character
 
         private void InitializeItself()
         {
-            var prefab = _prefabLoader.GetPrefab(PREFAB_ID); 
+            var prefab = _prefabLoader.GetPrefab(_visualSettings.PrefabID); 
             var fader = GameObject.Instantiate(prefab);
             _fadedImage = fader.GetComponent<SpriteRenderer>();
             _currentColor = _fadedImage.color;
@@ -94,10 +95,11 @@ namespace Dragoraptor.Character
         private void UpAlpha()
         {
             _timeCounter += Time.deltaTime;
-            float alpha = Mathf.Clamp( _timeCounter / _upTime, 0, 1) * (_targetAlpha - _beginAlpha) + _beginAlpha;
+            float alpha = Mathf.Clamp( _timeCounter / _visualSettings.UpTime, 0, 1) * 
+                (_targetAlpha - _beginAlpha) + _beginAlpha;
             _currentColor.a = alpha;
             _fadedImage.color = _currentColor;
-            if (_timeCounter >= _upTime)
+            if (_timeCounter >= _visualSettings.UpTime)
             {
                 _state = FadeState.Down;
                 _timeCounter = 0;
@@ -107,10 +109,10 @@ namespace Dragoraptor.Character
         private void DownAlpha()
         {
             _timeCounter += Time.deltaTime;
-            float alpha = Mathf.Clamp(1 - _timeCounter / _downTime, 0, 1) * _targetAlpha;
+            float alpha = Mathf.Clamp(1 - _timeCounter / _visualSettings.DownTime, 0, 1) * _targetAlpha;
             _currentColor.a = alpha;
             _fadedImage.color = _currentColor;
-            if (_timeCounter >= _downTime)
+            if (_timeCounter >= _visualSettings.DownTime)
             {
                 _state = FadeState.None;
                 _fadedImage.enabled = false;
@@ -124,7 +126,7 @@ namespace Dragoraptor.Character
             {
                 case FadeState.None:
                     _fadedImage.enabled = true;
-                    _targetAlpha = Mathf.Clamp(value, _min, _max);
+                    _targetAlpha = Mathf.Clamp(value, _visualSettings.MinAlpha, _visualSettings.MaxAlpha);
                     _timeCounter = 0;
                     _beginAlpha = 0;
                     _state = FadeState.Up;
@@ -134,10 +136,10 @@ namespace Dragoraptor.Character
                     {
                         break;
                     }
-                    _targetAlpha = Mathf.Clamp(value, _min, _max);
+                    _targetAlpha = Mathf.Clamp(value, _visualSettings.MinAlpha, _visualSettings.MaxAlpha);
                     break;
                 case FadeState.Down:
-                    float targetAlpha = Mathf.Clamp(value, _min, _max);
+                    float targetAlpha = Mathf.Clamp(value, _visualSettings.MinAlpha, _visualSettings.MaxAlpha);
                     float a = _currentColor.a;
                     if (targetAlpha <= a)
                     {
