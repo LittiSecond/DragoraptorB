@@ -43,6 +43,7 @@ namespace Dragoraptor.Npc
         private readonly List<ICleanable> _clearList = new List<ICleanable>();
 
         private IScoreCollector _scoreCollector;
+        private FlyingDamageCreator _flyingDamageCreator;
         
         private float _destroyTimeCounter;
 
@@ -60,11 +61,15 @@ namespace Dragoraptor.Npc
             };
 
             _activateList.Add(_health);
-            // if (_flyingDamagStartPoint)
-            // {
-            //     _flyingDamageCreator = new NpcFlyingDamagCreator(_flyingDamagStartPoint);
-            //     _health.SetDamageObserver(_flyingDamageCreator);
-            // }
+            if (_flyingDamagStartPoint)
+            {
+                _flyingDamageCreator = new FlyingDamageCreator(_flyingDamagStartPoint);
+                _health.SetDamageObserver(_flyingDamageCreator);
+                if (_pool != null)
+                {
+                    _flyingDamageCreator.Construct(_pool);
+                }
+            }
         }
 
         
@@ -73,6 +78,7 @@ namespace Dragoraptor.Npc
         {
             _scoreCollector = collector;
             _pool = pool;
+            _flyingDamageCreator?.Construct(pool);
         }
         
         

@@ -44,6 +44,9 @@ namespace Dragoraptor
                 "EffectBoom", "Prefabs/Effects/EffectBoom"
             },
             {
+                "FlyingText", "Prefabs/Effects/FlyingText"
+            },
+            {
                 "Meat", "Prefabs/Items/Meat"
             },
             {
