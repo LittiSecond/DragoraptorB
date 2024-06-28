@@ -79,7 +79,7 @@ namespace Dragoraptor.Di
             builder.Register<JumpPainter>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<CharHorizontalDirection>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<FlightController>(Lifetime.Singleton).AsImplementedInterfaces();
-            builder.Register<PlayerHealth>(Lifetime.Singleton).As<IPlayerHealth, IBodyUser, IHealthObservable>();
+            builder.Register<PlayerHealth>(Lifetime.Singleton).As<IPlayerHealth, IBodyUser, IHealthObservable, IPlayerDamaged>();
             builder.Register<AttackController>(Lifetime.Singleton).AsImplementedInterfaces();
                 // ----- -----
 
@@ -91,6 +91,7 @@ namespace Dragoraptor.Di
             builder.Register<ScoreController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<PickUpController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SatietyController>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<PlayerDamageVisualizer>(Lifetime.Singleton).AsImplementedInterfaces();
             // -------------------------
 
 

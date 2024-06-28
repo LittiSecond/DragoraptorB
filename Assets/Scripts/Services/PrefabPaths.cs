@@ -52,7 +52,9 @@ namespace Dragoraptor
             {
                 "PlayerCharacter", "Prefabs/PlayerCharacter"
             },
-
+            {
+                "ToDarkVisualEffect", "Prefabs/Effects/ToDarkVisualEffect"
+            },
             
         };
     }

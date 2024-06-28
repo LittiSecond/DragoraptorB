@@ -10,7 +10,7 @@ using Dragoraptor.ScriptableObjects;
 
 namespace Dragoraptor.Character
 {
-    public class PlayerHealth : IPlayerHealth, ITakeDamage, IBodyUser, IHealthObservable
+    public class PlayerHealth : IPlayerHealth, ITakeDamage, IBodyUser, IHealthObservable, IPlayerDamaged
     {
 
         private float _maxHealth;
@@ -21,6 +21,13 @@ namespace Dragoraptor.Character
         #region IHealthEndHolder
 
         public event Action OnHealthEnd;
+
+        #endregion
+
+
+        #region IPlayerDamaged
+
+        public event Action<float> OnDamaged;
 
         #endregion
         
@@ -70,6 +77,7 @@ namespace Dragoraptor.Character
                     _health = 0;
                 }
                 OnValueChanged?.Invoke(_health);
+                OnDamaged?.Invoke(amount);
 
                 if (_health == 0)
                 {
