@@ -9,6 +9,7 @@ using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Score;
 using Dragoraptor.Models;
 using Dragoraptor.MonoBehs;
+using Dragoraptor.ScriptableObjects;
 
 
 namespace Dragoraptor.Npc
@@ -215,6 +216,11 @@ namespace Dragoraptor.Npc
             }
 
             return shouldDrop;
+        }
+        
+        public virtual void SetAdditionalData(NpcData additionalData)
+        {
+
         }
         
         

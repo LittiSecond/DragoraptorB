@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
+using Dragoraptor.ScriptableObjects;
+
 
 namespace Dragoraptor.Models.NpcSpawn
 {
@@ -10,5 +12,6 @@ namespace Dragoraptor.Models.NpcSpawn
         public string PrefabID;
         public float Time;
         public Vector2 SpawnPosition;
+        public NpcData Data;
     }
 }

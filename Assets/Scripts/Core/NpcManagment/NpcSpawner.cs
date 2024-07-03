@@ -144,13 +144,18 @@ namespace Dragoraptor.Core.NpcManagment
         
         #endregion
 
-        private void SpawnNpc(string typeId, Vector2 position)
+        private void SpawnNpc(SpawnData spawnData)
         {
-            var mob = _pool.GetObjectOfType(typeId);
+            var mob = _pool.GetObjectOfType(spawnData.PrefabID);
             if (mob != null)
             {
                 NpcBaseLogic newMob = mob as NpcBaseLogic;
-                newMob.transform.position = (Vector3)position;
+                newMob.transform.position = (Vector3)spawnData.SpawnPosition;
+                var addData = spawnData.Data;
+                if (addData != null)
+                {
+                    newMob.SetAdditionalData(addData);
+                }
                 newMob.Activate();
                 _collector.AddNpc(newMob);
                 //Debug.Log($"NpcSpawner->SpawnNpc: newMob = {newMob.Type}; time = {Time.time}");
@@ -159,11 +164,7 @@ namespace Dragoraptor.Core.NpcManagment
             {
                 Debug.Log("NpcSpawner->SpawnNpc: mob == null");
             }
-        }
-
-        private void SpawnNpc(SpawnData spawnData)
-        {
-            SpawnNpc(spawnData.PrefabID, spawnData.SpawnPosition);
+            
         }
 
         private void ExecuteOneSequence(SequenceExecutionData data)
