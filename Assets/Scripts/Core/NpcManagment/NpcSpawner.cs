@@ -44,7 +44,7 @@ namespace Dragoraptor.Core.NpcManagment
 
         public void PrepareSpawn()
         {
-            Debug.Log("NpcSpawner->PrepareSpawn:");
+            //Debug.Log("NpcSpawner->PrepareSpawn:");
             _isSpawning = false;
             
             var descriptor = _descriptorHolder.GetCurrentLevel();
@@ -87,7 +87,7 @@ namespace Dragoraptor.Core.NpcManagment
 
         public void RestartSpawn()
         {
-            Debug.Log("NpcSpawner->RestartSpawn:");
+            //Debug.Log("NpcSpawner->RestartSpawn:");
 
             float currentTime = Time.time;
 
@@ -113,7 +113,7 @@ namespace Dragoraptor.Core.NpcManagment
 
         public void StopSpawn()
         {
-            Debug.Log("NpcSpawner->StopSpawn:");
+            //Debug.Log("NpcSpawner->StopSpawn:");
             _isSpawning = false;
             foreach (var oneSequence in _sequenceData)
             {
@@ -153,7 +153,7 @@ namespace Dragoraptor.Core.NpcManagment
                 newMob.transform.position = (Vector3)position;
                 newMob.Activate();
                 _collector.AddNpc(newMob);
-                Debug.Log($"NpcSpawner->SpawnNpc: newMob = {newMob.Type}; time = {Time.time}");
+                //Debug.Log($"NpcSpawner->SpawnNpc: newMob = {newMob.Type}; time = {Time.time}");
             }
             else
             {

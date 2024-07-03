@@ -38,18 +38,18 @@ namespace Dragoraptor.Core
         
         public void PreparePool()
         {
-            Debug.Log("ObjectPoolManager->PreparePool:");
+            //Debug.Log("ObjectPoolManager->PreparePool:");
         }
 
         public void ReturnAllToPool()
         {
-            Debug.Log("ObjectPoolManager->ReturnAllToPool:");
+            //Debug.Log("ObjectPoolManager->ReturnAllToPool:");
             _pool.ReturnAllToPool();
         }
 
         public void ClearPool()
         {
-            Debug.Log("ObjectPoolManager->ClearPool:");
+            //Debug.Log("ObjectPoolManager->ClearPool:");
             _pool.ReturnAllToPool();
             _pool.Clear();
         }

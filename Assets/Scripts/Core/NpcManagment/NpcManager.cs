@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+
+using VContainer.Unity;
+
 using Dragoraptor.Interfaces.Npc;
 using Dragoraptor.Npc;
-using UnityEngine;
-using VContainer.Unity;
+
 
 namespace Dragoraptor.Core.NpcManagment
 {
@@ -28,25 +31,25 @@ namespace Dragoraptor.Core.NpcManagment
         
         public void PrepareSpawn()
         {
-            Debug.Log("NpcManager->PrepareSpawn: ");
+            //Debug.Log("NpcManager->PrepareSpawn: ");
             _spawner.PrepareSpawn();
         }
 
         public void StopSpawn()
         {
-            Debug.Log("NpcManager->StopSpawn: ");
+            //Debug.Log("NpcManager->StopSpawn: ");
             _spawner.StopSpawn();
         }
 
         public void RestartSpawn()
         {
-            Debug.Log("NpcManager->RestartSpawn: ");
+            //Debug.Log("NpcManager->RestartSpawn: ");
             _spawner.RestartSpawn();
         }
 
         public void ClearNps()
         {
-            Debug.Log("NpcManager->ClearNps: ");
+            //Debug.Log("NpcManager->ClearNps: ");
             for (int i = _npcOnField.Count - 1; i >= 0; i--)
             {
                 _npcOnField[i].OnDestroy -= OnDestroyNpc;
