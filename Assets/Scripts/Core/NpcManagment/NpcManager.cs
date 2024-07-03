@@ -1,29 +1,23 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-
-using VContainer.Unity;
-
-using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Npc;
 using Dragoraptor.Npc;
+using UnityEngine;
+using VContainer.Unity;
 
-
-namespace Dragoraptor.Core
+namespace Dragoraptor.Core.NpcManagment
 {
     public class NpcManager : INpcManager, ITickable, INpcCollector
     {
 
 
         private readonly List<NpcBaseLogic> _npcOnField = new();
-        private readonly ICurrentLevelDescriptorHolder _descriptorHolder;
         private readonly INpcSpawner _spawner;
 
         private bool _isNpcLogicEnabled;
 
 
-        public NpcManager(ICurrentLevelDescriptorHolder holder, INpcSpawner npcSpawner)
+        public NpcManager(INpcSpawner npcSpawner)
         {
-            _descriptorHolder = holder;
             _spawner = npcSpawner;
             _spawner.SetCollector(this);
             _isNpcLogicEnabled = true;
@@ -35,6 +29,7 @@ namespace Dragoraptor.Core
         public void PrepareSpawn()
         {
             Debug.Log("NpcManager->PrepareSpawn: ");
+            _spawner.PrepareSpawn();
         }
 
         public void StopSpawn()

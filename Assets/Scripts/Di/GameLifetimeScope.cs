@@ -10,6 +10,7 @@ using ObjPool;
 
 using Dragoraptor.Character;
 using Dragoraptor.Core;
+using Dragoraptor.Core.NpcManagment;
 using Dragoraptor.Input;
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
