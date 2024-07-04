@@ -20,7 +20,9 @@ MonoBehaviour:
   SpawnDatas:
   - PrefabID: Bird4
     Time: 0
-    SpawnPosition: {x: 3, y: 1}
+    SpawnPosition: {x: 4, y: 0.5}
+    Data: {fileID: 0}
   - PrefabID: Bird4spikes
     Time: 0
-    SpawnPosition: {x: 3, y: 1}
+    SpawnPosition: {x: -4, y: 1.5}
+    Data: {fileID: 0}

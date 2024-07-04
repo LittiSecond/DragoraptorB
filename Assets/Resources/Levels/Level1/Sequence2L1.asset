@@ -20,13 +20,17 @@ MonoBehaviour:
   SpawnDatas:
   - PrefabID: Bird2spikes
     Time: 0
-    SpawnPosition: {x: -3, y: 0}
+    SpawnPosition: {x: -4, y: 0}
+    Data: {fileID: 11400000, guid: 9e2ee8c20e8099a4aa7242241daab6a9, type: 2}
   - PrefabID: Bird3spikes
     Time: 0
-    SpawnPosition: {x: 3, y: 0.5}
+    SpawnPosition: {x: 4, y: 0.5}
+    Data: {fileID: 11400000, guid: 5dc571b7e09fb7e44b4639f8950dc212, type: 2}
   - PrefabID: Bird2spikes
     Time: 0
-    SpawnPosition: {x: -3, y: 3}
+    SpawnPosition: {x: -4, y: 3}
+    Data: {fileID: 11400000, guid: c3989a913909af040b69f950167a73af, type: 2}
   - PrefabID: Bird3spikes
     Time: 0
-    SpawnPosition: {x: 3, y: 3}
+    SpawnPosition: {x: 4, y: 3}
+    Data: {fileID: 11400000, guid: 5dc571b7e09fb7e44b4639f8950dc212, type: 2}

@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af5f90e12a97489295f45d4be5034964, type: 3}
-  m_Name: Sequence1L2
+  m_Script: {fileID: 11500000, guid: d8a13e3996fd44238961c22c0722528c, type: 3}
+  m_Name: Way6
   m_EditorClassIdentifier: 
-  Quantity: 0
-  StartDelay: 3
-  BetweenDelay: 0
-  IsRandomized: 0
-  Duration: 6
-  SpawnDatas:
-  - PrefabID: Bird1
-    Time: 4
-    SpawnPosition: {x: -4, y: 1}
-    Data: {fileID: 0}
+  IsCyclic: 1
+  IsRelativeStartPosition: 0
+  Way:
+  - {x: 1, y: 1}
+  - {x: -1, y: 1}
+  - {x: -2, y: 0}
+  - {x: -1, y: -1}
+  - {x: 1, y: -1}
+  - {x: 2, y: 0}

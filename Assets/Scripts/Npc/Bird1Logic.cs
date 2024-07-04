@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
+using Dragoraptor.ScriptableObjects;
+
 
 namespace Dragoraptor.Npc
 {
     public class Bird1Logic : NpcBaseLogic
     {
         [SerializeField] private Animator _animator;
+
         //[SerializeField] private Fading _fading;
         [SerializeField] private float _destroyDelay = 5.1f;
 
@@ -44,14 +47,14 @@ namespace Dragoraptor.Npc
         }
 
 
-        // public override void SetAdditionalData(NpcData additionalData)
-        // {
-        //     NpcDataWay data = additionalData as NpcDataWay;
-        //     if (data != null)
-        //     {
-        //         _movement.SetWay(data);
-        //     }
-        // }
+        public override void SetAdditionalData(NpcData additionalData)
+        {
+            NpcDataWay data = additionalData as NpcDataWay;
+            if (data != null)
+            {
+                _movement.SetWay(data);
+            }
+        }
 
         protected override void OnHealthEnded()
         {
@@ -63,7 +66,7 @@ namespace Dragoraptor.Npc
 
         public override void Activate()
         {
-            _movement.SetWay();
+            //_movement.SetWay();
             base.Activate();
             _animation.SetFlying();
             _collider.enabled = true;

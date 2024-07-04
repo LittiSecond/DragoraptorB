@@ -3,20 +3,23 @@ using UnityEngine;
 
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Npc;
+using Dragoraptor.ScriptableObjects;
 
 
 namespace Dragoraptor.Npc
 {
     public class Bird1Movement : IExecutable, IActivatable, ICleanable
     {
-
+        
+        private const float DEFAULT_X_WAY_POINT_POS = 4.0f;
+        
         public event Action OnWayFinished;
 
         private readonly Transform _transform;
         private readonly Rigidbody2D _rigidbody;
         private readonly INpcDirection _visualDirection;
-        
-        private Vector2[] _way; 
+
+        private Vector2[] _way;
 
         private Vector2 _destination;
         private Vector2 _startPosition;
@@ -29,7 +32,7 @@ namespace Dragoraptor.Npc
         private bool _isRelativeStartPosition;
         private bool _isCyclic;
         private bool _isEnabled;
-        
+
 
         public Bird1Movement(Transform transform, Rigidbody2D rigidbody, INpcDirection direction)
         {
@@ -37,7 +40,7 @@ namespace Dragoraptor.Npc
             _rigidbody = rigidbody;
             _visualDirection = direction;
         }
-        
+
         private void SetFlightDirection(Vector2 destination)
         {
             if (_haveWay)
@@ -47,7 +50,7 @@ namespace Dragoraptor.Npc
                 direction.Normalize();
                 Vector2 newVelocity = direction * _speed;
                 _rigidbody.velocity = newVelocity;
-                _visualDirection.HorizontalDirection = (direction.x < 0.0f)? Direction.Left: Direction.Rigth;
+                _visualDirection.HorizontalDirection = (direction.x < 0.0f) ? Direction.Left : Direction.Rigth;
             }
         }
 
@@ -72,6 +75,7 @@ namespace Dragoraptor.Npc
                     isSelected = true;
                 }
             }
+
             return isSelected;
         }
 
@@ -81,25 +85,27 @@ namespace Dragoraptor.Npc
             {
                 wayPoint += _startPosition;
             }
+
             return wayPoint;
         }
-        
-        public void SetWay()
-        {
-            // _way = way.Way;
-            // _isCyclic = way.IsCyclic;
-            // _isRelativeStartPosition = way.IsRelativeStartPosition;
-            // _haveWay = _way != null;
-            // _nexWayPointIndex = 0;
 
-            _isCyclic = true;
-            _way = new[]
+        public void SetWay(NpcDataWay way)
+        {
+            _haveWay = false;
+            if (way.Way == null) return;
+            int length = way.Way.Length;
+            if (length == 0) return;
+            
+            _isCyclic = way.IsCyclic;
+            _isRelativeStartPosition = way.IsRelativeStartPosition;
+            _nexWayPointIndex = 0;
+            
+            _way = new Vector2[way.Way.Length];
+            for (int i = 0; i < length; i++)
             {
-                new Vector2( 2, -1), 
-                new Vector2( -2, -1),
-                new Vector2( -2, 1 ),
-                new Vector2( 2, 1)
-            };
+                _way[i] = way.Way[i];
+            }
+            
             _haveWay = true;
         }
 
@@ -107,13 +113,14 @@ namespace Dragoraptor.Npc
         {
             _rigidbody.velocity = Vector2.zero;
         }
-        
+
         public void StopMovementLogic()
         {
             _isEnabled = false;
+            StopMovement();
         }
-        
-        
+
+
         #region IExecutable
 
         public void Execute()
@@ -136,24 +143,27 @@ namespace Dragoraptor.Npc
                 }
             }
         }
-        
+
         #endregion
 
 
         #region IActivatable
-        
+
         public void Activate()
         {
             _nexWayPointIndex = 0;
-            if (_haveWay)
+            if (!_haveWay)
             {
-                _isEnabled = true;
-                _startPosition = _transform.position;
-                _destination = CalculateDestination(_way[_nexWayPointIndex]);
-                SetFlightDirection(_destination);
+                GenerateDefaultWay();
             }
+
+            _isEnabled = true;
+            _startPosition = _transform.position;
+            _destination = CalculateDestination(_way[_nexWayPointIndex]);
+            SetFlightDirection(_destination);
+            
         }
-        
+
         #endregion
 
 
@@ -165,8 +175,20 @@ namespace Dragoraptor.Npc
             _haveWay = false;
             _way = null;
         }
-        
+
         #endregion
-        
+
+        private void GenerateDefaultWay()
+        {
+            Vector2 wayPoint = new Vector2();
+
+            wayPoint.x = (_transform.position.x > 0.0f) ? -DEFAULT_X_WAY_POINT_POS : DEFAULT_X_WAY_POINT_POS;
+            wayPoint.y = _transform.position.y;
+
+            _way = new Vector2[1];
+            _way[0] = wayPoint;
+
+            _haveWay = true;
+        }
     }
 }
