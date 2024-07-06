@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dragoraptor.Interfaces;
+using UnityEngine;
 using UnityEditor;
 
 using Dragoraptor.MonoBehs;
@@ -13,17 +14,20 @@ namespace Dragoraptor.Editor
         private const string CAPTION = "    Functional to testing tools";
 
         private const string DAMAGE_CHARACTER_BUTTON_CAPTION = "make damage to the character";
+        private const string ACTIVATE_OBJECT_BUTTON_CAPTION = "activate object";
         private const string DAMAGE_CHARACTER_FIELD_CAPTION = "damage amount to the character: ";
 
         private const string DAMAGE_NPC_BUTTON_CAPTION = "make damage to the NPC";
         private const string DAMAGE_NPC_FIELD_CAPTION = "damage amount to the NPC: ";
         private const string DAMAGE_NPC_OBJECT_CAPTION = "NPC to damaged: ";
+        private const string ACTIVATE_OBJECT_CAPTION = "Object to activate (IActivatable): ";
 
         private const string SHOW_MESSAGE_CAPTION = "Show no energy message";
 
         private const string CHARACTER_NOT_FOUND = "Testing tools: character not found";
 
         private NpcBaseLogic _npc;
+        private GameObject _activatedScript;
 
         private int _damagToCharacter = 1000;
         private int _damagToNpc = 1000;
@@ -58,6 +62,16 @@ namespace Dragoraptor.Editor
             {
                 ShowNoEnergyMessage();
             }
+            
+            GUILayout.Space(20);
+            
+            _activatedScript = EditorGUILayout.ObjectField(ACTIVATE_OBJECT_CAPTION, _activatedScript, 
+                    typeof(GameObject), true) as GameObject;
+            if (GUILayout.Button(ACTIVATE_OBJECT_BUTTON_CAPTION))
+            {
+                ActivateObject();
+            }
+            
 
         }
 
@@ -103,6 +117,15 @@ namespace Dragoraptor.Editor
             // {
             //     message.Show();
             // }
+        }
+
+        private void ActivateObject()
+        {
+            if (_activatedScript)
+            {
+                var activatable = _activatedScript.GetComponent<IActivatable>();
+                activatable?.Activate();
+            }
         }
 
     }

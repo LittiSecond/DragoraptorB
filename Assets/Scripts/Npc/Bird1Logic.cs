@@ -9,7 +9,6 @@ namespace Dragoraptor.Npc
     {
         [SerializeField] private Animator _animator;
 
-        //[SerializeField] private Fading _fading;
         [SerializeField] private float _destroyDelay = 5.1f;
 
         private Bird1Movement _movement;
@@ -31,7 +30,6 @@ namespace Dragoraptor.Npc
             _fall = new Bird1Fall(_collider, _rigidbody);
             AddCleanable(_fall);
             _animation = new Bird1Animation(_animator);
-            //AddExecutable(_fading);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -66,7 +64,6 @@ namespace Dragoraptor.Npc
 
         public override void Activate()
         {
-            //_movement.SetWay();
             base.Activate();
             _animation.SetFlying();
             _collider.enabled = true;
