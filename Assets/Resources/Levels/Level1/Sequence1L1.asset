@@ -18,10 +18,10 @@ MonoBehaviour:
   IsRandomized: 0
   Duration: 0
   SpawnDatas:
-  - PrefabID: Bird2
+  - PrefabID: BalloonType1
     Time: 0
     SpawnPosition: {x: 4, y: 0}
-    Data: {fileID: 11400000, guid: 2f9f04378a9a6004b87809f0c23101f4, type: 2}
+    Data: {fileID: 11400000, guid: 044501d964654bb4a997f4b52ae2dc28, type: 2}
   - PrefabID: Bird3
     Time: 2
     SpawnPosition: {x: 4, y: 1}

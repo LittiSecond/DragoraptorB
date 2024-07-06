@@ -26,7 +26,7 @@ namespace Dragoraptor.Npc
         [SerializeField] private string _dropItemID;
         [SerializeField] private PickableResource _dropContent;
         
-        private IObjectPool _pool;
+        protected IObjectPool _pool;
         
         
         public event Action<NpcBaseLogic> OnDestroy;

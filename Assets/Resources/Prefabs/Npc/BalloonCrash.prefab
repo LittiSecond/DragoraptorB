@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 9042516138160139527}
   - component: {fileID: 3066146608905955275}
   m_Layer: 14
-  m_Name: BallonCrash
+  m_Name: BalloonCrash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36dc5bab1b6642d6b15a52bf056837a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: BallonCrash
+  _type: BalloonCrash
   _toSaveState:
   - {fileID: 4028517405921507317}
   - {fileID: 5706191116776958901}
@@ -400,7 +400,7 @@ MonoBehaviour:
   _basket: {fileID: 2472819025226239571}
   _startFadingDelay: 3
   _fadingDuration: 5
-  _destroyDelayFromActivate: 5.1
+  _destroyDelayFromActivate: 8.1
 --- !u!1 &6655137432403579595
 GameObject:
   m_ObjectHideFlags: 0
