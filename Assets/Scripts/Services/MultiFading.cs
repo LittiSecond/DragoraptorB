@@ -49,14 +49,6 @@ namespace Dragoraptor
             {
                 _updateService.AddToUpdate(this);
                 _isFading = true;
-                // for (int i = 0; i < _renderers.Length; i++)
-                // {
-                //     Color color = _renderers[i].color;
-                //     _startColors[i] = color;
-                //     color.a = 0.0f;
-                //     _endColors[i] = color;
-                // }
-
                 _startTime = Time.time;
             }
         }

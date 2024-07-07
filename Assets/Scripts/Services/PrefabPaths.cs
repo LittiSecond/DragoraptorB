@@ -62,6 +62,9 @@ namespace Dragoraptor
                 "ShipType3", "Prefabs/Npc/ShipType3"
             },
             {
+                "ShipType3Crash", "Prefabs/Npc/ShipType3Crash"
+            },
+            {
                 "StoneBall", "Prefabs/Projectiles/StoneBall"
             },
             {
