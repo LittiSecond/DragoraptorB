@@ -89,7 +89,6 @@ namespace Dragoraptor.Core
 
         public void LevelEnd()
         {
-            Debug.Log("LevelProgressController->LevelEnd: ");
             _eventBus.Unsubscribe<LevelTimeUpSignal>(OnLevelTimeUp);
             _health.OnValueChanged -= OnPlayerHealthChanged;
             _playerSatiety.OnValueChanged -= OnPlayerHealthChanged;
@@ -111,7 +110,6 @@ namespace Dragoraptor.Core
         
         private void GenerateHuntResults()
         {
-            Debug.Log("LevelProgressController->GenerateHuntResults: ");
             _lastHuntResults ??= new HuntResults();
             _lastHuntResults.IsAlive = _isCharacterAlive;
             _lastHuntResults.IsSatietyCompleted = _isSatietyConditionMet;
@@ -129,7 +127,6 @@ namespace Dragoraptor.Core
 
         private void OnLevelTimeUp(LevelTimeUpSignal signal)
         {
-            Debug.Log("LevelProgressController->OnLevelTimeUp: ");
             _isTimeUp = true;
         }
 

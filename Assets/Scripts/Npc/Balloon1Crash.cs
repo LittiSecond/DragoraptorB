@@ -73,7 +73,7 @@ namespace Dragoraptor.Npc
 
             if (_selfDestroyTimerID > 0)
             {
-                _timersService.RemoveTimer(_startFadingTimerID);
+                _timersService.RemoveTimer(_selfDestroyTimerID);
                 _selfDestroyTimerID = 0;
             }
             RestoreState();

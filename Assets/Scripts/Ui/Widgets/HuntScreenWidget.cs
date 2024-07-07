@@ -114,7 +114,6 @@ namespace Dragoraptor.Ui
 
         private void RestartHuntButtonClick()
         {
-            Debug.Log("HuntScreenWidget->RestartHuntButtonClick:");
             if (_isEndHuntScreenOpen)
             {
                 HideEndHuntScreen();
@@ -130,7 +129,6 @@ namespace Dragoraptor.Ui
         
         private void GetOutOfTheHuntButtonClick()
         {
-            Debug.Log("HuntScreenWidget->GetOutOfTheHuntButtonClick:");
             if (_isEndHuntScreenOpen)
             {
                 HideEndHuntScreen();

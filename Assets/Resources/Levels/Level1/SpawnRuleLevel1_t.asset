@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpawnRuleLevel1_t
   m_EditorClassIdentifier: 
   Sequences:
-  - {fileID: 11400000, guid: 66b40c1903a726f44b1bbb3f5e1a17d3, type: 2}
+  - {fileID: 11400000, guid: 48ebc51f0986fee499bc68b387a60fbf, type: 2}

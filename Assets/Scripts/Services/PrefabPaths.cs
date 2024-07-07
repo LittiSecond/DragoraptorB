@@ -59,6 +59,12 @@ namespace Dragoraptor
                 "PlayerCharacter", "Prefabs/PlayerCharacter"
             },
             {
+                "ShipType3", "Prefabs/Npc/ShipType3"
+            },
+            {
+                "StoneBall", "Prefabs/Projectiles/StoneBall"
+            },
+            {
                 "ToDarkVisualEffect", "Prefabs/Effects/ToDarkVisualEffect"
             },
             
