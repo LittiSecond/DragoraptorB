@@ -25,8 +25,8 @@ namespace Dragoraptor.Npc
         
         public event Action<float> OnMaxValueChanged;
         public event Action<float> OnValueChanged;
-        public float MaxValue { get; }
-        public float Value { get; }
+        public float MaxValue { get => _maxHealth; }
+        public float Value { get => _currentHealth; }
         
         #endregion
 

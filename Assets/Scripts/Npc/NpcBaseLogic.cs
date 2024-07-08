@@ -38,7 +38,7 @@ namespace Dragoraptor.Npc
 
         #endregion
 
-        private NpcHealth _health;
+        protected NpcHealth _health;
         private readonly List<IExecutable> _executeList = new List<IExecutable>();
         private readonly List<IActivatable> _activateList = new List<IActivatable>();
         private readonly List<ICleanable> _clearList = new List<ICleanable>();

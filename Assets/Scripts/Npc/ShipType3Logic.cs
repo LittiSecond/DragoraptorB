@@ -16,10 +16,13 @@ namespace Dragoraptor.Npc
         [SerializeField] private Transform _bulletStartPoint;
         [SerializeField] private ShipMovementStats _movementStats;
         [SerializeField] private ShipAttackStats _attackStats;
+        [SerializeField] private Transform _healthBarRoot;
+        [SerializeField] private Transform _healthBar;
 
         private ShipType3Movement _movement;
         private ShipType3Attack _attack;
         private IPlayerPosition _playerPosition;
+        private NpcResourceIndicator _healthIndicator;
         
         
         protected override void Awake()
@@ -32,6 +35,8 @@ namespace Dragoraptor.Npc
             _attack = new ShipType3Attack(_bulletStartPoint, _attackStats);
             AddExecutable(_attack);
             AddActivatable(_attack);
+
+            _healthIndicator = new NpcResourceIndicator(_healthBar, _healthBarRoot, _health);
         }
 
         private void Start()
