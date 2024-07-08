@@ -379,9 +379,9 @@ MonoBehaviour:
   _rigidbody: {fileID: 8391501246653431724}
   _collider: {fileID: 8391501246653431725}
   _flyingDamagStartPoint: {fileID: 4736386339536165899}
-  _maxHealth: 300
-  _armor: 10
-  _scoreCost: 20
+  _maxHealth: 500
+  _armor: 20
+  _scoreCost: 26
   _dropItemID: BubblesBlue
   _dropContent:
     Type: 2
@@ -393,8 +393,8 @@ MonoBehaviour:
     <MinY>k__BackingField: -1
     <MaxXInaccuracy>k__BackingField: 0.1
   _attackStats:
-    <Power>k__BackingField: 21
-    <ReloadTime>k__BackingField: 10
+    <Power>k__BackingField: 40
+    <ReloadTime>k__BackingField: 15
     <MaxXInaccuracy>k__BackingField: 0.3
   _healthBarRoot: {fileID: 2165877673855530515}
   _healthBar: {fileID: 510039410000164290}

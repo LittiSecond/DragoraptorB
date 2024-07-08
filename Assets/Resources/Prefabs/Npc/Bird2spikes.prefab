@@ -170,12 +170,13 @@ MonoBehaviour:
   _flyingDamagStartPoint: {fileID: 5632841733338405639}
   _maxHealth: 20
   _armor: 0
-  _scoreCost: 4
+  _scoreCost: 10
   _dropItemID: Meat
   _dropContent:
     Type: 1
     Amount: 9
   _animator: {fileID: 7977518886781704881}
+  _speed: 1
   _destroyDelay: 5.1
 --- !u!1 &7977518888036999631
 GameObject:

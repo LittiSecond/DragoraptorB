@@ -226,8 +226,9 @@ MonoBehaviour:
   _dropItemID: Meat
   _dropContent:
     Type: 1
-    Amount: 50
+    Amount: 11
   _animator: {fileID: 1685298128440692020}
+  _speed: 1
   _destroyDelay: 5.1
 --- !u!1 &4935393761419167362
 GameObject:
