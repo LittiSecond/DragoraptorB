@@ -8,7 +8,7 @@ using Dragoraptor.ScriptableObjects;
 
 namespace Dragoraptor.Npc
 {
-    public class Bird1Movement : IExecutable, IActivatable, ICleanable
+    public class NpcMovementUsingWayPoints : IExecutable, IActivatable, ICleanable
     {
         
         private const float DEFAULT_X_WAY_POINT_POS = 4.0f;
@@ -34,7 +34,7 @@ namespace Dragoraptor.Npc
         private bool _isEnabled;
 
 
-        public Bird1Movement(Transform transform, Rigidbody2D rigidbody, INpcDirection direction)
+        public NpcMovementUsingWayPoints(Transform transform, Rigidbody2D rigidbody, INpcDirection direction)
         {
             _transform = transform;
             _rigidbody = rigidbody;

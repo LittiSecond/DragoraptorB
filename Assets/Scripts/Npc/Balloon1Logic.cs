@@ -13,7 +13,7 @@ namespace Dragoraptor.Npc
     {
         private const string DESTRUCTION_PREFAB_ID = "BalloonCrash";
         
-        private Bird1Movement _movement;
+        private NpcMovementUsingWayPoints _movement;
         private ISceneGeometry _sceneGeometry;
         
         
@@ -22,7 +22,7 @@ namespace Dragoraptor.Npc
             base.Awake();
             var tempTransform = transform;
             var direction = new NpcDirectionStump();
-            _movement = new Bird1Movement(tempTransform, _rigidbody, direction);
+            _movement = new NpcMovementUsingWayPoints(tempTransform, _rigidbody, direction);
             AddExecutable(_movement);
             AddActivatable(_movement);
             AddCleanable(_movement);

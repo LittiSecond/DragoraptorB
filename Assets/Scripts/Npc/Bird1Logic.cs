@@ -11,7 +11,7 @@ namespace Dragoraptor.Npc
 
         [SerializeField] private float _destroyDelay = 5.1f;
 
-        private Bird1Movement _movement;
+        private NpcMovementUsingWayPoints _movement;
         private NpcDirectionByScale _direction;
         private Bird1Fall _fall;
         private Bird1Animation _animation;
@@ -22,7 +22,7 @@ namespace Dragoraptor.Npc
             base.Awake();
             var tempTransform = transform;
             _direction = new NpcDirectionByScale(tempTransform);
-            _movement = new Bird1Movement(tempTransform, _rigidbody, _direction);
+            _movement = new NpcMovementUsingWayPoints(tempTransform, _rigidbody, _direction);
             AddExecutable(_movement);
             AddActivatable(_movement);
             AddCleanable(_movement);
