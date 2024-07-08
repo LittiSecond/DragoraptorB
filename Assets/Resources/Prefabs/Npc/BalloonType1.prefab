@@ -117,10 +117,10 @@ MonoBehaviour:
   _maxHealth: 98
   _armor: 0
   _scoreCost: 3
-  _dropItemID: 
+  _dropItemID: BubbleYellow
   _dropContent:
-    Type: 0
-    Amount: 0
+    Type: 3
+    Amount: 50
 --- !u!1 &2004290266690342157
 GameObject:
   m_ObjectHideFlags: 0

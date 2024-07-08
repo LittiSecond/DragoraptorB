@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2546939534244775682}
   - component: {fileID: 8862790941044903021}
   - component: {fileID: 6441426317205451750}
-  - component: {fileID: 8477938565321769748}
+  - component: {fileID: 8929892834154595653}
   m_Layer: 15
   m_Name: BubblesBlue
   m_TagString: Untagged
@@ -290,7 +290,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &8477938565321769748
+--- !u!114 &8929892834154595653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,11 +299,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2546939534244775683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0addb08f374c0880c2b7441d78f7ce, type: 3}
+  m_Script: {fileID: 11500000, guid: e15aad145359425aa576db95fc876f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: BubblesBlue
   _activationDelay: 1
+  _xMax: 0.2
+  _yMax: 0.9
+  _xDuration: 3
+  _yDuration: 10.32
+  _xPhase: 0.5
+  _yPhase: 0
 --- !u!1 &2546939534304081475
 GameObject:
   m_ObjectHideFlags: 0

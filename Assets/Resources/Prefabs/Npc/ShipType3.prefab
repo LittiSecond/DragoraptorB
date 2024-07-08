@@ -382,10 +382,10 @@ MonoBehaviour:
   _maxHealth: 300
   _armor: 10
   _scoreCost: 20
-  _dropItemID: 
+  _dropItemID: BubblesBlue
   _dropContent:
-    Type: 0
-    Amount: 0
+    Type: 2
+    Amount: 10
   _bulletStartPoint: {fileID: 9022848595490287980}
   _movementStats:
     <HorizontalSpeed>k__BackingField: 0.5
