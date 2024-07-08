@@ -13,6 +13,8 @@ namespace Dragoraptor.Npc
     {
         private const string DESTRUCTION_PREFAB_ID = "BalloonCrash";
         
+        [SerializeField] private float _speed = 1.0f;
+        
         private NpcMovementUsingWayPoints _movement;
         private ISceneGeometry _sceneGeometry;
         
@@ -27,6 +29,7 @@ namespace Dragoraptor.Npc
             AddActivatable(_movement);
             AddCleanable(_movement);
             _movement.OnWayFinished += OnWayFinished;
+            _movement.Speed = _speed;
         }
 
         [Inject]

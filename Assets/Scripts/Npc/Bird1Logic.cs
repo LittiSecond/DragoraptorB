@@ -8,7 +8,7 @@ namespace Dragoraptor.Npc
     public class Bird1Logic : NpcBaseLogic
     {
         [SerializeField] private Animator _animator;
-
+        [SerializeField] private float _speed = 1.0f;
         [SerializeField] private float _destroyDelay = 5.1f;
 
         private NpcMovementUsingWayPoints _movement;
@@ -27,6 +27,7 @@ namespace Dragoraptor.Npc
             AddActivatable(_movement);
             AddCleanable(_movement);
             _movement.OnWayFinished += OnWayFinished;
+            _movement.Speed = _speed;
             _fall = new Bird1Fall(_collider, _rigidbody);
             AddCleanable(_fall);
             _animation = new Bird1Animation(_animator);

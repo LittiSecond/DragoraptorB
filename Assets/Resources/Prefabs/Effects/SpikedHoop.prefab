@@ -135,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 3480744910068613005}
   _effectSprite: {fileID: 3620200948855832812}
-  _damage: 10
+  _damage: 20

@@ -33,6 +33,11 @@ namespace Dragoraptor.Npc
         private bool _isCyclic;
         private bool _isEnabled;
 
+        public float Speed
+        {
+            set => _speed = value;
+        }
+        
 
         public NpcMovementUsingWayPoints(Transform transform, Rigidbody2D rigidbody, INpcDirection direction)
         {

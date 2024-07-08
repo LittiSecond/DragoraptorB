@@ -121,6 +121,7 @@ MonoBehaviour:
   _dropContent:
     Type: 3
     Amount: 50
+  _speed: 0.6
 --- !u!1 &2004290266690342157
 GameObject:
   m_ObjectHideFlags: 0
