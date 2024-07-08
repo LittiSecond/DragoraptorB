@@ -21,24 +21,24 @@ MonoBehaviour:
   - PrefabID: Bird3
     Time: 0.5
     SpawnPosition: {x: -4, y: 3}
-    Data: {fileID: 0}
-  - PrefabID: 
-    Time: 0
-    SpawnPosition: {x: 0, y: 0}
-    Data: {fileID: 0}
-  - PrefabID: 
-    Time: 0
-    SpawnPosition: {x: 0, y: 0}
-    Data: {fileID: 0}
-  - PrefabID: 
-    Time: 0
-    SpawnPosition: {x: 0, y: 0}
-    Data: {fileID: 0}
-  - PrefabID: 
-    Time: 0
-    SpawnPosition: {x: 0, y: 0}
-    Data: {fileID: 0}
-  - PrefabID: 
-    Time: 0
-    SpawnPosition: {x: 0, y: 0}
-    Data: {fileID: 0}
+    Data: {fileID: 11400000, guid: 32099ef62ab989b4096e6262b1525d7d, type: 2}
+  - PrefabID: Bird2
+    Time: 6
+    SpawnPosition: {x: 4, y: -1}
+    Data: {fileID: 11400000, guid: 6e7d12cd59057a94ca4fcc4bae0163cf, type: 2}
+  - PrefabID: Bird3spikes
+    Time: 15
+    SpawnPosition: {x: -4, y: 2}
+    Data: {fileID: 11400000, guid: 89461a655ee26074faa293d9f927228a, type: 2}
+  - PrefabID: Bird3spikes
+    Time: 24
+    SpawnPosition: {x: -4, y: 2}
+    Data: {fileID: 11400000, guid: 70bc7ffe4022f394ab086c0b048e1cb3, type: 2}
+  - PrefabID: Bird3spikes
+    Time: 33
+    SpawnPosition: {x: 4, y: 3}
+    Data: {fileID: 11400000, guid: 64bebbc3972174a4e997ae9f1faf01e6, type: 2}
+  - PrefabID: Bird2spikes
+    Time: 42
+    SpawnPosition: {x: -4, y: 3}
+    Data: {fileID: 11400000, guid: 32099ef62ab989b4096e6262b1525d7d, type: 2}

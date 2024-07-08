@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e5f8c1efac426dac4e2953cd42033c, type: 3}
-  m_Name: RuleLevel1
+  m_Script: {fileID: 11500000, guid: d8a13e3996fd44238961c22c0722528c, type: 3}
+  m_Name: WayL5BS_7
   m_EditorClassIdentifier: 
-  Sequences:
-  - {fileID: 11400000, guid: c1b66f3e7a1f8434da5b76ec7219f0e6, type: 2}
-  - {fileID: 11400000, guid: de03b54892e4a324d8f3cb8608731702, type: 2}
+  IsCyclic: 0
+  IsRelativeStartPosition: 1
+  Way:
+  - {x: -8, y: -1}

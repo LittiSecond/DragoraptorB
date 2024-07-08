@@ -114,9 +114,9 @@ MonoBehaviour:
   _rigidbody: {fileID: 2282355524327420776}
   _collider: {fileID: 1467390051692789724}
   _flyingDamagStartPoint: {fileID: 2294270218250431398}
-  _maxHealth: 98
+  _maxHealth: 200
   _armor: 0
-  _scoreCost: 3
+  _scoreCost: 15
   _dropItemID: BubbleYellow
   _dropContent:
     Type: 3

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a13e3996fd44238961c22c0722528c, type: 3}
+  m_Name: WayL1Bird_1
+  m_EditorClassIdentifier: 
+  IsCyclic: 1
+  IsRelativeStartPosition: 1
+  Way:
+  - {x: -3, y: -1}
+  - {x: -5, y: -1}
+  - {x: -6, y: 0}
+  - {x: -5, y: 1}
+  - {x: -2, y: 2}
+  - {x: -3, y: 3}
+  - {x: -5, y: 3}
+  - {x: -6.5, y: 0}
+  - {x: -2, y: 0}
+  - {x: -1.5, y: -0.5}
