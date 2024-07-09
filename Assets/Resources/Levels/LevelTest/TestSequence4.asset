@@ -10,23 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5f90e12a97489295f45d4be5034964, type: 3}
-  m_Name: Sequence3L1_t
+  m_Name: TestSequence4
   m_EditorClassIdentifier: 
-  Quantity: 2
-  StartDelay: 0
-  BetweenDelay: 12
+  Quantity: 1
+  StartDelay: 1
+  BetweenDelay: 0
   IsRandomized: 0
   Duration: 0
   SpawnDatas:
-  - PrefabID: Bird1spikes
+  - PrefabID: ShipType3
     Time: 0
-    SpawnPosition: {x: 3, y: 0}
-  - PrefabID: Bird2spikes
-    Time: 2
-    SpawnPosition: {x: 3, y: 0}
-  - PrefabID: Bird3spikes
-    Time: 4
-    SpawnPosition: {x: 3, y: 0}
-  - PrefabID: Bird4spikes
-    Time: 6
-    SpawnPosition: {x: 3, y: 0}
+    SpawnPosition: {x: 4, y: 2}
+    Data: {fileID: 0}
+  - PrefabID: BalloonType1
+    Time: 0
+    SpawnPosition: {x: -4, y: 2}
+    Data: {fileID: 0}

@@ -12,17 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5f90e12a97489295f45d4be5034964, type: 3}
   m_Name: Sequence2L2
   m_EditorClassIdentifier: 
-  Quantity: 5
+  Quantity: 0
   StartDelay: 0
   BetweenDelay: 0
   IsRandomized: 1
-  Duration: 4
+  Duration: 25
   SpawnDatas:
-  - PrefabID: Bird4
+  - PrefabID: Bird2
     Time: 0
-    SpawnPosition: {x: 4, y: 0.5}
-    Data: {fileID: 0}
-  - PrefabID: Bird4spikes
+    SpawnPosition: {x: 4, y: -1}
+    Data: {fileID: 11400000, guid: c2611fcbdb140774b95aedf0cc158f0b, type: 2}
+  - PrefabID: Bird3
     Time: 0
-    SpawnPosition: {x: -4, y: 1.5}
-    Data: {fileID: 0}
+    SpawnPosition: {x: 4, y: 0}
+    Data: {fileID: 11400000, guid: e7a14fc92f4365b4fa80951300230908, type: 2}
+  - PrefabID: Bird3
+    Time: 0
+    SpawnPosition: {x: 4, y: 1}
+    Data: {fileID: 11400000, guid: dbeb4fe5edbdea244bb9c3f33be1b7be, type: 2}
+  - PrefabID: Bird3
+    Time: 0
+    SpawnPosition: {x: -4, y: 0}
+    Data: {fileID: 11400000, guid: 368fb6cd64a8fb04e952fa59372b0b26, type: 2}

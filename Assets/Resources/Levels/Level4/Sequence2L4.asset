@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5f90e12a97489295f45d4be5034964, type: 3}
-  m_Name: Sequence2L1
+  m_Name: Sequence2L4
   m_EditorClassIdentifier: 
   Quantity: 0
   StartDelay: 0
   BetweenDelay: 0
   IsRandomized: 1
-  Duration: 40
+  Duration: 12
   SpawnDatas:
-  - PrefabID: BalloonType1
+  - PrefabID: Bird1spikes
     Time: 0
-    SpawnPosition: {x: 4, y: 1}
-    Data: {fileID: 11400000, guid: 3596a029be00b3c40815ab3535dc5555, type: 2}
+    SpawnPosition: {x: 4, y: -2}
+    Data: {fileID: 11400000, guid: 968bd1b971b14e445b3ad186bf475075, type: 2}
   - PrefabID: Bird2
     Time: 0
-    SpawnPosition: {x: -4, y: -0.5}
-    Data: {fileID: 11400000, guid: c2cfd5589af7e594390f383327951fb9, type: 2}
-  - PrefabID: Bird2
-    Time: 0
-    SpawnPosition: {x: -4, y: -1}
-    Data: {fileID: 11400000, guid: b754d1b73b6ca7e499541425e43960f2, type: 2}
+    SpawnPosition: {x: -4, y: -2}
+    Data: {fileID: 11400000, guid: c7e81b69ff58d2a40bf4d8b25e3b2d57, type: 2}
   - PrefabID: Bird3
     Time: 0
     SpawnPosition: {x: 4, y: 1}
-    Data: {fileID: 11400000, guid: a0bedaf13defdea4a94794efb53236cd, type: 2}
+    Data: {fileID: 11400000, guid: f26e86407ad063643a36f4ee087120fa, type: 2}
+  - PrefabID: Bird4
+    Time: 0
+    SpawnPosition: {x: -4, y: 0}
+    Data: {fileID: 11400000, guid: 95c1e22b87d30f14fa35289710ffb8d1, type: 2}

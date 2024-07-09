@@ -35,22 +35,14 @@ namespace Dragoraptor.MonoBehs
         {
             if (_fader == null)
             {
-                InitialiseFader();
+                InitializeFader();
             }
             
             _fader.StartFading();
             
-            // if (_updateService == null)
-            // {
-            //     Debug.Log("FadingOnGroundFall->StartFading: _updateService == null");
-            // }
-            // else
-            // {
-            //     Debug.Log("FadingOnGroundFall->StartFading: _updateService +++++++++++++++");
-            // }
         }
 
-        private void InitialiseFader()
+        private void InitializeFader()
         {
             _fader = new MultiFading(_updateService);
             _fader.SetRenderers(_renderersToFade);

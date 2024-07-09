@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f90e12a97489295f45d4be5034964, type: 3}
+  m_Name: Sequence1L4
+  m_EditorClassIdentifier: 
+  Quantity: 1
+  StartDelay: 0
+  BetweenDelay: 0
+  IsRandomized: 0
+  Duration: 0
+  SpawnDatas:
+  - PrefabID: BalloonType1
+    Time: 20
+    SpawnPosition: {x: 4, y: -1}
+    Data: {fileID: 11400000, guid: 323b2a4a365928940a83e2e873f9a38d, type: 2}
+  - PrefabID: BalloonType1
+    Time: 40
+    SpawnPosition: {x: -4, y: -1}
+    Data: {fileID: 11400000, guid: f76429fd227f54d47810a0f7d86e22ca, type: 2}

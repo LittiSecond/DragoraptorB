@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f90e12a97489295f45d4be5034964, type: 3}
+  m_Name: Sequence1L3
+  m_EditorClassIdentifier: 
+  Quantity: 1
+  StartDelay: 0
+  BetweenDelay: 0
+  IsRandomized: 0
+  Duration: 50
+  SpawnDatas:
+  - PrefabID: Bird4
+    Time: 1
+    SpawnPosition: {x: 4, y: 2}
+    Data: {fileID: 11400000, guid: 501fc527fc46e8343af4db40731729a2, type: 2}
+  - PrefabID: Bird1spikes
+    Time: 4
+    SpawnPosition: {x: -4, y: 0.5}
+    Data: {fileID: 11400000, guid: 4f6a5047be38a45418c9ff640ef497c2, type: 2}
+  - PrefabID: Bird1
+    Time: 10
+    SpawnPosition: {x: -4, y: 2}
+    Data: {fileID: 11400000, guid: 49ab91edb55fe844e9281c86a056dc73, type: 2}
+  - PrefabID: Bird1spikes
+    Time: 11
+    SpawnPosition: {x: 4, y: 1}
+    Data: {fileID: 11400000, guid: 5f98a7a7f815e7b41942b522dee8e80e, type: 2}
+  - PrefabID: Bird1spikes
+    Time: 30
+    SpawnPosition: {x: 4, y: 1}
+    Data: {fileID: 11400000, guid: 5f98a7a7f815e7b41942b522dee8e80e, type: 2}
+  - PrefabID: Bird1spikes
+    Time: 50
+    SpawnPosition: {x: -4, y: 0.5}
+    Data: {fileID: 11400000, guid: 4f6a5047be38a45418c9ff640ef497c2, type: 2}
