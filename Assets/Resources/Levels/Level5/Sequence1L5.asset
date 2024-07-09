@@ -25,8 +25,24 @@ MonoBehaviour:
   - PrefabID: ShipType3
     Time: 7
     SpawnPosition: {x: -5, y: 4}
-    Data: {fileID: 11400000, guid: 4a521d6b7ad92c546b3a17d99d3a3572, type: 2}
+    Data: {fileID: 0}
   - PrefabID: Bird1
     Time: 10
     SpawnPosition: {x: 4, y: 1}
     Data: {fileID: 11400000, guid: 339b6fff803f75e4082b66c1540be9d3, type: 2}
+  - PrefabID: ShipType3
+    Time: 27
+    SpawnPosition: {x: 4, y: 4}
+    Data: {fileID: 0}
+  - PrefabID: ShipType3
+    Time: 45
+    SpawnPosition: {x: -4, y: 2}
+    Data: {fileID: 0}
+  - PrefabID: ShipType3
+    Time: 60
+    SpawnPosition: {x: 4, y: 2}
+    Data: {fileID: 0}
+  - PrefabID: ShipType3
+    Time: 61
+    SpawnPosition: {x: -4, y: 3}
+    Data: {fileID: 0}

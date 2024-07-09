@@ -15,7 +15,7 @@ MonoBehaviour:
   Quantity: 0
   StartDelay: 0
   BetweenDelay: 0
-  IsRandomized: 0
+  IsRandomized: 1
   Duration: 30
   SpawnDatas:
   - PrefabID: Bird4

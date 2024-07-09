@@ -15,6 +15,22 @@ MonoBehaviour:
   Quantity: 1
   StartDelay: 0
   BetweenDelay: 0
-  IsRandomized: 0
-  Duration: 0
-  SpawnDatas: []
+  IsRandomized: 1
+  Duration: 40
+  SpawnDatas:
+  - PrefabID: Bird1
+    Time: 0
+    SpawnPosition: {x: 4, y: 1}
+    Data: {fileID: 11400000, guid: 7a8ac4863aa296a48b404befddb2820b, type: 2}
+  - PrefabID: Bird1
+    Time: 0
+    SpawnPosition: {x: -4, y: 1}
+    Data: {fileID: 11400000, guid: 9593604f79893d54bbb7528e54525ebe, type: 2}
+  - PrefabID: Bird1
+    Time: 0
+    SpawnPosition: {x: 4, y: -1}
+    Data: {fileID: 11400000, guid: 75a48bf9c2679a346ac946b69f523922, type: 2}
+  - PrefabID: Bird1
+    Time: 0
+    SpawnPosition: {x: -4, y: -1}
+    Data: {fileID: 11400000, guid: 9273204ef7e410546ad05966a08ea9cc, type: 2}

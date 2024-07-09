@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e5f8c1efac426dac4e2953cd42033c, type: 3}
-  m_Name: SpawnRulel1
+  m_Name: SpawnRule1
   m_EditorClassIdentifier: 
   Sequences:
   - {fileID: 11400000, guid: 373902f41d2d15844a2f0f9ade2abe9f, type: 2}

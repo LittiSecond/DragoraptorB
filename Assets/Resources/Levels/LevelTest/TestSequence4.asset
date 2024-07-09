@@ -20,7 +20,7 @@ MonoBehaviour:
   SpawnDatas:
   - PrefabID: ShipType3
     Time: 0
-    SpawnPosition: {x: 4, y: 2}
+    SpawnPosition: {x: 4, y: 4}
     Data: {fileID: 0}
   - PrefabID: BalloonType1
     Time: 0

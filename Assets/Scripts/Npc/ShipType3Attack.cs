@@ -10,7 +10,8 @@ namespace Dragoraptor.Npc
     public class ShipType3Attack : IExecutable, IActivatable
     {
 
-        private string BULLET_ID = "StoneBall";
+        private const string BULLET_ID = "StoneBall";
+        private const float PLAYER_ON_GROUND_MAX_Y = -3.2f; 
 
         private readonly Transform _bulletStartPoint;
         private IObjectPool _pool;
@@ -61,7 +62,7 @@ namespace Dragoraptor.Npc
                 if (targetPosition.HasValue)
                 {
                     float dx = _bulletStartPoint.position.x - targetPosition.Value.x;
-                    bool isOnGround = true; //Services.Instance.CharacterIntermediary.IsCharOnGround;
+                    bool isOnGround = targetPosition.Value.y < PLAYER_ON_GROUND_MAX_Y; 
                     
                     if ( isOnGround && dx > -_stats.MaxXInaccuracy && dx < _stats.MaxXInaccuracy )
                     {
@@ -93,6 +94,7 @@ namespace Dragoraptor.Npc
         }
         
         #endregion
+
         
     }
 }
