@@ -2,5 +2,6 @@
     <Style src="project://database/Assets/UI/Uss/LevelMarker.uss?fileID=7433441132597879392&amp;guid=97d89f05a7d33c549b45b65e950f1aa0&amp;type=3#LevelMarker" />
     <ui:VisualElement name="marker-bg" class="marker-bg">
         <ui:VisualElement name="select-indicator" picking-mode="Ignore" class="select-indicator" />
+        <ui:Label tabindex="-1" text="98" parse-escape-sequences="true" display-tooltip-when-elided="true" name="level-number" enable-rich-text="false" class="level-number" />
     </ui:VisualElement>
 </ui:UXML>

@@ -13,6 +13,8 @@ namespace Dragoraptor.Ui
         
         private const string SELECT_MARKER_NAME = "select-indicator";
         private const string BACKGROUND_NAME = "marker-bg";
+        private const string LEVEL_NUMBER_NAME = "level-number";
+        
         
         private const float TO_PERCENT_MULTIPLER = 100.0f;
 
@@ -101,7 +103,9 @@ namespace Dragoraptor.Ui
             _selectMarker = root.Q<VisualElement>(SELECT_MARKER_NAME);
             _backGround = root.Q<VisualElement>(BACKGROUND_NAME);
             _backGround.RegisterCallback<ClickEvent>(OnClick);
-
+            Label number = root.Q<Label>(LEVEL_NUMBER_NAME);
+            number.text = LevelNumber.ToString();
+            
             return root;
         }
 

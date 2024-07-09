@@ -23,7 +23,7 @@ namespace Dragoraptor.Ui
 
         public void SwitchToMainScreen()
         {
-            Debug.Log("UiManager->SwitchToMainScreen:");
+            //Debug.Log("UiManager->SwitchToMainScreen:");
 
             _currentScreen?.Hide();
             _currentScreen = _mainScreen;
@@ -33,7 +33,7 @@ namespace Dragoraptor.Ui
 
         public void SwitchToHunt()
         {
-            Debug.Log("UiManager->SwitchToHunt:");
+            //Debug.Log("UiManager->SwitchToHunt:");
             
             _currentScreen?.Hide();
             _currentScreen = _huntScreen;

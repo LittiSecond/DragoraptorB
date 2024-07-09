@@ -36,7 +36,7 @@ namespace Dragoraptor
          
         public void Start()
         {
-            Debug.Log("GameStarter->Start: ");
+            //Debug.Log("GameStarter->Start: ");
             CameraFitter.FitCamera();
             _sceneGeometry.Initialize();
             _stateHolder.SetStateListeners(_listeners);
