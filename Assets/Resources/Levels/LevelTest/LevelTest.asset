@@ -15,6 +15,6 @@ MonoBehaviour:
   LevelId: 0
   GroundPrefab: {fileID: 317694793326652323, guid: 9b15de2722b8abd4180f27864879c480, type: 3}
   BackgroundPrefab: {fileID: 7493370335623808135, guid: 06f2f53eac035e444a67a2507f5feb86, type: 3}
-  SpawnRule: {fileID: 11400000, guid: e617503e7794c604d9aa8a78922155e3, type: 2}
+  SpawnRule: {fileID: 11400000, guid: a9b4e1a6548c587469685281ab578a42, type: 2}
   SatietyToSucces: 0.75
-  LevelDuration: 300
+  LevelDuration: 10

@@ -15,16 +15,16 @@ MonoBehaviour:
   CampaignLevelDatas:
   - LevelPath: Levels/Level1/Level1
     PositionOnMap: {x: 0.21, y: 0.77}
-    StartStatus: 3
+    StartStatus: 2
   - LevelPath: Levels/Level2/Level2
     PositionOnMap: {x: 0.64, y: 0.71}
-    StartStatus: 2
+    StartStatus: 1
   - LevelPath: Levels/Level3/Level3
     PositionOnMap: {x: 0.79, y: 0.51}
-    StartStatus: 2
+    StartStatus: 1
   - LevelPath: Levels/Level4/Level4
     PositionOnMap: {x: 0.6, y: 0.26}
-    StartStatus: 2
+    StartStatus: 1
   - LevelPath: Levels/Level5/Level5
     PositionOnMap: {x: 0.18, y: 0.31}
-    StartStatus: 2
+    StartStatus: 1

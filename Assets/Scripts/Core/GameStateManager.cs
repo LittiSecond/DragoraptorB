@@ -7,6 +7,7 @@ using Dragoraptor.Interfaces.Character;
 using Dragoraptor.Interfaces.Npc;
 using Dragoraptor.Interfaces.Score;
 using Dragoraptor.Ui;
+using TimersService;
 
 
 namespace Dragoraptor.Core
@@ -24,10 +25,14 @@ namespace Dragoraptor.Core
         private IObjectPoolManager _poolManager;
         private IScoreManager _score;
         private ILevelProgress _levelProgress;
-        private ICurrentLevelDescriptorHolder _levelDescriptorHolder; 
+        private ICurrentLevelDescriptorHolder _levelDescriptorHolder;
+        private ITimersService _timersService;
         
         
         private GameState _gameState;
+
+        private float _charDeathDelay;
+        private int _timerId;
 
         private bool _isPause;
         
@@ -41,7 +46,10 @@ namespace Dragoraptor.Core
             IObjectPoolManager poolManager,
             IScoreManager score,
             ILevelProgress levelProgress, 
-            ICurrentLevelDescriptorHolder levelDescriptorHolder)
+            ICurrentLevelDescriptorHolder levelDescriptorHolder,
+            ITimersService timersService,
+            IDataHolder dataHolder
+            )
         {
             _uiManager = uiManager;
             _eventBus = eventBus;
@@ -54,11 +62,13 @@ namespace Dragoraptor.Core
             _score = score;
             _levelProgress = levelProgress;
             _levelDescriptorHolder = levelDescriptorHolder;
+            _timersService = timersService;
+            _charDeathDelay = dataHolder.GetGamePlaySettings().CharacterDeathDelay;
         }
         
         public void StartProgram()
         {
-            Debug.Log("GameStateManager->StartProgram:");
+            //Debug.Log("GameStateManager->StartProgram:");
             if (_gameState == GameState.None)
             {
                 _uiManager.SwitchToMainScreen();
@@ -75,7 +85,7 @@ namespace Dragoraptor.Core
 
         private void SwitchToHunt(StartHuntRequestSignal signal)
         {
-            Debug.Log("GameStateManager->SwitchToHunt:");
+            //Debug.Log("GameStateManager->SwitchToHunt:");
             if (_gameState == GameState.MainScreen && _levelDescriptorHolder.IsLevelReady())
             {
                 _gameState = GameState.Game;
@@ -95,7 +105,7 @@ namespace Dragoraptor.Core
 
         private void SwitchToMainScreen()
         {
-            Debug.Log("GameStateManager->SwitchToMainScreen:");
+            //Debug.Log("GameStateManager->SwitchToMainScreen:");
             if (_gameState == GameState.Game)
             {
                 _gameState = GameState.MainScreen;
@@ -116,7 +126,7 @@ namespace Dragoraptor.Core
 
         private void BreakHunt(StopHuntRequestSignal signal)
         {
-            Debug.Log("GameStateManager->BreakHunt:");
+            //Debug.Log("GameStateManager->BreakHunt:");
             BreakHunt();
         }
 
@@ -135,36 +145,40 @@ namespace Dragoraptor.Core
 
         private void CharacterKilled()
         {
-            Debug.Log("GameStateManager->CharacterKilled:");
+            //Debug.Log("GameStateManager->CharacterKilled:");
+            _levelTimer.StopTimer();
+            _timerId = _timersService.AddTimer(CharacterKilledTimer, _charDeathDelay);
+        }
+
+        private void CharacterKilledTimer()
+        {
+            _timerId = 0;
             BreakHunt();
         }
 
         private void LevelTimeUp(LevelTimeUpSignal signal)
         {
-            Debug.Log("GameStateManager->LevelTimeUp:");
+            //Debug.Log("GameStateManager->LevelTimeUp:");
             BreakHunt();
-            //if (_gameState == GameState.Game)
-            // {
-            //     _characterManager.CharacterControlOff();
-            //     _levelTimer.StopTimer();
-            //     _npcManager.StopSpawn();
-            //     _uiManager.ShowEndHuntWindow();
-            //     SwitchPause(true);
-            // }
-            
         }
 
         private void CloseHunt(ExitFromHuntRequestSignal signal)
         {
-            Debug.Log("GameStateManager->CloseHunt:");
+            //Debug.Log("GameStateManager->CloseHunt:");
             SwitchToMainScreen();
         }
 
         private void RestartHunt(RestartHuntRequestSignal signal)
         {
-            Debug.Log("GameStateManager->RestartHunt:");
+            //Debug.Log("GameStateManager->RestartHunt:");
             if (_gameState == GameState.Game)
             {
+                if (_timerId > 0)
+                {
+                    _timersService.RemoveTimer(_timerId);
+                    _timerId = 0;
+                }
+                
                 _levelProgress.LevelEnd();
                 _characterManager.CharacterControlOff();
                 _levelTimer.StopTimer();
@@ -180,27 +194,6 @@ namespace Dragoraptor.Core
                 _levelProgress.LevelStart();
                 SwitchPause(false);
             }
-            
-            // if (_state == GameState.Hunt)
-            // {
-            //     _levelProgressControler.LevelEnd();
-            //     _timeController.StopTimer();
-            //     _npcManager.StopNpcSpawn();
-            //     _npcManager.ClearNpc();
-            //     DeactivateCharacterControl();
-            //     _characterController.RemoveCharacter();
-            //     _sceneController.ClearTemporaryObjects();
-            //     
-            //     _levelProgressControler.RegistrateHuntResults();
-            //
-            //     _characterController.CreateCharacter();
-            //     ActivateCharacterControl();
-            //     _npcManager.RestartNpcSpawn();
-            //     _victoryController.LevelStart();
-            //     _levelProgressControler.LevelStart();
-            //     _timeController.StartTimer();
-            //     SwitchPause(false);
-            // }
         }
         
         private void SwitchPause(bool isPauseOn)

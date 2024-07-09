@@ -5,9 +5,6 @@ using UnityEngine;
 using Dragoraptor.Interfaces;
 using Dragoraptor.Interfaces.Character;
 using Dragoraptor.MonoBehs;
-using Dragoraptor.ScriptableObjects;
-using TimersService;
-using VContainer;
 
 
 namespace Dragoraptor.Character
@@ -26,7 +23,6 @@ namespace Dragoraptor.Character
         private IEnergyLogic _energyController;
         private IPlayerHealth _health;
         private ISatietyController _satiety;
-        private ITimersService _timersService;
         private IPlayerMediator _playerMediator;
         private ICurrentLevelDescriptorHolder _levelDescriptorHolder;
 
@@ -44,7 +40,6 @@ namespace Dragoraptor.Character
             IEnergyLogic energyLogic,
             IPlayerHealth health,
             ISatietyController satiety,
-            ITimersService timersService,
             IPlayerMediator mediator,
             ICurrentLevelDescriptorHolder currentLevelDescriptorHolder
             )
@@ -52,7 +47,6 @@ namespace Dragoraptor.Character
             //Debug.Log("CharacterManager->ctor:");
             _prefabLoader = prefabLoader;
             _spawnPosition = dataHolder.GetGamePlaySettings().CharacterSpawnPosition;
-            _charDeathDelay = dataHolder.GetGamePlaySettings().CharacterDeathDelay;
             _bodyUsers = bodyUsers;
             _stateHolder = stateHolder;
             _input = input;
@@ -60,7 +54,6 @@ namespace Dragoraptor.Character
             _health = health;
             _health.OnHealthEnd += OnHealthEnd;
             _satiety = satiety;
-            _timersService = timersService;
             _playerMediator = mediator;
             _levelDescriptorHolder = currentLevelDescriptorHolder;
         }
@@ -136,17 +129,7 @@ namespace Dragoraptor.Character
         {
             CharacterControlOff();
             _stateHolder.SetState(CharacterState.Death);
-            if (!_isTiming)
-            {
-                _timerId = _timersService.AddTimer(OnDeathTimer, _charDeathDelay);
-                _isTiming = true;
-            }
             _playerMediator.SetCharacterTransform(null);
-        }
-        
-        private void OnDeathTimer()
-        {
-            _isTiming = false;
             OnCharacterKilled?.Invoke();
         }
     }
